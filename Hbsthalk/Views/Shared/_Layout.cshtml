@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="content-type" content="text/html" ; charset="utf-8" />
+    <title>Home</title>
+    @Styles.Render("~/content/css/all.css")
+    @Styles.Render("~/content/css/bootstrap.min.css")
+    @Styles.Render("~/content/css/font-awesome.min.css")
+    @Styles.Render("~/content/css/Site.css")
+    @Styles.Render("~/Content/css/style.css")
+</head>
+<body>
+    <!--logindiv-->
+    <div class="logindiv fixed-top ">
+        <div class="container">
+            <div class="row">
+                <div class="lead col-md-6 d-none d-md-block head-Q ">
+                    Have any question?
+                    <span style="padding-left: 10px;"><i class="fas fa-envelope"></i></span>
+                    <span class="email-hover head-color">hbsthalk@gmail.com</span>
+                </div>
+                <div class="offset-md-4 "></div>
+                <div class="col-md-2 " style="text-align: right">
+                    <span class="lead "><a href="#">Register</a></span>
+                    <span class="lead vl ">|</span>
+                    <span class="lead vl "><a href="#" class="loginBtn">Login</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--END-->
+    <!--START Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:transparent; transition: 0.5s;">
+        <a class="navbar-brand" href="#">Hbsthalk</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span><i class="fas fa-ellipsis-v"></i></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Questions<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Tutorials</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contests</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Applications</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Syllabus</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Rooms</a>
+                </li>
+                <li class="nav-item" id="search-btn">
+                    <a class="nav-link" href="#"><i class="fas fa-search"></i></a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+    <!--END Navbar-->
+    <div class="container-fluid body-content" style="padding:0px; margin-top:-19px">
+        @RenderBody()
+
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Hbsthalk</p>
+        </footer>
+    </div>
+    <!--Scripts-->
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/all.js"></script>
+    <script type="text/javascript" src="~/Scripts/minejs.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
