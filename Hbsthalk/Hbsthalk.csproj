@@ -173,8 +173,10 @@
     <Content Include="Content\webfonts\fa-brands-400.svg" />
     <Content Include="Content\webfonts\fa-regular-400.svg" />
     <Content Include="Content\webfonts\fa-solid-900.svg" />
+    <Content Include="Content\webfonts\fontawesome-webfont.svg" />
+    <Content Include="Content\webfonts\glyphicons-halflings-regular.svg" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -186,6 +188,15 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.11.3.min.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
+    <Content Include="Content\webfonts\fontawesome-webfont.eot" />
+    <Content Include="Content\webfonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\webfonts\fontawesome-webfont.woff" />
+    <Content Include="Content\webfonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\webfonts\FontAwesome.otf" />
+    <Content Include="Content\webfonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\webfonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\webfonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\webfonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -219,10 +230,10 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\css\bootstrap-grid.css.map" />
     <Content Include="Content\css\bootstrap-grid.min.css.map" />
     <Content Include="Content\css\bootstrap-reboot.css.map" />

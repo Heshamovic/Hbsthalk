@@ -710,7 +710,6 @@ input {
 
 .tv-nav {
     position: relative;
-    background-image: url(http://www.uplab.ru/schetina-birthday/images/7561547f-9bbe-4c24-b447-d1eed58c2312__uplab_logo.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 0px 0px;
@@ -748,3 +747,11 @@ input {
     z-index: 11;
 }
 /*slider*/
+.myTut .carousel-indicators li {
+    background-color: blue;
+    border-radius:50%;
+    width:10px;
+    height:10px
+}
+
+/*test*/
