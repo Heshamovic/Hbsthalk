@@ -1,0 +1,25 @@
+Home page:
+  has sections:
+    1-
+    2-
+    3-
+    4-
+    5-
+    6-
+    7-
+Discussion Rooms:
+  -It has three buttons:
+     1- Add New room
+     2- View Rooms created by user
+     3- View Rooms joined by user
+  -It also has Suggested rooms which are filtered by the left filtring tool:
+      *Each card should have the following information:
+         1- The number of people who facourite this room
+         2- The number of people who already have joined(Talked) in the room
+         3- Room Title
+         4- Room Tags
+      *The cards should be sorting according to:
+        1- List of prefrences
+        2- Number of Favourites
+        3- Number of joined people
+        4- Most recent
