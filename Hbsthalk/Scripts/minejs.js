@@ -13,7 +13,6 @@ $(window).on('load', function () {
 
 
         });
-        console.log("Hello world!");
     }
     else {
         $('nav').css("background-color", "transparent");
@@ -24,7 +23,6 @@ $(window).on('load', function () {
 
 
         });
-        console.log("top");
     }
     if ($(this).width() <= 991) {
         $(".navbar-collapse").css("background-color", "#881125");
@@ -89,5 +87,23 @@ $('.search-bar').click(function () {
 $('.search-bar .search-bar-inner').click(function (e) {
     e.stopPropagation();
 });
+
+var signIn = function () {
+    $.ajax({
+        type: "POST",
+        url: "/Home/login",
+        data: {
+            email: $("#signUserName").val(), password: $("#signPassword").val()
+        },
+        success: function (response) {
+            if (response === "fail") {
+                window.location.href = "/Home/Index";
+            }
+            else {
+                window.location.href = "/Home/Index";
+            }
+        }
+    })
+}
 /*END*/
 //Home tutorial js

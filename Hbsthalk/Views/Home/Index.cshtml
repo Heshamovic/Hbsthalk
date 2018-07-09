@@ -60,12 +60,12 @@ because it requires specific images, where more than 50% of bg is transparent or
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1">@@</span>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" id="signUserName">
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="input-group mb-3">
-                                        <input type="password" class="form-control" placeholder="Password" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                        <input type="password" class="form-control" placeholder="Password" aria-label="Recipient's username" aria-describedby="basic-addon2" id="signPassword">
                                         <div class="input-group-append">
                                             <button class="btn btn-outline-secondary" type="button"><i class="fa fa-eye"></i></button>
                                         </div>
@@ -85,7 +85,7 @@ because it requires specific images, where more than 50% of bg is transparent or
                                     </div>
                                 </div>
                                 <div class="col-12" id="signin">
-                                    <button type="button" class="btn btn-secondary">Secondary</button>
+                                    <button type="button" class="btn btn-secondary" onclick="signIn()">Sign in</button>
                                 </div>
                             </div>
                         </center>
@@ -135,11 +135,17 @@ because it requires specific images, where more than 50% of bg is transparent or
 <section class="myTut">
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators ">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">
+            <img src="~/Content/Images/Yosef Amer 20141103_123040.jpg" alt="omk"/>
+        </li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1">
+            <img src="~/Content/Images/Yosef Amer 20141103_123040.jpg" alt="omk"/>
+        </li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2">
+            <img src="~/Content/Images/Yosef Amer 20141103_123040.jpg" alt="omk"/>
+        </li>
     </ol>
-    <div class="carousel-inner" style="background-color:red">
+    <div class="carousel-inner">
         <div class="carousel-item active">
              <div class="row" style="padding: 90px 25px 50px 25px">
                 <div class="col-lg-6">
@@ -157,18 +163,18 @@ because it requires specific images, where more than 50% of bg is transparent or
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <p style="font-size: 18px; color: #a6a6a6">Author Name</p>
-                    <h3 style="color: #fff; font-weight: bold">Tutorial title</h3>
-                    <p style="font-size: 18px; color: #a6a6a6; margin-bottom: 30px;"> We want to tell your brand’s story with quality content that will help you inspire your audience, build meaningful connections and grow your success. Different marketing goals mean different content tools.</p>
-                    <p>Topic</p>
-                    <p>Branch</p>
-                    <p>Total length</p>
-                    <button type="button" class="btn btn-light">Light</button>
+                    <p style="font-size: 18px; font-weight:500;color: #881125">Author Name</p>
+                    <h3 style="color: #881125; font-weight: bold; font-style:oblique; ">Tutorial title</h3>
+                    <p style="font-size: 18px; font-weight:500; color: #fff; margin-bottom: 30px;"> We want to tell your brand’s story with quality content that will help you inspire your audience, build meaningful connections and grow your success. Different marketing goals mean different content tools.</p>
+                    <p style="font-size: 18px; font-weight:500; color: #881125; font-style:oblique; ">Math</p>
+                    <p style="font-size: 18px; font-weight:500; color: #881125; font-style:oblique; ">$0.99</p>
+                    <p style="font-size: 18px; font-weight:500; color: #881125; font-style:oblique; ">30 min</p>
+                    <button type="button" class="btn btn-danger myTutBtn">Regiester now</button>
                 </div>
             </div>
         </div>
         <div class="carousel-item">
-             <div class="row" style="padding: 90px 25px 50px 25px">
+            <div class="row" style="padding: 90px 25px 50px 25px">
                 <div class="col-lg-6">
                     <div class="tv-wrapper">
                         <div class="tv-space">
@@ -184,18 +190,18 @@ because it requires specific images, where more than 50% of bg is transparent or
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <p style="font-size: 18px; color: #a6a6a6">Author Name</p>
-                    <h3 style="color: #fff; font-weight: bold">Tutorial title</h3>
-                    <p style="font-size: 18px; color: #a6a6a6; margin-bottom: 30px;"> We want to tell your brand’s story with quality content that will help you inspire your audience, build meaningful connections and grow your success. Different marketing goals mean different content tools.</p>
-                    <p>Topic</p>
-                    <p>Branch</p>
-                    <p>Total length</p>
-                    <button type="button" class="btn btn-light">Light</button>
+                    <p style="font-size: 18px; font-weight:500;color: #881125">Author Name</p>
+                    <h3 style="color: #881125; font-weight: bold; font-style:oblique; ">Tutorial title</h3>
+                    <p style="font-size: 18px; font-weight:500; color: #fff; margin-bottom: 30px;"> We want to tell your brand’s story with quality content that will help you inspire your audience, build meaningful connections and grow your success. Different marketing goals mean different content tools.</p>
+                    <p style="font-size: 18px; font-weight:500; color: #881125; font-style:oblique; ">Math</p>
+                    <p style="font-size: 18px; font-weight:500; color: #881125; font-style:oblique; ">$0.99</p>
+                    <p style="font-size: 18px; font-weight:500; color: #881125; font-style:oblique; ">30 min</p>
+                    <button type="button" class="btn btn-danger myTutBtn">Regiester now</button>
                 </div>
             </div>
         </div>
         <div class="carousel-item">
-             <div class="row" style="padding: 90px 25px 50px 25px">
+            <div class="row" style="padding: 90px 25px 50px 25px">
                 <div class="col-lg-6">
                     <div class="tv-wrapper">
                         <div class="tv-space">
@@ -211,13 +217,13 @@ because it requires specific images, where more than 50% of bg is transparent or
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <p style="font-size: 18px; color: #a6a6a6">Author Name</p>
-                    <h3 style="color: #fff; font-weight: bold">Tutorial title</h3>
-                    <p style="font-size: 18px; color: #a6a6a6; margin-bottom: 30px;"> We want to tell your brand’s story with quality content that will help you inspire your audience, build meaningful connections and grow your success. Different marketing goals mean different content tools.</p>
-                    <p>Topic</p>
-                    <p>Branch</p>
-                    <p>Total length</p>
-                    <button type="button" class="btn btn-light">Light</button>
+                    <p style="font-size: 18px; font-weight:500;color: #881125">Author Name</p>
+                    <h3 style="color: #881125; font-weight: bold; font-style:oblique; ">Tutorial title</h3>
+                    <p style="font-size: 18px; font-weight:500; color: #fff; margin-bottom: 30px;"> We want to tell your brand’s story with quality content that will help you inspire your audience, build meaningful connections and grow your success. Different marketing goals mean different content tools.</p>
+                    <p style="font-size: 18px; font-weight:500; color: #881125; font-style:oblique; ">Math</p>
+                    <p style="font-size: 18px; font-weight:500; color: #881125; font-style:oblique; ">$0.99</p>
+                    <p style="font-size: 18px; font-weight:500; color: #881125; font-style:oblique; ">30 min</p>
+                    <button type="button" class="btn btn-danger myTutBtn">Regiester now</button>
                 </div>
             </div>
         </div>

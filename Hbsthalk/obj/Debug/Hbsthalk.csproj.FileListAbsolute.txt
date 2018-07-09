@@ -91,3 +91,7 @@ C:\Users\Heshamovic\source\repos\Hbsthalk\Hbsthalk\obj\Debug\Hbsthalk.csproj.Cor
 C:\Users\Heshamovic\source\repos\Hbsthalk\Hbsthalk\obj\Debug\Hbsthalk.csproj.CopyComplete
 C:\Users\Heshamovic\source\repos\Hbsthalk\Hbsthalk\obj\Debug\Hbsthalk.dll
 C:\Users\Heshamovic\source\repos\Hbsthalk\Hbsthalk\obj\Debug\Hbsthalk.pdb
+C:\Users\Heshamovic\source\repos\Hbsthalk\Hbsthalk\bin\EntityFramework.dll
+C:\Users\Heshamovic\source\repos\Hbsthalk\Hbsthalk\bin\EntityFramework.SqlServer.dll
+C:\Users\Heshamovic\source\repos\Hbsthalk\Hbsthalk\bin\EntityFramework.xml
+C:\Users\Heshamovic\source\repos\Hbsthalk\Hbsthalk\bin\EntityFramework.SqlServer.xml

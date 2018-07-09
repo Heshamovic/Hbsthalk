@@ -1,0 +1,1026 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HbsthalkModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProfilePicture" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Age" Type="Int32" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Graduation" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+    <Property Name="CredibilityPoints" Type="Int32" Nullable="false" />
+    <Property Name="Signed" Type="Boolean" Nullable="false" />
+    <Property Name="GoogleEmail" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+    <Property Name="FacebookEmail" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+    <Property Name="ProficiencyID" Type="Int32" Nullable="false" />
+    <Property Name="AllowTag" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Proficiency" Relationship="Self.FK_Account_Proficiency" FromRole="Account" ToRole="Proficiency" />
+    <NavigationProperty Name="Answers" Relationship="Self.FK_Answer_Account" FromRole="Account" ToRole="Answer" />
+    <NavigationProperty Name="Blogs" Relationship="Self.FK_Blog_Account" FromRole="Account" ToRole="Blog" />
+    <NavigationProperty Name="ContestAnswers" Relationship="Self.FK_ContestAnswer_Account" FromRole="Account" ToRole="ContestAnswer" />
+    <NavigationProperty Name="ContestRelations" Relationship="Self.FK_ContestRelation_Account" FromRole="Account" ToRole="ContestRelation" />
+    <NavigationProperty Name="Favourites" Relationship="Self.FK_Favourite_Account" FromRole="Account" ToRole="Favourite" />
+    <NavigationProperty Name="FollowZones" Relationship="Self.FK_FollowZone_Account" FromRole="Account" ToRole="FollowZone" />
+    <NavigationProperty Name="FollowZones1" Relationship="Self.FK_FollowZone_Account1" FromRole="Account" ToRole="FollowZone" />
+    <NavigationProperty Name="Images" Relationship="Self.FK_Image_Account" FromRole="Account" ToRole="Image" />
+    <NavigationProperty Name="Mentions" Relationship="Self.FK_Mention_Account" FromRole="Account" ToRole="Mention" />
+    <NavigationProperty Name="Messages" Relationship="Self.FK_Message_Account" FromRole="Account" ToRole="Message" />
+    <NavigationProperty Name="PreferenceLists" Relationship="Self.FK_PreferenceList_Account" FromRole="Account" ToRole="PreferenceList" />
+    <NavigationProperty Name="Ratings" Relationship="Self.FK_Ratings_Account" FromRole="Account" ToRole="Rating" />
+    <NavigationProperty Name="Tutorials" Relationship="Self.EnrolledTutorial" FromRole="Account" ToRole="Tutorial" />
+    <NavigationProperty Name="DiscussionRooms" Relationship="Self.RoomParticipant" FromRole="Account" ToRole="DiscussionRoom" />
+  </EntityType>
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Text" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="QuestionID" Type="Int32" Nullable="false" />
+    <Property Name="Points" Type="Int32" Nullable="false" />
+    <Property Name="FilePath" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="RoomID" Type="Int32" />
+    <Property Name="AccountID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Account" Relationship="Self.FK_Answer_Account" FromRole="Answer" ToRole="Account" />
+    <NavigationProperty Name="DiscussionRoom" Relationship="Self.FK_Answer_DiscussionRoom" FromRole="Answer" ToRole="DiscussionRoom" />
+    <NavigationProperty Name="Question" Relationship="Self.FK_Answer_Question" FromRole="Answer" ToRole="Question" />
+    <NavigationProperty Name="Images" Relationship="Self.FK_Image_Answer" FromRole="Answer" ToRole="Image" />
+  </EntityType>
+  <EntityType Name="Application">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Thumbnail" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Tag" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Blog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Text" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuthorID" Type="Int32" Nullable="false" />
+    <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="RoomID" Type="Int32" />
+    <Property Name="Points" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Account" Relationship="Self.FK_Blog_Account" FromRole="Blog" ToRole="Account" />
+    <NavigationProperty Name="DiscussionRoom" Relationship="Self.FK_Blog_DiscussionRoom" FromRole="Blog" ToRole="DiscussionRoom" />
+    <NavigationProperty Name="Images" Relationship="Self.FK_Image_Blog" FromRole="Blog" ToRole="Image" />
+    <NavigationProperty Name="Mentions" Relationship="Self.FK_Mention_Blog" FromRole="Blog" ToRole="Mention" />
+    <NavigationProperty Name="TagRelations" Relationship="Self.FK_QuestionTag_Blog" FromRole="Blog" ToRole="TagRelation" />
+  </EntityType>
+  <EntityType Name="Complete">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Answer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ContestID" Type="Int32" Nullable="false" />
+    <Property Name="Text" Type="String" MaxLength="1250" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ContestAnswers" Relationship="Self.FK_ContestAnswer_Complete" FromRole="Complete" ToRole="ContestAnswer" />
+    <NavigationProperty Name="Images" Relationship="Self.FK_Image_Complete" FromRole="Complete" ToRole="Image" />
+  </EntityType>
+  <EntityType Name="Contest">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DateAndTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <NavigationProperty Name="MCQs" Relationship="Self.FK_ContestMCQ_Contest" FromRole="Contest" ToRole="MCQ" />
+  </EntityType>
+  <EntityType Name="DiscussionRoom">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Recommendation" Type="Int32" />
+    <Property Name="DateAndTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Answers" Relationship="Self.FK_Answer_DiscussionRoom" FromRole="DiscussionRoom" ToRole="Answer" />
+    <NavigationProperty Name="Blogs" Relationship="Self.FK_Blog_DiscussionRoom" FromRole="DiscussionRoom" ToRole="Blog" />
+    <NavigationProperty Name="Mentions" Relationship="Self.FK_Mention_DiscussionRoom" FromRole="DiscussionRoom" ToRole="Mention" />
+    <NavigationProperty Name="Messages" Relationship="Self.FK_Message_DiscussionRoom" FromRole="DiscussionRoom" ToRole="Message" />
+    <NavigationProperty Name="Questions" Relationship="Self.FK_Question_DiscussionRoom" FromRole="DiscussionRoom" ToRole="Question" />
+    <NavigationProperty Name="Accounts" Relationship="Self.RoomParticipant" FromRole="DiscussionRoom" ToRole="Account" />
+  </EntityType>
+  <EntityType Name="Favourite">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TutorialID" Type="Int32" />
+    <Property Name="QuestionID" Type="Int32" />
+    <Property Name="AccountID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Account" Relationship="Self.FK_Favourite_Account" FromRole="Favourite" ToRole="Account" />
+    <NavigationProperty Name="Question" Relationship="Self.FK_Favourite_Question" FromRole="Favourite" ToRole="Question" />
+    <NavigationProperty Name="Tutorial" Relationship="Self.FK_Favourite_Tutorial" FromRole="Favourite" ToRole="Tutorial" />
+  </EntityType>
+  <EntityType Name="MCQ">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Text" Type="String" MaxLength="1250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Answer" Type="Int32" Nullable="false" />
+    <Property Name="ContestID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Contest" Relationship="Self.FK_ContestMCQ_Contest" FromRole="MCQ" ToRole="Contest" />
+    <NavigationProperty Name="ContestAnswers" Relationship="Self.FK_ContestAnswer_MCQ" FromRole="MCQ" ToRole="ContestAnswer" />
+    <NavigationProperty Name="Images" Relationship="Self.FK_Image_MCQ" FromRole="MCQ" ToRole="Image" />
+  </EntityType>
+  <EntityType Name="Mention">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AccountID" Type="Int32" Nullable="false" />
+    <Property Name="QuestionID" Type="Int32" />
+    <Property Name="RoomID" Type="Int32" />
+    <Property Name="BlogID" Type="Int32" />
+    <NavigationProperty Name="Account" Relationship="Self.FK_Mention_Account" FromRole="Mention" ToRole="Account" />
+    <NavigationProperty Name="Blog" Relationship="Self.FK_Mention_Blog" FromRole="Mention" ToRole="Blog" />
+    <NavigationProperty Name="DiscussionRoom" Relationship="Self.FK_Mention_DiscussionRoom" FromRole="Mention" ToRole="DiscussionRoom" />
+    <NavigationProperty Name="Question" Relationship="Self.FK_Mention_Question" FromRole="Mention" ToRole="Question" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Text" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DateAndTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SenderID" Type="Int32" Nullable="false" />
+    <Property Name="RoomID" Type="Int32" Nullable="false" />
+    <Property Name="FilePath" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Account" Relationship="Self.FK_Message_Account" FromRole="Message" ToRole="Account" />
+    <NavigationProperty Name="DiscussionRoom" Relationship="Self.FK_Message_DiscussionRoom" FromRole="Message" ToRole="DiscussionRoom" />
+    <NavigationProperty Name="Images" Relationship="Self.FK_Image_Message" FromRole="Message" ToRole="Image" />
+  </EntityType>
+  <EntityType Name="PreferenceList">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Subject" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PLevel" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Account" Relationship="Self.FK_PreferenceList_Account" FromRole="PreferenceList" ToRole="Account" />
+  </EntityType>
+  <EntityType Name="Proficiency">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProficiencyType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Accounts" Relationship="Self.FK_Account_Proficiency" FromRole="Proficiency" ToRole="Account" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="AccountID" Type="Int32" Nullable="false" />
+    <Property Name="Text" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" />
+    <Property Name="Frequency" Type="Int32" Nullable="false" />
+    <Property Name="DateAndTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FilePath" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="Recommendation" Type="Int32" Nullable="false" />
+    <Property Name="RoomID" Type="Int32" />
+    <NavigationProperty Name="Answers" Relationship="Self.FK_Answer_Question" FromRole="Question" ToRole="Answer" />
+    <NavigationProperty Name="DiscussionRoom" Relationship="Self.FK_Question_DiscussionRoom" FromRole="Question" ToRole="DiscussionRoom" />
+    <NavigationProperty Name="Favourites" Relationship="Self.FK_Favourite_Question" FromRole="Question" ToRole="Favourite" />
+    <NavigationProperty Name="Mentions" Relationship="Self.FK_Mention_Question" FromRole="Question" ToRole="Mention" />
+    <NavigationProperty Name="Images" Relationship="Self.FK_Image_Question" FromRole="Question" ToRole="Image" />
+    <NavigationProperty Name="TagRelations" Relationship="Self.FK_QuestionTag_Question" FromRole="Question" ToRole="TagRelation" />
+  </EntityType>
+  <EntityType Name="Rating">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Rating1" Type="Int32" Nullable="false" />
+    <Property Name="AccountID" Type="Int32" Nullable="false" />
+    <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Account" Relationship="Self.FK_Ratings_Account" FromRole="Rating" ToRole="Account" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Tag">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Text" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TagRelation" Relationship="Self.FK_QuestionTag_Tag" FromRole="Tag" ToRole="TagRelation" />
+  </EntityType>
+  <EntityType Name="TrueFalse">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Answer" Type="Boolean" Nullable="false" />
+    <Property Name="ContestID" Type="Int32" Nullable="false" />
+    <Property Name="Text" Type="String" MaxLength="1250" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ContestAnswers" Relationship="Self.FK_ContestAnswer_TrueFalse" FromRole="TrueFalse" ToRole="ContestAnswer" />
+    <NavigationProperty Name="Images" Relationship="Self.FK_Image_TrueFalse" FromRole="TrueFalse" ToRole="Image" />
+  </EntityType>
+  <EntityType Name="Tutorial">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VideoPath" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="recommendation" Type="Int32" />
+    <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Favourites" Relationship="Self.FK_Favourite_Tutorial" FromRole="Tutorial" ToRole="Favourite" />
+    <NavigationProperty Name="Images" Relationship="Self.FK_Image_Tutorial" FromRole="Tutorial" ToRole="Image" />
+    <NavigationProperty Name="TutorialMaterials" Relationship="Self.FK_TutorialMaterial_Tutorial" FromRole="Tutorial" ToRole="TutorialMaterial" />
+    <NavigationProperty Name="Accounts" Relationship="Self.EnrolledTutorial" FromRole="Tutorial" ToRole="Account" />
+  </EntityType>
+  <EntityType Name="TutorialMaterial">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FilePath" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TutorialID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Tutorial" Relationship="Self.FK_TutorialMaterial_Tutorial" FromRole="TutorialMaterial" ToRole="Tutorial" />
+  </EntityType>
+  <EntityType Name="ContestAnswer">
+    <Key>
+      <PropertyRef Name="AccountID" />
+      <PropertyRef Name="Correct" />
+    </Key>
+    <Property Name="AccountID" Type="Int32" Nullable="false" />
+    <Property Name="MCQID" Type="Int32" />
+    <Property Name="TrueFalseID" Type="Int32" />
+    <Property Name="CompleteID" Type="Int32" />
+    <Property Name="MCQAnswer" Type="Int32" />
+    <Property Name="CompleteAnswer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TrueFalseAnswer" Type="Boolean" />
+    <Property Name="Correct" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Account" Relationship="Self.FK_ContestAnswer_Account" FromRole="ContestAnswer" ToRole="Account" />
+    <NavigationProperty Name="Complete" Relationship="Self.FK_ContestAnswer_Complete" FromRole="ContestAnswer" ToRole="Complete" />
+    <NavigationProperty Name="MCQ" Relationship="Self.FK_ContestAnswer_MCQ" FromRole="ContestAnswer" ToRole="MCQ" />
+    <NavigationProperty Name="TrueFalse" Relationship="Self.FK_ContestAnswer_TrueFalse" FromRole="ContestAnswer" ToRole="TrueFalse" />
+  </EntityType>
+  <EntityType Name="ContestRelation">
+    <Key>
+      <PropertyRef Name="ContestID" />
+      <PropertyRef Name="AccountD" />
+    </Key>
+    <Property Name="ContestID" Type="Int32" Nullable="false" />
+    <Property Name="AccountD" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Account" Relationship="Self.FK_ContestRelation_Account" FromRole="ContestRelation" ToRole="Account" />
+  </EntityType>
+  <EntityType Name="FollowZone">
+    <Key>
+      <PropertyRef Name="User1" />
+      <PropertyRef Name="User2" />
+      <PropertyRef Name="Type" />
+      <PropertyRef Name="FollowLevel" />
+    </Key>
+    <Property Name="User1" Type="Int32" Nullable="false" />
+    <Property Name="User2" Type="Int32" Nullable="false" />
+    <Property Name="Type" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FollowLevel" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Account" Relationship="Self.FK_FollowZone_Account" FromRole="FollowZone" ToRole="Account" />
+    <NavigationProperty Name="Account1" Relationship="Self.FK_FollowZone_Account1" FromRole="FollowZone" ToRole="Account" />
+  </EntityType>
+  <EntityType Name="Image">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Path" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="QuestionID" Type="Int32" />
+    <Property Name="BlogID" Type="Int32" />
+    <Property Name="MessageID" Type="Int32" />
+    <Property Name="AnswerID" Type="Int32" />
+    <Property Name="AccountID" Type="Int32" />
+    <Property Name="TutorialID" Type="Int32" />
+    <Property Name="Caption" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="MCQID" Type="Int32" />
+    <Property Name="TrueFalseID" Type="Int32" />
+    <Property Name="CompleteID" Type="Int32" />
+    <NavigationProperty Name="Account" Relationship="Self.FK_Image_Account" FromRole="Image" ToRole="Account" />
+    <NavigationProperty Name="Answer" Relationship="Self.FK_Image_Answer" FromRole="Image" ToRole="Answer" />
+    <NavigationProperty Name="Blog" Relationship="Self.FK_Image_Blog" FromRole="Image" ToRole="Blog" />
+    <NavigationProperty Name="Complete" Relationship="Self.FK_Image_Complete" FromRole="Image" ToRole="Complete" />
+    <NavigationProperty Name="MCQ" Relationship="Self.FK_Image_MCQ" FromRole="Image" ToRole="MCQ" />
+    <NavigationProperty Name="Message" Relationship="Self.FK_Image_Message" FromRole="Image" ToRole="Message" />
+    <NavigationProperty Name="Question" Relationship="Self.FK_Image_Question" FromRole="Image" ToRole="Question" />
+    <NavigationProperty Name="TrueFalse" Relationship="Self.FK_Image_TrueFalse" FromRole="Image" ToRole="TrueFalse" />
+    <NavigationProperty Name="Tutorial" Relationship="Self.FK_Image_Tutorial" FromRole="Image" ToRole="Tutorial" />
+  </EntityType>
+  <EntityType Name="Lesson">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Path" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TagRelation">
+    <Key>
+      <PropertyRef Name="TagID" />
+    </Key>
+    <Property Name="QuestionID" Type="Int32" />
+    <Property Name="TagID" Type="Int32" Nullable="false" />
+    <Property Name="BlogID" Type="Int32" />
+    <Property Name="RoomID" Type="Int32" />
+    <NavigationProperty Name="Blog" Relationship="Self.FK_QuestionTag_Blog" FromRole="TagRelation" ToRole="Blog" />
+    <NavigationProperty Name="Question" Relationship="Self.FK_QuestionTag_Question" FromRole="TagRelation" ToRole="Question" />
+    <NavigationProperty Name="Tag" Relationship="Self.FK_QuestionTag_Tag" FromRole="TagRelation" ToRole="Tag" />
+  </EntityType>
+  <Association Name="FK_Account_Proficiency">
+    <End Role="Proficiency" Type="Self.Proficiency" Multiplicity="1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proficiency">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="ProficiencyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answer_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="AccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Blog_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Blog">
+        <PropertyRef Name="AuthorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContestAnswer_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="ContestAnswer" Type="Self.ContestAnswer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ContestAnswer">
+        <PropertyRef Name="AccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContestRelation_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="ContestRelation" Type="Self.ContestRelation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ContestRelation">
+        <PropertyRef Name="AccountD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Favourite_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Favourite" Type="Self.Favourite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Favourite">
+        <PropertyRef Name="AccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FollowZone_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="FollowZone" Type="Self.FollowZone" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FollowZone">
+        <PropertyRef Name="User1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FollowZone_Account1">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="FollowZone" Type="Self.FollowZone" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FollowZone">
+        <PropertyRef Name="User2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Image_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="Image" Type="Self.Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Image">
+        <PropertyRef Name="AccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mention_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Mention" Type="Self.Mention" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Mention">
+        <PropertyRef Name="AccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Message_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Message" Type="Self.Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="SenderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PreferenceList_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="PreferenceList" Type="Self.PreferenceList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PreferenceList">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ratings_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Rating">
+        <PropertyRef Name="AccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answer_DiscussionRoom">
+    <End Role="DiscussionRoom" Type="Self.DiscussionRoom" Multiplicity="0..1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DiscussionRoom">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="RoomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answer_Question">
+    <End Role="Question" Type="Self.Question" Multiplicity="1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="QuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Image_Answer">
+    <End Role="Answer" Type="Self.Answer" Multiplicity="0..1" />
+    <End Role="Image" Type="Self.Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Answer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Image">
+        <PropertyRef Name="AnswerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Blog_DiscussionRoom">
+    <End Role="DiscussionRoom" Type="Self.DiscussionRoom" Multiplicity="0..1" />
+    <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DiscussionRoom">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Blog">
+        <PropertyRef Name="RoomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Image_Blog">
+    <End Role="Blog" Type="Self.Blog" Multiplicity="0..1" />
+    <End Role="Image" Type="Self.Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Blog">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Image">
+        <PropertyRef Name="BlogID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mention_Blog">
+    <End Role="Blog" Type="Self.Blog" Multiplicity="0..1" />
+    <End Role="Mention" Type="Self.Mention" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Blog">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Mention">
+        <PropertyRef Name="BlogID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QuestionTag_Blog">
+    <End Role="Blog" Type="Self.Blog" Multiplicity="0..1" />
+    <End Role="TagRelation" Type="Self.TagRelation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Blog">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TagRelation">
+        <PropertyRef Name="BlogID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContestAnswer_Complete">
+    <End Role="Complete" Type="Self.Complete" Multiplicity="0..1" />
+    <End Role="ContestAnswer" Type="Self.ContestAnswer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Complete">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ContestAnswer">
+        <PropertyRef Name="CompleteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Image_Complete">
+    <End Role="Complete" Type="Self.Complete" Multiplicity="0..1" />
+    <End Role="Image" Type="Self.Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Complete">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Image">
+        <PropertyRef Name="CompleteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContestMCQ_Contest">
+    <End Role="Contest" Type="Self.Contest" Multiplicity="1" />
+    <End Role="MCQ" Type="Self.MCQ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contest">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MCQ">
+        <PropertyRef Name="ContestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mention_DiscussionRoom">
+    <End Role="DiscussionRoom" Type="Self.DiscussionRoom" Multiplicity="0..1" />
+    <End Role="Mention" Type="Self.Mention" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DiscussionRoom">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Mention">
+        <PropertyRef Name="RoomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Message_DiscussionRoom">
+    <End Role="DiscussionRoom" Type="Self.DiscussionRoom" Multiplicity="1" />
+    <End Role="Message" Type="Self.Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DiscussionRoom">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="RoomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Question_DiscussionRoom">
+    <End Role="DiscussionRoom" Type="Self.DiscussionRoom" Multiplicity="0..1" />
+    <End Role="Question" Type="Self.Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DiscussionRoom">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="RoomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Favourite_Question">
+    <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+    <End Role="Favourite" Type="Self.Favourite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Favourite">
+        <PropertyRef Name="QuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Favourite_Tutorial">
+    <End Role="Tutorial" Type="Self.Tutorial" Multiplicity="0..1" />
+    <End Role="Favourite" Type="Self.Favourite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tutorial">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Favourite">
+        <PropertyRef Name="TutorialID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContestAnswer_MCQ">
+    <End Role="MCQ" Type="Self.MCQ" Multiplicity="0..1" />
+    <End Role="ContestAnswer" Type="Self.ContestAnswer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MCQ">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ContestAnswer">
+        <PropertyRef Name="MCQID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Image_MCQ">
+    <End Role="MCQ" Type="Self.MCQ" Multiplicity="0..1" />
+    <End Role="Image" Type="Self.Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MCQ">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Image">
+        <PropertyRef Name="MCQID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mention_Question">
+    <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+    <End Role="Mention" Type="Self.Mention" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Mention">
+        <PropertyRef Name="QuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Image_Message">
+    <End Role="Message" Type="Self.Message" Multiplicity="0..1" />
+    <End Role="Image" Type="Self.Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Message">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Image">
+        <PropertyRef Name="MessageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Image_Question">
+    <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+    <End Role="Image" Type="Self.Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Image">
+        <PropertyRef Name="QuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QuestionTag_Question">
+    <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+    <End Role="TagRelation" Type="Self.TagRelation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TagRelation">
+        <PropertyRef Name="QuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QuestionTag_Tag">
+    <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+    <End Role="TagRelation" Type="Self.TagRelation" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Tag">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TagRelation">
+        <PropertyRef Name="TagID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContestAnswer_TrueFalse">
+    <End Role="TrueFalse" Type="Self.TrueFalse" Multiplicity="0..1" />
+    <End Role="ContestAnswer" Type="Self.ContestAnswer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TrueFalse">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ContestAnswer">
+        <PropertyRef Name="TrueFalseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Image_TrueFalse">
+    <End Role="TrueFalse" Type="Self.TrueFalse" Multiplicity="0..1" />
+    <End Role="Image" Type="Self.Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TrueFalse">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Image">
+        <PropertyRef Name="TrueFalseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Image_Tutorial">
+    <End Role="Tutorial" Type="Self.Tutorial" Multiplicity="0..1" />
+    <End Role="Image" Type="Self.Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tutorial">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Image">
+        <PropertyRef Name="TutorialID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TutorialMaterial_Tutorial">
+    <End Role="Tutorial" Type="Self.Tutorial" Multiplicity="1" />
+    <End Role="TutorialMaterial" Type="Self.TutorialMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tutorial">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TutorialMaterial">
+        <PropertyRef Name="TutorialID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EnrolledTutorial">
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <End Role="Tutorial" Type="Self.Tutorial" Multiplicity="*" />
+  </Association>
+  <Association Name="RoomParticipant">
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <End Role="DiscussionRoom" Type="Self.DiscussionRoom" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="HbsthalkEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accounts" EntityType="Self.Account" />
+    <EntitySet Name="Answers" EntityType="Self.Answer" />
+    <EntitySet Name="Applications" EntityType="Self.Application" />
+    <EntitySet Name="Blogs" EntityType="Self.Blog" />
+    <EntitySet Name="Completes" EntityType="Self.Complete" />
+    <EntitySet Name="Contests" EntityType="Self.Contest" />
+    <EntitySet Name="DiscussionRooms" EntityType="Self.DiscussionRoom" />
+    <EntitySet Name="Favourites" EntityType="Self.Favourite" />
+    <EntitySet Name="MCQs" EntityType="Self.MCQ" />
+    <EntitySet Name="Mentions" EntityType="Self.Mention" />
+    <EntitySet Name="Messages" EntityType="Self.Message" />
+    <EntitySet Name="PreferenceLists" EntityType="Self.PreferenceList" />
+    <EntitySet Name="Proficiencies" EntityType="Self.Proficiency" />
+    <EntitySet Name="Questions" EntityType="Self.Question" />
+    <EntitySet Name="Ratings" EntityType="Self.Rating" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Tags" EntityType="Self.Tag" />
+    <EntitySet Name="TrueFalses" EntityType="Self.TrueFalse" />
+    <EntitySet Name="Tutorials" EntityType="Self.Tutorial" />
+    <EntitySet Name="TutorialMaterials" EntityType="Self.TutorialMaterial" />
+    <EntitySet Name="ContestAnswers" EntityType="Self.ContestAnswer" />
+    <EntitySet Name="ContestRelations" EntityType="Self.ContestRelation" />
+    <EntitySet Name="FollowZones" EntityType="Self.FollowZone" />
+    <EntitySet Name="Images" EntityType="Self.Image" />
+    <EntitySet Name="Lessons" EntityType="Self.Lesson" />
+    <EntitySet Name="TagRelations" EntityType="Self.TagRelation" />
+    <AssociationSet Name="FK_Account_Proficiency" Association="Self.FK_Account_Proficiency">
+      <End Role="Proficiency" EntitySet="Proficiencies" />
+      <End Role="Account" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answer_Account" Association="Self.FK_Answer_Account">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="Answer" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Blog_Account" Association="Self.FK_Blog_Account">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="Blog" EntitySet="Blogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContestAnswer_Account" Association="Self.FK_ContestAnswer_Account">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="ContestAnswer" EntitySet="ContestAnswers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContestRelation_Account" Association="Self.FK_ContestRelation_Account">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="ContestRelation" EntitySet="ContestRelations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Favourite_Account" Association="Self.FK_Favourite_Account">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="Favourite" EntitySet="Favourites" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FollowZone_Account" Association="Self.FK_FollowZone_Account">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="FollowZone" EntitySet="FollowZones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FollowZone_Account1" Association="Self.FK_FollowZone_Account1">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="FollowZone" EntitySet="FollowZones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Image_Account" Association="Self.FK_Image_Account">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="Image" EntitySet="Images" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mention_Account" Association="Self.FK_Mention_Account">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="Mention" EntitySet="Mentions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Message_Account" Association="Self.FK_Message_Account">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="Message" EntitySet="Messages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PreferenceList_Account" Association="Self.FK_PreferenceList_Account">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="PreferenceList" EntitySet="PreferenceLists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ratings_Account" Association="Self.FK_Ratings_Account">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="Rating" EntitySet="Ratings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answer_DiscussionRoom" Association="Self.FK_Answer_DiscussionRoom">
+      <End Role="DiscussionRoom" EntitySet="DiscussionRooms" />
+      <End Role="Answer" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answer_Question" Association="Self.FK_Answer_Question">
+      <End Role="Question" EntitySet="Questions" />
+      <End Role="Answer" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Image_Answer" Association="Self.FK_Image_Answer">
+      <End Role="Answer" EntitySet="Answers" />
+      <End Role="Image" EntitySet="Images" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Blog_DiscussionRoom" Association="Self.FK_Blog_DiscussionRoom">
+      <End Role="DiscussionRoom" EntitySet="DiscussionRooms" />
+      <End Role="Blog" EntitySet="Blogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Image_Blog" Association="Self.FK_Image_Blog">
+      <End Role="Blog" EntitySet="Blogs" />
+      <End Role="Image" EntitySet="Images" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mention_Blog" Association="Self.FK_Mention_Blog">
+      <End Role="Blog" EntitySet="Blogs" />
+      <End Role="Mention" EntitySet="Mentions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QuestionTag_Blog" Association="Self.FK_QuestionTag_Blog">
+      <End Role="Blog" EntitySet="Blogs" />
+      <End Role="TagRelation" EntitySet="TagRelations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContestAnswer_Complete" Association="Self.FK_ContestAnswer_Complete">
+      <End Role="Complete" EntitySet="Completes" />
+      <End Role="ContestAnswer" EntitySet="ContestAnswers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Image_Complete" Association="Self.FK_Image_Complete">
+      <End Role="Complete" EntitySet="Completes" />
+      <End Role="Image" EntitySet="Images" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContestMCQ_Contest" Association="Self.FK_ContestMCQ_Contest">
+      <End Role="Contest" EntitySet="Contests" />
+      <End Role="MCQ" EntitySet="MCQs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mention_DiscussionRoom" Association="Self.FK_Mention_DiscussionRoom">
+      <End Role="DiscussionRoom" EntitySet="DiscussionRooms" />
+      <End Role="Mention" EntitySet="Mentions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Message_DiscussionRoom" Association="Self.FK_Message_DiscussionRoom">
+      <End Role="DiscussionRoom" EntitySet="DiscussionRooms" />
+      <End Role="Message" EntitySet="Messages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Question_DiscussionRoom" Association="Self.FK_Question_DiscussionRoom">
+      <End Role="DiscussionRoom" EntitySet="DiscussionRooms" />
+      <End Role="Question" EntitySet="Questions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Favourite_Question" Association="Self.FK_Favourite_Question">
+      <End Role="Question" EntitySet="Questions" />
+      <End Role="Favourite" EntitySet="Favourites" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Favourite_Tutorial" Association="Self.FK_Favourite_Tutorial">
+      <End Role="Tutorial" EntitySet="Tutorials" />
+      <End Role="Favourite" EntitySet="Favourites" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContestAnswer_MCQ" Association="Self.FK_ContestAnswer_MCQ">
+      <End Role="MCQ" EntitySet="MCQs" />
+      <End Role="ContestAnswer" EntitySet="ContestAnswers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Image_MCQ" Association="Self.FK_Image_MCQ">
+      <End Role="MCQ" EntitySet="MCQs" />
+      <End Role="Image" EntitySet="Images" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mention_Question" Association="Self.FK_Mention_Question">
+      <End Role="Question" EntitySet="Questions" />
+      <End Role="Mention" EntitySet="Mentions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Image_Message" Association="Self.FK_Image_Message">
+      <End Role="Message" EntitySet="Messages" />
+      <End Role="Image" EntitySet="Images" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Image_Question" Association="Self.FK_Image_Question">
+      <End Role="Question" EntitySet="Questions" />
+      <End Role="Image" EntitySet="Images" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QuestionTag_Question" Association="Self.FK_QuestionTag_Question">
+      <End Role="Question" EntitySet="Questions" />
+      <End Role="TagRelation" EntitySet="TagRelations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QuestionTag_Tag" Association="Self.FK_QuestionTag_Tag">
+      <End Role="Tag" EntitySet="Tags" />
+      <End Role="TagRelation" EntitySet="TagRelations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContestAnswer_TrueFalse" Association="Self.FK_ContestAnswer_TrueFalse">
+      <End Role="TrueFalse" EntitySet="TrueFalses" />
+      <End Role="ContestAnswer" EntitySet="ContestAnswers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Image_TrueFalse" Association="Self.FK_Image_TrueFalse">
+      <End Role="TrueFalse" EntitySet="TrueFalses" />
+      <End Role="Image" EntitySet="Images" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Image_Tutorial" Association="Self.FK_Image_Tutorial">
+      <End Role="Tutorial" EntitySet="Tutorials" />
+      <End Role="Image" EntitySet="Images" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TutorialMaterial_Tutorial" Association="Self.FK_TutorialMaterial_Tutorial">
+      <End Role="Tutorial" EntitySet="Tutorials" />
+      <End Role="TutorialMaterial" EntitySet="TutorialMaterials" />
+    </AssociationSet>
+    <AssociationSet Name="EnrolledTutorial" Association="Self.EnrolledTutorial">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="Tutorial" EntitySet="Tutorials" />
+    </AssociationSet>
+    <AssociationSet Name="RoomParticipant" Association="Self.RoomParticipant">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="DiscussionRoom" EntitySet="DiscussionRooms" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
