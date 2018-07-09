@@ -1,5 +1,6 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model Hbsthalk.Models.Tutorial
+@{
+    ViewBag.Title = "Home";
 }
 
 <!-- Start cerusol-->
@@ -132,102 +133,133 @@ because it requires specific images, where more than 50% of bg is transparent or
 </section>
 <!--END-->
 <!--Start Tutorial section-->
+@{ 
+    int tutorialNum = ViewBag.homeTutorial.Count;
+}
 <section class="myTut">
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators ">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">
-            <img src="~/Content/Images/Yosef Amer 20141103_123040.jpg" alt="omk"/>
-        </li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1">
-            <img src="~/Content/Images/Yosef Amer 20141103_123040.jpg" alt="omk"/>
-        </li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2">
-            <img src="~/Content/Images/Yosef Amer 20141103_123040.jpg" alt="omk"/>
-        </li>
-    </ol>
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-             <div class="row" style="padding: 90px 25px 50px 25px">
-                <div class="col-lg-6">
-                    <div class="tv-wrapper">
-                        <div class="tv-space">
-                            <div class="tv-border">
-                                <div class="tv-container">
-                                    <img class="img-fluid" src="~/Content/Images/promo_img_1.png" />
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators ">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">
+                <img src="~/Content/Images/Yosef Amer 20141103_123040.jpg" alt="omk"/>
+            </li>
+            @for (int i = 0; i < tutorialNum; i++)
+            {
+                <li data-target="#carouselExampleIndicators" data-slide-to="1">
+                    <img src="~/Content/Images/Yosef Amer 20141103_123040.jpg" alt="omk"/>
+                </li>
+            }
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                @if (tutorialNum == 0)
+                {
+                    <div class="row" style="padding: 90px 25px 50px 25px">
+                        <div class="col-lg-6">
+                            <div class="tv-wrapper">
+                                <div class="tv-space">
+                                    <div class="tv-border">
+                                        <div class="tv-container">
+                                            <img class="img-fluid" src="~/Content/Images/noTutorial.jpg" />
+                                        </div>
+                                        <div class="tv-nav obazhure"></div>
+                                    </div>
+                                    <div class="tv-leg"></div>
+                                    <div class="tv-step"></div>
                                 </div>
-                                <div class="tv-nav obazhure"></div>
                             </div>
-                            <div class="tv-leg"></div>
-                            <div class="tv-step"></div>
+                        </div>
+                        <div class="col-lg-6">
+                            <h3 style="color: #881125; font-weight: bold; font-style:oblique; ">Coming soon</h3>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <p style="font-size: 18px; font-weight:500;color: #881125">Author Name</p>
-                    <h3 style="color: #881125; font-weight: bold; font-style:oblique; ">Tutorial title</h3>
-                    <p style="font-size: 18px; font-weight:500; color: #fff; margin-bottom: 30px;"> We want to tell your brand’s story with quality content that will help you inspire your audience, build meaningful connections and grow your success. Different marketing goals mean different content tools.</p>
-                    <p style="font-size: 18px; font-weight:500; color: #881125; font-style:oblique; ">Math</p>
-                    <p style="font-size: 18px; font-weight:500; color: #881125; font-style:oblique; ">$0.99</p>
-                    <p style="font-size: 18px; font-weight:500; color: #881125; font-style:oblique; ">30 min</p>
-                    <button type="button" class="btn btn-danger myTutBtn">Regiester now</button>
+                }
+                else
+                {
+                    <div class="row" style="padding: 90px 25px 50px 25px">
+                        <div class="col-lg-6">
+                            <div class="tv-wrapper">
+                                <div class="tv-space">
+                                    <div class="tv-border">
+                                        <div class="tv-container">
+                                            <img class="img-fluid" src="~/Content/Images/promo_img_1.png" />
+                                        </div>
+                                        <div class="tv-nav obazhure"></div>
+                                    </div>
+                                    <div class="tv-leg"></div>
+                                    <div class="tv-step"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <p style="font-size: 18px; font-weight:500;color: #881125">@ViewBag.homeTutorialAccounts[0].UserName</p>
+                            <h3 style="color: #881125; font-weight: bold; font-style:oblique; ">@ViewBag.homeTutorial[0].Title</h3>
+                            <p style="font-size: 18px; font-weight:500; color: #fff; margin-bottom: 30px;">@ViewBag.homeTutorial[0].Description</p>
+                            <p style="font-size: 18px; font-weight:500; color: #881125; font-style:oblique; ">Math</p>
+                            <p style="font-size: 18px; font-weight:500; color: #881125; font-style:oblique; ">$0.99</p>
+                            <p style="font-size: 18px; font-weight:500; color: #881125; font-style:oblique; ">30 min</p>
+                            <button type="button" class="btn btn-danger myTutBtn">Regiester now</button>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="carousel-item active">
+                 
+            </div>
+            <div class="carousel-item">
+                <div class="row" style="padding: 90px 25px 50px 25px">
+                    <div class="col-lg-6">
+                        <div class="tv-wrapper">
+                            <div class="tv-space">
+                                <div class="tv-border">
+                                    <div class="tv-container">
+                                        <img class="img-fluid" src="~/Content/Images/promo_img_1.png" />
+                                    </div>
+                                    <div class="tv-nav obazhure"></div>
+                                </div>
+                                <div class="tv-leg"></div>
+                                <div class="tv-step"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <p style="font-size: 18px; font-weight:500;color: #881125">Author Name</p>
+                        <h3 style="color: #881125; font-weight: bold; font-style:oblique; ">Tutorial title</h3>
+                        <p style="font-size: 18px; font-weight:500; color: #fff; margin-bottom: 30px;"> We want to tell your brand’s story with quality content that will help you inspire your audience, build meaningful connections and grow your success. Different marketing goals mean different content tools.</p>
+                        <p style="font-size: 18px; font-weight:500; color: #881125; font-style:oblique; ">Math</p>
+                        <p style="font-size: 18px; font-weight:500; color: #881125; font-style:oblique; ">$0.99</p>
+                        <p style="font-size: 18px; font-weight:500; color: #881125; font-style:oblique; ">30 min</p>
+                        <button type="button" class="btn btn-danger myTutBtn">Regiester now</button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="carousel-item">
-            <div class="row" style="padding: 90px 25px 50px 25px">
-                <div class="col-lg-6">
-                    <div class="tv-wrapper">
-                        <div class="tv-space">
-                            <div class="tv-border">
-                                <div class="tv-container">
-                                    <img class="img-fluid" src="~/Content/Images/promo_img_1.png" />
+            <div class="carousel-item">
+                <div class="row" style="padding: 90px 25px 50px 25px">
+                    <div class="col-lg-6">
+                        <div class="tv-wrapper">
+                            <div class="tv-space">
+                                <div class="tv-border">
+                                    <div class="tv-container">
+                                        <img class="img-fluid" src="~/Content/Images/promo_img_1.png" />
+                                    </div>
+                                    <div class="tv-nav obazhure"></div>
                                 </div>
-                                <div class="tv-nav obazhure"></div>
+                                <div class="tv-leg"></div>
+                                <div class="tv-step"></div>
                             </div>
-                            <div class="tv-leg"></div>
-                            <div class="tv-step"></div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <p style="font-size: 18px; font-weight:500;color: #881125">Author Name</p>
-                    <h3 style="color: #881125; font-weight: bold; font-style:oblique; ">Tutorial title</h3>
-                    <p style="font-size: 18px; font-weight:500; color: #fff; margin-bottom: 30px;"> We want to tell your brand’s story with quality content that will help you inspire your audience, build meaningful connections and grow your success. Different marketing goals mean different content tools.</p>
-                    <p style="font-size: 18px; font-weight:500; color: #881125; font-style:oblique; ">Math</p>
-                    <p style="font-size: 18px; font-weight:500; color: #881125; font-style:oblique; ">$0.99</p>
-                    <p style="font-size: 18px; font-weight:500; color: #881125; font-style:oblique; ">30 min</p>
-                    <button type="button" class="btn btn-danger myTutBtn">Regiester now</button>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <div class="row" style="padding: 90px 25px 50px 25px">
-                <div class="col-lg-6">
-                    <div class="tv-wrapper">
-                        <div class="tv-space">
-                            <div class="tv-border">
-                                <div class="tv-container">
-                                    <img class="img-fluid" src="~/Content/Images/promo_img_1.png" />
-                                </div>
-                                <div class="tv-nav obazhure"></div>
-                            </div>
-                            <div class="tv-leg"></div>
-                            <div class="tv-step"></div>
-                        </div>
+                    <div class="col-lg-6">
+                        <p style="font-size: 18px; font-weight:500;color: #881125">Author Name</p>
+                        <h3 style="color: #881125; font-weight: bold; font-style:oblique; ">Tutorial title</h3>
+                        <p style="font-size: 18px; font-weight:500; color: #fff; margin-bottom: 30px;"> We want to tell your brand’s story with quality content that will help you inspire your audience, build meaningful connections and grow your success. Different marketing goals mean different content tools.</p>
+                        <p style="font-size: 18px; font-weight:500; color: #881125; font-style:oblique; ">Math</p>
+                        <p style="font-size: 18px; font-weight:500; color: #881125; font-style:oblique; ">$0.99</p>
+                        <p style="font-size: 18px; font-weight:500; color: #881125; font-style:oblique; ">30 min</p>
+                        <button type="button" class="btn btn-danger myTutBtn">Regiester now</button>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <p style="font-size: 18px; font-weight:500;color: #881125">Author Name</p>
-                    <h3 style="color: #881125; font-weight: bold; font-style:oblique; ">Tutorial title</h3>
-                    <p style="font-size: 18px; font-weight:500; color: #fff; margin-bottom: 30px;"> We want to tell your brand’s story with quality content that will help you inspire your audience, build meaningful connections and grow your success. Different marketing goals mean different content tools.</p>
-                    <p style="font-size: 18px; font-weight:500; color: #881125; font-style:oblique; ">Math</p>
-                    <p style="font-size: 18px; font-weight:500; color: #881125; font-style:oblique; ">$0.99</p>
-                    <p style="font-size: 18px; font-weight:500; color: #881125; font-style:oblique; ">30 min</p>
-                    <button type="button" class="btn btn-danger myTutBtn">Regiester now</button>
                 </div>
             </div>
         </div>
     </div>
-</div>
-    </section>
+</section>
 <!---->

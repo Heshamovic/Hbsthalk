@@ -29,7 +29,10 @@ namespace Hbsthalk.Models
         public Nullable<int> recommendation { get; set; }
         public string Subject { get; set; }
         public double Price { get; set; }
+        public int InstructorID { get; set; }
+        public System.DateTime DateAndTime { get; set; }
     
+        public virtual Account Account { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Favourite> Favourites { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

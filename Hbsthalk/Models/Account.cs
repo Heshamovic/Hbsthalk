@@ -30,6 +30,7 @@ namespace Hbsthalk.Models
             this.PreferenceLists = new HashSet<PreferenceList>();
             this.Ratings = new HashSet<Rating>();
             this.Tutorials = new HashSet<Tutorial>();
+            this.Tutorials1 = new HashSet<Tutorial>();
             this.DiscussionRooms = new HashSet<DiscussionRoom>();
         }
     
@@ -76,6 +77,8 @@ namespace Hbsthalk.Models
         public virtual ICollection<Rating> Ratings { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tutorial> Tutorials { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tutorial> Tutorials1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DiscussionRoom> DiscussionRooms { get; set; }
     }

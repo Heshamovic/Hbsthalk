@@ -12,6 +12,19 @@ namespace Hbsthalk.Controllers
     {
         public ActionResult Index()
         {
+            HbsthalkDB db = new HbsthalkDB();
+            List<Tutorial> tutorials = db.Tutorials.OrderBy(x => x.DateAndTime).ToList();
+            List<Account> tutorialAcc = new List<Account>();
+            List<Image> tutorialImg = new List<Image>();
+            foreach (Tutorial t in tutorials)
+            {
+                Account a = db.Accounts.SingleOrDefault(x => x.ID == t.InstructorID);
+                Image i = db.Images.SingleOrDefault(x => x.TutorialID == t.ID);
+                tutorialAcc.Add(a);
+            }
+            ViewBag.homeTutorial = tutorials;
+            ViewBag.homeTutorialAccounts = tutorialAcc;
+            ViewBag.homeTutorialThumb = tutorialImg;
             return View();
         }
 
@@ -31,7 +44,7 @@ namespace Hbsthalk.Controllers
 
         public JsonResult login(string email, string password)
         {
-            HbsthalkEntities db = new HbsthalkEntities();
+            HbsthalkDB db = new HbsthalkDB();
             Account x = db.Accounts.SingleOrDefault(y => (y.UserName == email || y.Email == email) && y.Password == password);
             string result = "fail";
             if (x != null)

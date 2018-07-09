@@ -161,97 +161,97 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Account.cs">
-      <DependentUpon>hbsthalkDB.tt</DependentUpon>
+      <DependentUpon>hbsthalkModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Answer.cs">
-      <DependentUpon>hbsthalkDB.tt</DependentUpon>
+      <DependentUpon>hbsthalkModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Application.cs">
-      <DependentUpon>hbsthalkDB.tt</DependentUpon>
+      <DependentUpon>hbsthalkModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Blog.cs">
-      <DependentUpon>hbsthalkDB.tt</DependentUpon>
+      <DependentUpon>hbsthalkModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Complete.cs">
-      <DependentUpon>hbsthalkDB.tt</DependentUpon>
+      <DependentUpon>hbsthalkModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Contest.cs">
-      <DependentUpon>hbsthalkDB.tt</DependentUpon>
+      <DependentUpon>hbsthalkModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ContestAnswer.cs">
-      <DependentUpon>hbsthalkDB.tt</DependentUpon>
+      <DependentUpon>hbsthalkModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ContestRelation.cs">
-      <DependentUpon>hbsthalkDB.tt</DependentUpon>
+      <DependentUpon>hbsthalkModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DiscussionRoom.cs">
-      <DependentUpon>hbsthalkDB.tt</DependentUpon>
+      <DependentUpon>hbsthalkModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Favourite.cs">
-      <DependentUpon>hbsthalkDB.tt</DependentUpon>
+      <DependentUpon>hbsthalkModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FollowZone.cs">
-      <DependentUpon>hbsthalkDB.tt</DependentUpon>
+      <DependentUpon>hbsthalkModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\hbsthalkDB.Context.cs">
+    <Compile Include="Models\hbsthalkModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>hbsthalkDB.Context.tt</DependentUpon>
+      <DependentUpon>hbsthalkModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\hbsthalkDB.cs">
+    <Compile Include="Models\hbsthalkModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>hbsthalkDB.tt</DependentUpon>
+      <DependentUpon>hbsthalkModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\hbsthalkDB.Designer.cs">
+    <Compile Include="Models\hbsthalkModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>hbsthalkDB.edmx</DependentUpon>
+      <DependentUpon>hbsthalkModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Image.cs">
-      <DependentUpon>hbsthalkDB.tt</DependentUpon>
+      <DependentUpon>hbsthalkModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Lesson.cs">
-      <DependentUpon>hbsthalkDB.tt</DependentUpon>
+      <DependentUpon>hbsthalkModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MCQ.cs">
-      <DependentUpon>hbsthalkDB.tt</DependentUpon>
+      <DependentUpon>hbsthalkModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Mention.cs">
-      <DependentUpon>hbsthalkDB.tt</DependentUpon>
+      <DependentUpon>hbsthalkModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Message.cs">
-      <DependentUpon>hbsthalkDB.tt</DependentUpon>
+      <DependentUpon>hbsthalkModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PreferenceList.cs">
-      <DependentUpon>hbsthalkDB.tt</DependentUpon>
+      <DependentUpon>hbsthalkModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Proficiency.cs">
-      <DependentUpon>hbsthalkDB.tt</DependentUpon>
+      <DependentUpon>hbsthalkModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Question.cs">
-      <DependentUpon>hbsthalkDB.tt</DependentUpon>
+      <DependentUpon>hbsthalkModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Rating.cs">
-      <DependentUpon>hbsthalkDB.tt</DependentUpon>
+      <DependentUpon>hbsthalkModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>hbsthalkDB.tt</DependentUpon>
+      <DependentUpon>hbsthalkModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tag.cs">
-      <DependentUpon>hbsthalkDB.tt</DependentUpon>
+      <DependentUpon>hbsthalkModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TagRelation.cs">
-      <DependentUpon>hbsthalkDB.tt</DependentUpon>
+      <DependentUpon>hbsthalkModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TrueFalse.cs">
-      <DependentUpon>hbsthalkDB.tt</DependentUpon>
+      <DependentUpon>hbsthalkModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tutorial.cs">
-      <DependentUpon>hbsthalkDB.tt</DependentUpon>
+      <DependentUpon>hbsthalkModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TutorialMaterial.cs">
-      <DependentUpon>hbsthalkDB.tt</DependentUpon>
+      <DependentUpon>hbsthalkModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -273,6 +273,7 @@
     <Content Include="Content\Images\IMG-20171217-WA0013_1.jpg" />
     <Content Include="Content\Images\IMG-20171217-WA0018.jpg" />
     <Content Include="Content\Images\New-Tutorial-oat.jpg" />
+    <Content Include="Content\Images\noTutorial.jpg" />
     <Content Include="Content\Images\promo_img_1.png" />
     <Content Include="Content\Images\promo_img_2.png" />
     <Content Include="Content\Images\promo_img_3.png" />
@@ -291,15 +292,15 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Models\hbsthalkDB.Context.tt">
+    <Content Include="Models\hbsthalkModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>hbsthalkDB.Context.cs</LastGenOutput>
-      <DependentUpon>hbsthalkDB.edmx</DependentUpon>
+      <DependentUpon>hbsthalkModel.edmx</DependentUpon>
+      <LastGenOutput>hbsthalkModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\hbsthalkDB.tt">
+    <Content Include="Models\hbsthalkModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>hbsthalkDB.edmx</DependentUpon>
-      <LastGenOutput>hbsthalkDB.cs</LastGenOutput>
+      <DependentUpon>hbsthalkModel.edmx</DependentUpon>
+      <LastGenOutput>hbsthalkModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\all.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -317,12 +318,12 @@
     <Content Include="Content\webfonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\webfonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\webfonts\glyphicons-halflings-regular.woff2" />
-    <EntityDeploy Include="Models\hbsthalkDB.edmx">
+    <EntityDeploy Include="Models\hbsthalkModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>hbsthalkDB.Designer.cs</LastGenOutput>
+      <LastGenOutput>hbsthalkModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\hbsthalkDB.edmx.diagram">
-      <DependentUpon>hbsthalkDB.edmx</DependentUpon>
+    <Content Include="Models\hbsthalkModel.edmx.diagram">
+      <DependentUpon>hbsthalkModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

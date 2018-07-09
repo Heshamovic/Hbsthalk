@@ -13,10 +13,10 @@ namespace Hbsthalk.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class HbsthalkEntities : DbContext
+    public partial class HbsthalkDB : DbContext
     {
-        public HbsthalkEntities()
-            : base("name=HbsthalkEntities")
+        public HbsthalkDB()
+            : base("name=HbsthalkDB")
         {
         }
     

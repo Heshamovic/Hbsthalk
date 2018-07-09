@@ -301,6 +301,8 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
           <Property Name="recommendation" Type="int" />
           <Property Name="Subject" Type="varchar" MaxLength="50" />
           <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="InstructorID" Type="int" Nullable="false" />
+          <Property Name="DateAndTime" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="TutorialMaterial">
           <Key>
@@ -814,6 +816,18 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Tutorial_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Tutorial" Type="Self.Tutorial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tutorial">
+              <PropertyRef Name="InstructorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TutorialMaterial_Tutorial">
           <End Role="Tutorial" Type="Self.Tutorial" Multiplicity="1" />
           <End Role="TutorialMaterial" Type="Self.TutorialMaterial" Multiplicity="*" />
@@ -1085,6 +1099,10 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             <End Role="DiscussionRoom" EntitySet="DiscussionRoom" />
             <End Role="RoomParticipant" EntitySet="RoomParticipant" />
           </AssociationSet>
+          <AssociationSet Name="FK_Tutorial_Account" Association="Self.FK_Tutorial_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Tutorial" EntitySet="Tutorial" />
+          </AssociationSet>
           <AssociationSet Name="FK_TutorialMaterial_Tutorial" Association="Self.FK_TutorialMaterial_Tutorial">
             <End Role="Tutorial" EntitySet="Tutorial" />
             <End Role="TutorialMaterial" EntitySet="TutorialMaterial" />
@@ -1127,7 +1145,8 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
           <NavigationProperty Name="Messages" Relationship="Self.FK_Message_Account" FromRole="Account" ToRole="Message" />
           <NavigationProperty Name="PreferenceLists" Relationship="Self.FK_PreferenceList_Account" FromRole="Account" ToRole="PreferenceList" />
           <NavigationProperty Name="Ratings" Relationship="Self.FK_Ratings_Account" FromRole="Account" ToRole="Rating" />
-          <NavigationProperty Name="Tutorials" Relationship="Self.EnrolledTutorial" FromRole="Account" ToRole="Tutorial" />
+          <NavigationProperty Name="Tutorials" Relationship="Self.FK_Tutorial_Account" FromRole="Account" ToRole="Tutorial" />
+          <NavigationProperty Name="Tutorials1" Relationship="Self.EnrolledTutorial" FromRole="Account" ToRole="Tutorial" />
           <NavigationProperty Name="DiscussionRooms" Relationship="Self.RoomParticipant" FromRole="Account" ToRole="DiscussionRoom" />
         </EntityType>
         <EntityType Name="Answer">
@@ -1347,6 +1366,9 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
           <Property Name="recommendation" Type="Int32" />
           <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="InstructorID" Type="Int32" Nullable="false" />
+          <Property Name="DateAndTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Tutorial_Account" FromRole="Tutorial" ToRole="Account" />
           <NavigationProperty Name="Favourites" Relationship="Self.FK_Favourite_Tutorial" FromRole="Tutorial" ToRole="Favourite" />
           <NavigationProperty Name="Images" Relationship="Self.FK_Image_Tutorial" FromRole="Tutorial" ToRole="Image" />
           <NavigationProperty Name="TutorialMaterials" Relationship="Self.FK_TutorialMaterial_Tutorial" FromRole="Tutorial" ToRole="TutorialMaterial" />
@@ -1603,6 +1625,18 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             </Principal>
             <Dependent Role="Rating">
               <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tutorial_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Tutorial" Type="Self.Tutorial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tutorial">
+              <PropertyRef Name="InstructorID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1926,7 +1960,7 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
           <End Role="Account" Type="Self.Account" Multiplicity="*" />
           <End Role="DiscussionRoom" Type="Self.DiscussionRoom" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="HbsthalkEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="HbsthalkDB" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Accounts" EntityType="Self.Account" />
           <EntitySet Name="Answers" EntityType="Self.Answer" />
           <EntitySet Name="Applications" EntityType="Self.Application" />
@@ -2004,6 +2038,10 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
           <AssociationSet Name="FK_Ratings_Account" Association="Self.FK_Ratings_Account">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="Rating" EntitySet="Ratings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tutorial_Account" Association="Self.FK_Tutorial_Account">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="Tutorial" EntitySet="Tutorials" />
           </AssociationSet>
           <AssociationSet Name="FK_Answer_DiscussionRoom" Association="Self.FK_Answer_DiscussionRoom">
             <End Role="DiscussionRoom" EntitySet="DiscussionRooms" />
@@ -2123,7 +2161,7 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="HbsthalkModelStoreContainer" CdmEntityContainer="HbsthalkEntities">
+        <EntityContainerMapping StorageEntityContainer="HbsthalkModelStoreContainer" CdmEntityContainer="HbsthalkDB">
           <EntitySetMapping Name="Accounts">
             <EntityTypeMapping TypeName="HbsthalkModel.Account">
               <MappingFragment StoreEntitySet="Account">
@@ -2335,6 +2373,8 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
                 <ScalarProperty Name="recommendation" ColumnName="recommendation" />
                 <ScalarProperty Name="Subject" ColumnName="Subject" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="InstructorID" ColumnName="InstructorID" />
+                <ScalarProperty Name="DateAndTime" ColumnName="DateAndTime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

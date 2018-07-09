@@ -4,33 +4,33 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="57673b8507954f5f8fc98c20c26d54c5" Name="Diagram1">
-        <EntityTypeShape EntityType="HbsthalkModel.Account" Width="1.5" PointX="3" PointY="20.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="HbsthalkModel.Answer" Width="1.5" PointX="9.75" PointY="22.125" IsExpanded="true" />
+      <Diagram DiagramId="499452b9d7a44595a01a7e34dc85e950" Name="Diagram1">
+        <EntityTypeShape EntityType="HbsthalkModel.Account" Width="1.5" PointX="3" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HbsthalkModel.Answer" Width="1.5" PointX="9.75" PointY="22.5" IsExpanded="true" />
         <EntityTypeShape EntityType="HbsthalkModel.Application" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="HbsthalkModel.Blog" Width="1.5" PointX="7.5" PointY="18.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="HbsthalkModel.Complete" Width="1.5" PointX="3" PointY="15.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="HbsthalkModel.Contest" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="HbsthalkModel.DiscussionRoom" Width="1.5" PointX="5.25" PointY="22.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="HbsthalkModel.Favourite" Width="1.5" PointX="9.75" PointY="29.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="HbsthalkModel.MCQ" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="HbsthalkModel.Mention" Width="1.5" PointX="9.75" PointY="18.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="HbsthalkModel.Message" Width="1.5" PointX="10.5" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HbsthalkModel.Blog" Width="1.5" PointX="7.5" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HbsthalkModel.Complete" Width="1.5" PointX="3" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HbsthalkModel.Contest" Width="1.5" PointX="0.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="HbsthalkModel.DiscussionRoom" Width="1.5" PointX="5.25" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HbsthalkModel.Favourite" Width="1.5" PointX="9.75" PointY="30.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HbsthalkModel.MCQ" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HbsthalkModel.Mention" Width="1.5" PointX="9.75" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HbsthalkModel.Message" Width="1.5" PointX="10.5" PointY="26.625" IsExpanded="true" />
         <EntityTypeShape EntityType="HbsthalkModel.PreferenceList" Width="1.5" PointX="5.25" PointY="33.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="HbsthalkModel.Proficiency" Width="1.5" PointX="0.75" PointY="22.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="HbsthalkModel.Question" Width="1.5" PointX="7.5" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HbsthalkModel.Proficiency" Width="1.5" PointX="0.75" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HbsthalkModel.Question" Width="1.5" PointX="7.5" PointY="22.5" IsExpanded="true" />
         <EntityTypeShape EntityType="HbsthalkModel.Rating" Width="1.5" PointX="5.25" PointY="36.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HbsthalkModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="HbsthalkModel.Tag" Width="1.5" PointX="10.5" PointY="15.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="HbsthalkModel.TrueFalse" Width="1.5" PointX="3" PointY="28.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HbsthalkModel.Tag" Width="1.5" PointX="10.5" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HbsthalkModel.TrueFalse" Width="1.5" PointX="3" PointY="29" IsExpanded="true" />
         <EntityTypeShape EntityType="HbsthalkModel.Tutorial" Width="1.5" PointX="5.25" PointY="39" IsExpanded="true" />
-        <EntityTypeShape EntityType="HbsthalkModel.TutorialMaterial" Width="1.5" PointX="7.5" PointY="39.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="HbsthalkModel.ContestAnswer" Width="1.5" PointX="5.25" PointY="18" IsExpanded="true" />
-        <EntityTypeShape EntityType="HbsthalkModel.ContestRelation" Width="1.5" PointX="5.25" PointY="46.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="HbsthalkModel.FollowZone" Width="1.5" PointX="5.25" PointY="49.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="HbsthalkModel.Image" Width="1.5" PointX="12.75" PointY="27.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HbsthalkModel.TutorialMaterial" Width="1.5" PointX="7.5" PointY="39.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HbsthalkModel.ContestAnswer" Width="1.5" PointX="5.25" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HbsthalkModel.ContestRelation" Width="1.5" PointX="5.25" PointY="47.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HbsthalkModel.FollowZone" Width="1.5" PointX="5.25" PointY="49.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HbsthalkModel.Image" Width="1.5" PointX="12.75" PointY="27.75" IsExpanded="true" />
         <EntityTypeShape EntityType="HbsthalkModel.Lesson" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="HbsthalkModel.TagRelation" Width="1.5" PointX="12.75" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="HbsthalkModel.TagRelation" Width="1.5" PointX="12.75" PointY="21.125" IsExpanded="true" />
         <AssociationConnector Association="HbsthalkModel.FK_Account_Proficiency" ManuallyRouted="false" />
         <AssociationConnector Association="HbsthalkModel.FK_Answer_Account" ManuallyRouted="false" />
         <AssociationConnector Association="HbsthalkModel.FK_Blog_Account" ManuallyRouted="false" />
@@ -44,6 +44,7 @@
         <AssociationConnector Association="HbsthalkModel.FK_Message_Account" ManuallyRouted="false" />
         <AssociationConnector Association="HbsthalkModel.FK_PreferenceList_Account" ManuallyRouted="false" />
         <AssociationConnector Association="HbsthalkModel.FK_Ratings_Account" ManuallyRouted="false" />
+        <AssociationConnector Association="HbsthalkModel.FK_Tutorial_Account" ManuallyRouted="false" />
         <AssociationConnector Association="HbsthalkModel.FK_Answer_DiscussionRoom" ManuallyRouted="false" />
         <AssociationConnector Association="HbsthalkModel.FK_Answer_Question" ManuallyRouted="false" />
         <AssociationConnector Association="HbsthalkModel.FK_Image_Answer" ManuallyRouted="false" />
