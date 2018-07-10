@@ -6,7 +6,6 @@
 
 input {
     max-width: 100%;
-
 }
 
 /*Start logindiv*/
@@ -751,6 +750,7 @@ input {
     background-image:url("../Images/tutorial-1.jpg");
     background-repeat:no-repeat;
     background-size:cover;
+    min-height:300px;
 }
 .myTut .carousel-indicators li {
         margin: 0px 5px 0px 5px;
@@ -771,7 +771,7 @@ input {
         transition-duration:200ms;
     }
 
-        .myTut .carousel-indicators li img {
+.myTut .carousel-indicators li img {
             position: absolute;
             right: -1.5px;
             width: 105%;
@@ -781,7 +781,7 @@ input {
             border-radius: 50%;
         }
 
-    .myTut .carousel-indicators .active {
+.myTut .carousel-indicators .active {
         opacity: 1;
         width: 3em;
         height: 3em;
@@ -797,3 +797,59 @@ input {
         border-color: #6d0d1d;
 }
 /*test*/
+/*
+    Blinking eye
+*/
+
+.blinking-eye {
+    margin-left:50px;
+    min-height: 30vh;
+}
+
+.blinking-eye__lid, .blinking-eye__rim, .blinking-eye__pupil {
+    fill: #881125;
+}
+
+.blinking-eye__rim, .blinking-eye__pupil, .blinking-eye__lid-mask {
+    transform-origin: center;
+}
+
+.blinking-eye__rim, .blinking-eye__pupil {
+    animation: squeeze 2.4s infinite;
+    animation-delay: -1.2s;
+}
+
+.blinking-eye__lid-mask {
+    animation: blink 2.4s infinite;
+    animation-delay: -1.2s;
+}
+
+@keyframes blink {
+    70% {
+        transform: none;
+        animation-timing-function: ease-in;
+    }
+
+    76% {
+        transform: scaleY(0);
+    }
+
+    100% {
+        animation-timing-function: ease-out;
+    }
+}
+
+@keyframes squeeze {
+    70% {
+        transform: none;
+        animation-timing-function: ease-in;
+    }
+
+    76% {
+        transform: scaleY(0.8);
+    }
+
+    100% {
+        animation-timing-function: ease-out;
+    }
+}

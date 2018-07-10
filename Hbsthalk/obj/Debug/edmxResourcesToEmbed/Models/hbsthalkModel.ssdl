@@ -1,0 +1,1107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HbsthalkModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ProfilePicture" Type="nchar" MaxLength="10" />
+    <Property Name="Age" Type="int" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Gender" Type="varchar" MaxLength="10" />
+    <Property Name="Graduation" Type="varchar" MaxLength="350" />
+    <Property Name="CredibilityPoints" Type="int" Nullable="false" />
+    <Property Name="Signed" Type="bit" Nullable="false" />
+    <Property Name="GoogleEmail" Type="varchar" MaxLength="75" />
+    <Property Name="FacebookEmail" Type="varchar" MaxLength="75" />
+    <Property Name="ProficiencyID" Type="int" Nullable="false" />
+    <Property Name="AllowTag" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Text" Type="varchar" MaxLength="1000" />
+    <Property Name="QuestionID" Type="int" Nullable="false" />
+    <Property Name="Points" Type="int" Nullable="false" />
+    <Property Name="FilePath" Type="varchar" MaxLength="300" />
+    <Property Name="RoomID" Type="int" />
+    <Property Name="AccountID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Application">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="100" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="Thumbnail" Type="nchar" MaxLength="10" />
+    <Property Name="Tag" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Blog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Text" Type="varchar" MaxLength="5000" Nullable="false" />
+    <Property Name="AuthorID" Type="int" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" Nullable="false" />
+    <Property Name="RoomID" Type="int" />
+    <Property Name="Points" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Complete">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Answer" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ContestID" Type="int" Nullable="false" />
+    <Property Name="Text" Type="varchar" MaxLength="1250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Contest">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="1500" Nullable="false" />
+    <Property Name="DateAndTime" Type="datetime" Nullable="false" />
+    <Property Name="Logo" Type="image" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Hbsthalk.dbo.ContestAnswer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ContestAnswer">
+    <Key>
+      <PropertyRef Name="AccountID" />
+      <PropertyRef Name="Correct" />
+    </Key>
+    <Property Name="AccountID" Type="int" Nullable="false" />
+    <Property Name="MCQID" Type="int" />
+    <Property Name="TrueFalseID" Type="int" />
+    <Property Name="CompleteID" Type="int" />
+    <Property Name="MCQAnswer" Type="int" />
+    <Property Name="CompleteAnswer" Type="varchar" MaxLength="50" />
+    <Property Name="TrueFalseAnswer" Type="bit" />
+    <Property Name="Correct" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Hbsthalk.dbo.ContestRelation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ContestRelation">
+    <Key>
+      <PropertyRef Name="ContestID" />
+      <PropertyRef Name="AccountD" />
+    </Key>
+    <Property Name="ContestID" Type="int" Nullable="false" />
+    <Property Name="AccountD" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DiscussionRoom">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="100" />
+    <Property Name="Recommendation" Type="int" />
+    <Property Name="DateAndTime" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Hbsthalk.dbo.EnrolledTutorial' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="EnrolledTutorial">
+    <Key>
+      <PropertyRef Name="AccountID" />
+      <PropertyRef Name="TuroialID" />
+    </Key>
+    <Property Name="AccountID" Type="int" Nullable="false" />
+    <Property Name="TuroialID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Favourite">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TutorialID" Type="int" />
+    <Property Name="QuestionID" Type="int" />
+    <Property Name="AccountID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Hbsthalk.dbo.FollowZone' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="FollowZone">
+    <Key>
+      <PropertyRef Name="User1" />
+      <PropertyRef Name="User2" />
+      <PropertyRef Name="Type" />
+      <PropertyRef Name="FollowLevel" />
+    </Key>
+    <Property Name="User1" Type="int" Nullable="false" />
+    <Property Name="User2" Type="int" Nullable="false" />
+    <Property Name="Type" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FollowLevel" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Hbsthalk.dbo.Image' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Image">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Photo" Type="image" />
+    <Property Name="Path" Type="varchar" MaxLength="250" />
+    <Property Name="QuestionID" Type="int" />
+    <Property Name="BlogID" Type="int" />
+    <Property Name="MessageID" Type="int" />
+    <Property Name="AnswerID" Type="int" />
+    <Property Name="AccountID" Type="int" />
+    <Property Name="TutorialID" Type="int" />
+    <Property Name="Caption" Type="varchar" MaxLength="300" />
+    <Property Name="MCQID" Type="int" />
+    <Property Name="TrueFalseID" Type="int" />
+    <Property Name="CompleteID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Hbsthalk.dbo.Lesson' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Lesson">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Path" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="MCQ">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Text" Type="varchar" MaxLength="1250" Nullable="false" />
+    <Property Name="Answer" Type="int" Nullable="false" />
+    <Property Name="ContestID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Mention">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccountID" Type="int" Nullable="false" />
+    <Property Name="QuestionID" Type="int" />
+    <Property Name="RoomID" Type="int" />
+    <Property Name="BlogID" Type="int" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Text" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="DateAndTime" Type="datetime" Nullable="false" />
+    <Property Name="SenderID" Type="int" Nullable="false" />
+    <Property Name="RoomID" Type="int" Nullable="false" />
+    <Property Name="FilePath" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="PreferenceList">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Subject" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="PLevel" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Proficiency">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProficiencyType" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="AccountID" Type="int" Nullable="false" />
+    <Property Name="Text" Type="varchar" MaxLength="1500" />
+    <Property Name="Frequency" Type="int" Nullable="false" />
+    <Property Name="DateAndTime" Type="datetime" Nullable="false" />
+    <Property Name="FilePath" Type="varchar" MaxLength="300" />
+    <Property Name="Recommendation" Type="int" Nullable="false" />
+    <Property Name="RoomID" Type="int" />
+  </EntityType>
+  <EntityType Name="Rating">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Rating" Type="int" Nullable="false" />
+    <Property Name="AccountID" Type="int" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Hbsthalk.dbo.RoomParticipant' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="RoomParticipant">
+    <Key>
+      <PropertyRef Name="AccountID" />
+      <PropertyRef Name="RoomID" />
+    </Key>
+    <Property Name="AccountID" Type="int" Nullable="false" />
+    <Property Name="RoomID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Tag">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Text" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TagRelation">
+    <Key>
+      <PropertyRef Name="TagID" />
+    </Key>
+    <Property Name="QuestionID" Type="int" />
+    <Property Name="TagID" Type="int" Nullable="false" />
+    <Property Name="BlogID" Type="int" />
+    <Property Name="RoomID" Type="int" />
+  </EntityType>
+  <EntityType Name="TrueFalse">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Answer" Type="bit" Nullable="false" />
+    <Property Name="ContestID" Type="int" Nullable="false" />
+    <Property Name="Text" Type="varchar" MaxLength="1250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tutorial">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VideoPath" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="100" />
+    <Property Name="recommendation" Type="int" />
+    <Property Name="Subject" Type="varchar" MaxLength="50" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="InstructorID" Type="int" Nullable="false" />
+    <Property Name="DateAndTime" Type="datetime" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="1000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TutorialMaterial">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FilePath" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="TutorialID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Account_Proficiency">
+    <End Role="Proficiency" Type="Self.Proficiency" Multiplicity="1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proficiency">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="ProficiencyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answer_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="AccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answer_DiscussionRoom">
+    <End Role="DiscussionRoom" Type="Self.DiscussionRoom" Multiplicity="0..1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DiscussionRoom">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="RoomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answer_Question">
+    <End Role="Question" Type="Self.Question" Multiplicity="1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="QuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Blog_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Blog">
+        <PropertyRef Name="AuthorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Blog_DiscussionRoom">
+    <End Role="DiscussionRoom" Type="Self.DiscussionRoom" Multiplicity="0..1" />
+    <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DiscussionRoom">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Blog">
+        <PropertyRef Name="RoomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContestAnswer_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="ContestAnswer" Type="Self.ContestAnswer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ContestAnswer">
+        <PropertyRef Name="AccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContestAnswer_Complete">
+    <End Role="Complete" Type="Self.Complete" Multiplicity="0..1" />
+    <End Role="ContestAnswer" Type="Self.ContestAnswer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Complete">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ContestAnswer">
+        <PropertyRef Name="CompleteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContestAnswer_MCQ">
+    <End Role="MCQ" Type="Self.MCQ" Multiplicity="0..1" />
+    <End Role="ContestAnswer" Type="Self.ContestAnswer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MCQ">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ContestAnswer">
+        <PropertyRef Name="MCQID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContestAnswer_TrueFalse">
+    <End Role="TrueFalse" Type="Self.TrueFalse" Multiplicity="0..1" />
+    <End Role="ContestAnswer" Type="Self.ContestAnswer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TrueFalse">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ContestAnswer">
+        <PropertyRef Name="TrueFalseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContestMCQ_Contest">
+    <End Role="Contest" Type="Self.Contest" Multiplicity="1" />
+    <End Role="MCQ" Type="Self.MCQ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contest">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MCQ">
+        <PropertyRef Name="ContestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContestRelation_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="ContestRelation" Type="Self.ContestRelation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ContestRelation">
+        <PropertyRef Name="AccountD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EnrolledTutorial_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="EnrolledTutorial" Type="Self.EnrolledTutorial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EnrolledTutorial">
+        <PropertyRef Name="AccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EnrolledTutorial_Tutorial">
+    <End Role="Tutorial" Type="Self.Tutorial" Multiplicity="1" />
+    <End Role="EnrolledTutorial" Type="Self.EnrolledTutorial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tutorial">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EnrolledTutorial">
+        <PropertyRef Name="TuroialID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Favourite_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Favourite" Type="Self.Favourite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Favourite">
+        <PropertyRef Name="AccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Favourite_Question">
+    <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+    <End Role="Favourite" Type="Self.Favourite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Favourite">
+        <PropertyRef Name="QuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Favourite_Tutorial">
+    <End Role="Tutorial" Type="Self.Tutorial" Multiplicity="0..1" />
+    <End Role="Favourite" Type="Self.Favourite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tutorial">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Favourite">
+        <PropertyRef Name="TutorialID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FollowZone_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="FollowZone" Type="Self.FollowZone" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FollowZone">
+        <PropertyRef Name="User1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FollowZone_Account1">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="FollowZone" Type="Self.FollowZone" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FollowZone">
+        <PropertyRef Name="User2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Image_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="Image" Type="Self.Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Image">
+        <PropertyRef Name="AccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Image_Answer">
+    <End Role="Answer" Type="Self.Answer" Multiplicity="0..1" />
+    <End Role="Image" Type="Self.Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Answer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Image">
+        <PropertyRef Name="AnswerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Image_Blog">
+    <End Role="Blog" Type="Self.Blog" Multiplicity="0..1" />
+    <End Role="Image" Type="Self.Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Blog">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Image">
+        <PropertyRef Name="BlogID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Image_Complete">
+    <End Role="Complete" Type="Self.Complete" Multiplicity="0..1" />
+    <End Role="Image" Type="Self.Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Complete">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Image">
+        <PropertyRef Name="CompleteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Image_MCQ">
+    <End Role="MCQ" Type="Self.MCQ" Multiplicity="0..1" />
+    <End Role="Image" Type="Self.Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MCQ">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Image">
+        <PropertyRef Name="MCQID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Image_Message">
+    <End Role="Message" Type="Self.Message" Multiplicity="0..1" />
+    <End Role="Image" Type="Self.Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Message">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Image">
+        <PropertyRef Name="MessageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Image_Question">
+    <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+    <End Role="Image" Type="Self.Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Image">
+        <PropertyRef Name="QuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Image_TrueFalse">
+    <End Role="TrueFalse" Type="Self.TrueFalse" Multiplicity="0..1" />
+    <End Role="Image" Type="Self.Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TrueFalse">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Image">
+        <PropertyRef Name="TrueFalseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Image_Tutorial">
+    <End Role="Tutorial" Type="Self.Tutorial" Multiplicity="0..1" />
+    <End Role="Image" Type="Self.Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tutorial">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Image">
+        <PropertyRef Name="TutorialID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mention_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Mention" Type="Self.Mention" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Mention">
+        <PropertyRef Name="AccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mention_Blog">
+    <End Role="Blog" Type="Self.Blog" Multiplicity="0..1" />
+    <End Role="Mention" Type="Self.Mention" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Blog">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Mention">
+        <PropertyRef Name="BlogID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mention_DiscussionRoom">
+    <End Role="DiscussionRoom" Type="Self.DiscussionRoom" Multiplicity="0..1" />
+    <End Role="Mention" Type="Self.Mention" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DiscussionRoom">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Mention">
+        <PropertyRef Name="RoomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mention_Question">
+    <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+    <End Role="Mention" Type="Self.Mention" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Mention">
+        <PropertyRef Name="QuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Message_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Message" Type="Self.Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="SenderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Message_DiscussionRoom">
+    <End Role="DiscussionRoom" Type="Self.DiscussionRoom" Multiplicity="1" />
+    <End Role="Message" Type="Self.Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DiscussionRoom">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="RoomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PreferenceList_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="PreferenceList" Type="Self.PreferenceList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PreferenceList">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Question_DiscussionRoom">
+    <End Role="DiscussionRoom" Type="Self.DiscussionRoom" Multiplicity="0..1" />
+    <End Role="Question" Type="Self.Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DiscussionRoom">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="RoomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QuestionTag_Blog">
+    <End Role="Blog" Type="Self.Blog" Multiplicity="0..1" />
+    <End Role="TagRelation" Type="Self.TagRelation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Blog">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TagRelation">
+        <PropertyRef Name="BlogID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QuestionTag_Question">
+    <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+    <End Role="TagRelation" Type="Self.TagRelation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TagRelation">
+        <PropertyRef Name="QuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QuestionTag_Tag">
+    <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+    <End Role="TagRelation" Type="Self.TagRelation" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Tag">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TagRelation">
+        <PropertyRef Name="TagID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ratings_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Rating">
+        <PropertyRef Name="AccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoomParticipant_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="RoomParticipant" Type="Self.RoomParticipant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RoomParticipant">
+        <PropertyRef Name="AccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoomParticipant_DiscussionRoom">
+    <End Role="DiscussionRoom" Type="Self.DiscussionRoom" Multiplicity="1" />
+    <End Role="RoomParticipant" Type="Self.RoomParticipant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DiscussionRoom">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RoomParticipant">
+        <PropertyRef Name="RoomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tutorial_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Tutorial" Type="Self.Tutorial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Tutorial">
+        <PropertyRef Name="InstructorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TutorialMaterial_Tutorial">
+    <End Role="Tutorial" Type="Self.Tutorial" Multiplicity="1" />
+    <End Role="TutorialMaterial" Type="Self.TutorialMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tutorial">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TutorialMaterial">
+        <PropertyRef Name="TutorialID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HbsthalkModelStoreContainer">
+    <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Answer" EntityType="Self.Answer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Application" EntityType="Self.Application" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Blog" EntityType="Self.Blog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Complete" EntityType="Self.Complete" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contest" EntityType="Self.Contest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DiscussionRoom" EntityType="Self.DiscussionRoom" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Favourite" EntityType="Self.Favourite" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MCQ" EntityType="Self.MCQ" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mention" EntityType="Self.Mention" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PreferenceList" EntityType="Self.PreferenceList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Proficiency" EntityType="Self.Proficiency" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rating" EntityType="Self.Rating" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tag" EntityType="Self.Tag" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TrueFalse" EntityType="Self.TrueFalse" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tutorial" EntityType="Self.Tutorial" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TutorialMaterial" EntityType="Self.TutorialMaterial" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ContestAnswer" EntityType="Self.ContestAnswer" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ContestAnswer].[AccountID] AS [AccountID], 
+    [ContestAnswer].[MCQID] AS [MCQID], 
+    [ContestAnswer].[TrueFalseID] AS [TrueFalseID], 
+    [ContestAnswer].[CompleteID] AS [CompleteID], 
+    [ContestAnswer].[MCQAnswer] AS [MCQAnswer], 
+    [ContestAnswer].[CompleteAnswer] AS [CompleteAnswer], 
+    [ContestAnswer].[TrueFalseAnswer] AS [TrueFalseAnswer], 
+    [ContestAnswer].[Correct] AS [Correct]
+    FROM [dbo].[ContestAnswer] AS [ContestAnswer]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ContestRelation" EntityType="Self.ContestRelation" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ContestRelation].[ContestID] AS [ContestID], 
+    [ContestRelation].[AccountD] AS [AccountD]
+    FROM [dbo].[ContestRelation] AS [ContestRelation]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="EnrolledTutorial" EntityType="Self.EnrolledTutorial" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [EnrolledTutorial].[AccountID] AS [AccountID], 
+    [EnrolledTutorial].[TuroialID] AS [TuroialID]
+    FROM [dbo].[EnrolledTutorial] AS [EnrolledTutorial]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="FollowZone" EntityType="Self.FollowZone" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [FollowZone].[User1] AS [User1], 
+    [FollowZone].[User2] AS [User2], 
+    [FollowZone].[Type] AS [Type], 
+    [FollowZone].[FollowLevel] AS [FollowLevel]
+    FROM [dbo].[FollowZone] AS [FollowZone]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Image" EntityType="Self.Image" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Image].[ID] AS [ID], 
+    [Image].[Name] AS [Name], 
+    [Image].[Photo] AS [Photo], 
+    [Image].[Path] AS [Path], 
+    [Image].[QuestionID] AS [QuestionID], 
+    [Image].[BlogID] AS [BlogID], 
+    [Image].[MessageID] AS [MessageID], 
+    [Image].[AnswerID] AS [AnswerID], 
+    [Image].[AccountID] AS [AccountID], 
+    [Image].[TutorialID] AS [TutorialID], 
+    [Image].[Caption] AS [Caption], 
+    [Image].[MCQID] AS [MCQID], 
+    [Image].[TrueFalseID] AS [TrueFalseID], 
+    [Image].[CompleteID] AS [CompleteID]
+    FROM [dbo].[Image] AS [Image]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Lesson" EntityType="Self.Lesson" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Lesson].[ID] AS [ID], 
+    [Lesson].[Path] AS [Path]
+    FROM [dbo].[Lesson] AS [Lesson]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="RoomParticipant" EntityType="Self.RoomParticipant" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [RoomParticipant].[AccountID] AS [AccountID], 
+    [RoomParticipant].[RoomID] AS [RoomID]
+    FROM [dbo].[RoomParticipant] AS [RoomParticipant]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TagRelation" EntityType="Self.TagRelation" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TagRelation].[QuestionID] AS [QuestionID], 
+    [TagRelation].[TagID] AS [TagID], 
+    [TagRelation].[BlogID] AS [BlogID], 
+    [TagRelation].[RoomID] AS [RoomID]
+    FROM [dbo].[TagRelation] AS [TagRelation]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Account_Proficiency" Association="Self.FK_Account_Proficiency">
+      <End Role="Proficiency" EntitySet="Proficiency" />
+      <End Role="Account" EntitySet="Account" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answer_Account" Association="Self.FK_Answer_Account">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answer_DiscussionRoom" Association="Self.FK_Answer_DiscussionRoom">
+      <End Role="DiscussionRoom" EntitySet="DiscussionRoom" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answer_Question" Association="Self.FK_Answer_Question">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Blog_Account" Association="Self.FK_Blog_Account">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Blog" EntitySet="Blog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Blog_DiscussionRoom" Association="Self.FK_Blog_DiscussionRoom">
+      <End Role="DiscussionRoom" EntitySet="DiscussionRoom" />
+      <End Role="Blog" EntitySet="Blog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContestAnswer_Account" Association="Self.FK_ContestAnswer_Account">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="ContestAnswer" EntitySet="ContestAnswer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContestAnswer_Complete" Association="Self.FK_ContestAnswer_Complete">
+      <End Role="Complete" EntitySet="Complete" />
+      <End Role="ContestAnswer" EntitySet="ContestAnswer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContestAnswer_MCQ" Association="Self.FK_ContestAnswer_MCQ">
+      <End Role="MCQ" EntitySet="MCQ" />
+      <End Role="ContestAnswer" EntitySet="ContestAnswer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContestAnswer_TrueFalse" Association="Self.FK_ContestAnswer_TrueFalse">
+      <End Role="TrueFalse" EntitySet="TrueFalse" />
+      <End Role="ContestAnswer" EntitySet="ContestAnswer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContestMCQ_Contest" Association="Self.FK_ContestMCQ_Contest">
+      <End Role="Contest" EntitySet="Contest" />
+      <End Role="MCQ" EntitySet="MCQ" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContestRelation_Account" Association="Self.FK_ContestRelation_Account">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="ContestRelation" EntitySet="ContestRelation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EnrolledTutorial_Account" Association="Self.FK_EnrolledTutorial_Account">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="EnrolledTutorial" EntitySet="EnrolledTutorial" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EnrolledTutorial_Tutorial" Association="Self.FK_EnrolledTutorial_Tutorial">
+      <End Role="Tutorial" EntitySet="Tutorial" />
+      <End Role="EnrolledTutorial" EntitySet="EnrolledTutorial" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Favourite_Account" Association="Self.FK_Favourite_Account">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Favourite" EntitySet="Favourite" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Favourite_Question" Association="Self.FK_Favourite_Question">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="Favourite" EntitySet="Favourite" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Favourite_Tutorial" Association="Self.FK_Favourite_Tutorial">
+      <End Role="Tutorial" EntitySet="Tutorial" />
+      <End Role="Favourite" EntitySet="Favourite" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FollowZone_Account" Association="Self.FK_FollowZone_Account">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="FollowZone" EntitySet="FollowZone" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FollowZone_Account1" Association="Self.FK_FollowZone_Account1">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="FollowZone" EntitySet="FollowZone" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Image_Account" Association="Self.FK_Image_Account">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Image" EntitySet="Image" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Image_Answer" Association="Self.FK_Image_Answer">
+      <End Role="Answer" EntitySet="Answer" />
+      <End Role="Image" EntitySet="Image" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Image_Blog" Association="Self.FK_Image_Blog">
+      <End Role="Blog" EntitySet="Blog" />
+      <End Role="Image" EntitySet="Image" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Image_Complete" Association="Self.FK_Image_Complete">
+      <End Role="Complete" EntitySet="Complete" />
+      <End Role="Image" EntitySet="Image" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Image_MCQ" Association="Self.FK_Image_MCQ">
+      <End Role="MCQ" EntitySet="MCQ" />
+      <End Role="Image" EntitySet="Image" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Image_Message" Association="Self.FK_Image_Message">
+      <End Role="Message" EntitySet="Message" />
+      <End Role="Image" EntitySet="Image" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Image_Question" Association="Self.FK_Image_Question">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="Image" EntitySet="Image" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Image_TrueFalse" Association="Self.FK_Image_TrueFalse">
+      <End Role="TrueFalse" EntitySet="TrueFalse" />
+      <End Role="Image" EntitySet="Image" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Image_Tutorial" Association="Self.FK_Image_Tutorial">
+      <End Role="Tutorial" EntitySet="Tutorial" />
+      <End Role="Image" EntitySet="Image" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mention_Account" Association="Self.FK_Mention_Account">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Mention" EntitySet="Mention" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mention_Blog" Association="Self.FK_Mention_Blog">
+      <End Role="Blog" EntitySet="Blog" />
+      <End Role="Mention" EntitySet="Mention" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mention_DiscussionRoom" Association="Self.FK_Mention_DiscussionRoom">
+      <End Role="DiscussionRoom" EntitySet="DiscussionRoom" />
+      <End Role="Mention" EntitySet="Mention" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mention_Question" Association="Self.FK_Mention_Question">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="Mention" EntitySet="Mention" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Message_Account" Association="Self.FK_Message_Account">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Message" EntitySet="Message" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Message_DiscussionRoom" Association="Self.FK_Message_DiscussionRoom">
+      <End Role="DiscussionRoom" EntitySet="DiscussionRoom" />
+      <End Role="Message" EntitySet="Message" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PreferenceList_Account" Association="Self.FK_PreferenceList_Account">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="PreferenceList" EntitySet="PreferenceList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Question_DiscussionRoom" Association="Self.FK_Question_DiscussionRoom">
+      <End Role="DiscussionRoom" EntitySet="DiscussionRoom" />
+      <End Role="Question" EntitySet="Question" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QuestionTag_Blog" Association="Self.FK_QuestionTag_Blog">
+      <End Role="Blog" EntitySet="Blog" />
+      <End Role="TagRelation" EntitySet="TagRelation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QuestionTag_Question" Association="Self.FK_QuestionTag_Question">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="TagRelation" EntitySet="TagRelation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QuestionTag_Tag" Association="Self.FK_QuestionTag_Tag">
+      <End Role="Tag" EntitySet="Tag" />
+      <End Role="TagRelation" EntitySet="TagRelation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ratings_Account" Association="Self.FK_Ratings_Account">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Rating" EntitySet="Rating" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoomParticipant_Account" Association="Self.FK_RoomParticipant_Account">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="RoomParticipant" EntitySet="RoomParticipant" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoomParticipant_DiscussionRoom" Association="Self.FK_RoomParticipant_DiscussionRoom">
+      <End Role="DiscussionRoom" EntitySet="DiscussionRoom" />
+      <End Role="RoomParticipant" EntitySet="RoomParticipant" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tutorial_Account" Association="Self.FK_Tutorial_Account">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Tutorial" EntitySet="Tutorial" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TutorialMaterial_Tutorial" Association="Self.FK_TutorialMaterial_Tutorial">
+      <End Role="Tutorial" EntitySet="Tutorial" />
+      <End Role="TutorialMaterial" EntitySet="TutorialMaterial" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

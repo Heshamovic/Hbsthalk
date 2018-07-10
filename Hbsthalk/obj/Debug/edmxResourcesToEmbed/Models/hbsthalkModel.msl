@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HbsthalkModelStoreContainer" CdmEntityContainer="HbsthalkDB">
+    <EntitySetMapping Name="Accounts">
+      <EntityTypeMapping TypeName="HbsthalkModel.Account">
+        <MappingFragment StoreEntitySet="Account">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="ProfilePicture" ColumnName="ProfilePicture" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Graduation" ColumnName="Graduation" />
+          <ScalarProperty Name="CredibilityPoints" ColumnName="CredibilityPoints" />
+          <ScalarProperty Name="Signed" ColumnName="Signed" />
+          <ScalarProperty Name="GoogleEmail" ColumnName="GoogleEmail" />
+          <ScalarProperty Name="FacebookEmail" ColumnName="FacebookEmail" />
+          <ScalarProperty Name="ProficiencyID" ColumnName="ProficiencyID" />
+          <ScalarProperty Name="AllowTag" ColumnName="AllowTag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Answers">
+      <EntityTypeMapping TypeName="HbsthalkModel.Answer">
+        <MappingFragment StoreEntitySet="Answer">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+          <ScalarProperty Name="Points" ColumnName="Points" />
+          <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+          <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+          <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Applications">
+      <EntityTypeMapping TypeName="HbsthalkModel.Application">
+        <MappingFragment StoreEntitySet="Application">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Thumbnail" ColumnName="Thumbnail" />
+          <ScalarProperty Name="Tag" ColumnName="Tag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Blogs">
+      <EntityTypeMapping TypeName="HbsthalkModel.Blog">
+        <MappingFragment StoreEntitySet="Blog">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+          <ScalarProperty Name="Points" ColumnName="Points" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Completes">
+      <EntityTypeMapping TypeName="HbsthalkModel.Complete">
+        <MappingFragment StoreEntitySet="Complete">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="ContestID" ColumnName="ContestID" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contests">
+      <EntityTypeMapping TypeName="HbsthalkModel.Contest">
+        <MappingFragment StoreEntitySet="Contest">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateAndTime" ColumnName="DateAndTime" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DiscussionRooms">
+      <EntityTypeMapping TypeName="HbsthalkModel.DiscussionRoom">
+        <MappingFragment StoreEntitySet="DiscussionRoom">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Recommendation" ColumnName="Recommendation" />
+          <ScalarProperty Name="DateAndTime" ColumnName="DateAndTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Favourites">
+      <EntityTypeMapping TypeName="HbsthalkModel.Favourite">
+        <MappingFragment StoreEntitySet="Favourite">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TutorialID" ColumnName="TutorialID" />
+          <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+          <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MCQs">
+      <EntityTypeMapping TypeName="HbsthalkModel.MCQ">
+        <MappingFragment StoreEntitySet="MCQ">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="ContestID" ColumnName="ContestID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mentions">
+      <EntityTypeMapping TypeName="HbsthalkModel.Mention">
+        <MappingFragment StoreEntitySet="Mention">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+          <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+          <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+          <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Messages">
+      <EntityTypeMapping TypeName="HbsthalkModel.Message">
+        <MappingFragment StoreEntitySet="Message">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="DateAndTime" ColumnName="DateAndTime" />
+          <ScalarProperty Name="SenderID" ColumnName="SenderID" />
+          <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+          <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PreferenceLists">
+      <EntityTypeMapping TypeName="HbsthalkModel.PreferenceList">
+        <MappingFragment StoreEntitySet="PreferenceList">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="PLevel" ColumnName="PLevel" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proficiencies">
+      <EntityTypeMapping TypeName="HbsthalkModel.Proficiency">
+        <MappingFragment StoreEntitySet="Proficiency">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ProficiencyType" ColumnName="ProficiencyType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Questions">
+      <EntityTypeMapping TypeName="HbsthalkModel.Question">
+        <MappingFragment StoreEntitySet="Question">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+          <ScalarProperty Name="DateAndTime" ColumnName="DateAndTime" />
+          <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+          <ScalarProperty Name="Recommendation" ColumnName="Recommendation" />
+          <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ratings">
+      <EntityTypeMapping TypeName="HbsthalkModel.Rating">
+        <MappingFragment StoreEntitySet="Rating">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Rating1" ColumnName="Rating" />
+          <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="HbsthalkModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tags">
+      <EntityTypeMapping TypeName="HbsthalkModel.Tag">
+        <MappingFragment StoreEntitySet="Tag">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TrueFalses">
+      <EntityTypeMapping TypeName="HbsthalkModel.TrueFalse">
+        <MappingFragment StoreEntitySet="TrueFalse">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="ContestID" ColumnName="ContestID" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tutorials">
+      <EntityTypeMapping TypeName="HbsthalkModel.Tutorial">
+        <MappingFragment StoreEntitySet="Tutorial">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="VideoPath" ColumnName="VideoPath" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="recommendation" ColumnName="recommendation" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="InstructorID" ColumnName="InstructorID" />
+          <ScalarProperty Name="DateAndTime" ColumnName="DateAndTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TutorialMaterials">
+      <EntityTypeMapping TypeName="HbsthalkModel.TutorialMaterial">
+        <MappingFragment StoreEntitySet="TutorialMaterial">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+          <ScalarProperty Name="TutorialID" ColumnName="TutorialID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContestAnswers">
+      <EntityTypeMapping TypeName="HbsthalkModel.ContestAnswer">
+        <MappingFragment StoreEntitySet="ContestAnswer">
+          <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+          <ScalarProperty Name="MCQID" ColumnName="MCQID" />
+          <ScalarProperty Name="TrueFalseID" ColumnName="TrueFalseID" />
+          <ScalarProperty Name="CompleteID" ColumnName="CompleteID" />
+          <ScalarProperty Name="MCQAnswer" ColumnName="MCQAnswer" />
+          <ScalarProperty Name="CompleteAnswer" ColumnName="CompleteAnswer" />
+          <ScalarProperty Name="TrueFalseAnswer" ColumnName="TrueFalseAnswer" />
+          <ScalarProperty Name="Correct" ColumnName="Correct" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContestRelations">
+      <EntityTypeMapping TypeName="HbsthalkModel.ContestRelation">
+        <MappingFragment StoreEntitySet="ContestRelation">
+          <ScalarProperty Name="ContestID" ColumnName="ContestID" />
+          <ScalarProperty Name="AccountD" ColumnName="AccountD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FollowZones">
+      <EntityTypeMapping TypeName="HbsthalkModel.FollowZone">
+        <MappingFragment StoreEntitySet="FollowZone">
+          <ScalarProperty Name="User1" ColumnName="User1" />
+          <ScalarProperty Name="User2" ColumnName="User2" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="FollowLevel" ColumnName="FollowLevel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Images">
+      <EntityTypeMapping TypeName="HbsthalkModel.Image">
+        <MappingFragment StoreEntitySet="Image">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+          <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+          <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+          <ScalarProperty Name="AnswerID" ColumnName="AnswerID" />
+          <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+          <ScalarProperty Name="TutorialID" ColumnName="TutorialID" />
+          <ScalarProperty Name="Caption" ColumnName="Caption" />
+          <ScalarProperty Name="MCQID" ColumnName="MCQID" />
+          <ScalarProperty Name="TrueFalseID" ColumnName="TrueFalseID" />
+          <ScalarProperty Name="CompleteID" ColumnName="CompleteID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lessons">
+      <EntityTypeMapping TypeName="HbsthalkModel.Lesson">
+        <MappingFragment StoreEntitySet="Lesson">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TagRelations">
+      <EntityTypeMapping TypeName="HbsthalkModel.TagRelation">
+        <MappingFragment StoreEntitySet="TagRelation">
+          <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+          <ScalarProperty Name="TagID" ColumnName="TagID" />
+          <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+          <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="EnrolledTutorial" TypeName="HbsthalkModel.EnrolledTutorial" StoreEntitySet="EnrolledTutorial">
+      <EndProperty Name="Account">
+        <ScalarProperty Name="ID" ColumnName="AccountID" />
+      </EndProperty>
+      <EndProperty Name="Tutorial">
+        <ScalarProperty Name="ID" ColumnName="TuroialID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RoomParticipant" TypeName="HbsthalkModel.RoomParticipant" StoreEntitySet="RoomParticipant">
+      <EndProperty Name="Account">
+        <ScalarProperty Name="ID" ColumnName="AccountID" />
+      </EndProperty>
+      <EndProperty Name="DiscussionRoom">
+        <ScalarProperty Name="ID" ColumnName="RoomID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

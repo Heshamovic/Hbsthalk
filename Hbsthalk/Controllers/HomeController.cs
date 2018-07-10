@@ -42,6 +42,12 @@ namespace Hbsthalk.Controllers
             return View();
         }
 
+        public ActionResult Questions()
+        {
+            ViewBag.Message = "Your Questions page";
+            return View();
+        }
+
         public JsonResult login(string email, string password)
         {
             HbsthalkDB db = new HbsthalkDB();
