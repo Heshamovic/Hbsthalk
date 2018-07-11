@@ -4,14 +4,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="content-type" content="text/html" ; charset="utf-8" />
     <title>Home</title>
-    @Styles.Render("~/content/css/all.css")
     @Styles.Render("~/content/css/bootstrap.min.css")
+    @Styles.Render("~/content/css/animate.css")
     @Styles.Render("~/content/css/font-awesome.min.css")
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Amatic+SC|Anton|Arvo|Bree+Serif|Dancing+Script|Galada|Hind+Siliguri|IM+Fell+English+SC|Josefin+Sans|Lobster|Merriweather|Pacifico|Shadows+Into+Light|Shrikhand|Slabo+27px|Source+Sans+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Courgette|Great+Vibes|Kaushan+Script|Pacifico|Satisfy" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Aref+Ruqaa|Changa|Dancing+Script|El+Messiri" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+    @Styles.Render("~/content/css/all.css")
     @Styles.Render("~/content/css/Site.css")
     @Styles.Render("~/Content/css/style.css")
+
 </head>
 <body>
-    <!--logindiv-->
+    <!--fixedhead-->
     <div class="logindiv fixed-top ">
         <div class="container">
             <div class="row">
@@ -24,7 +31,7 @@
                 <div class="col-md-2 " style="text-align: right">
                     @if (Session["ID"] == null)
                     {
-                        <span class="lead "><a href="#">Register</a></span>
+                        <span class="lead "><a href="#" class="regBtn">Register</a></span>
                         <span class="lead vl ">|</span>
                         <span class="lead vl "><a href="#" class="loginBtn">Login</a></span>
                     }
@@ -38,6 +45,107 @@
             </div>
         </div>
     </div>
+    <!--END-->
+    <!--register-->
+    <section class="register">
+        <div class="row">
+            <div class="offset-md-1 d-md-block d-none"></div>
+            <div class="col-md-10 col-12">
+                <div class="reg-inner  rounded">
+                    <div class="row">
+                        <div class="col-12 d-md-block d-none" style="height: 50px;"></div>
+                        <div class="col-md-6" id="auto-register">
+                            <h4>Register with Read More networks</h4>
+                            <div class="dropdown-divider"></div>
+                            <div class="Btns-reg">
+                                <center>
+                                    <div class="col-12 d-md-block d-none" style="height: 50px;"></div>
+                                    <div class="col-12">
+                                        <button class="btn" id="fBtns">
+                                            <div class="row">
+                                                <div class="col-2">
+                                                    <i class="fab fa-facebook-f"></i>
+                                                </div>
+                                                <div class="col-10" style="border-left: 2px solid white; margin-left: 15px;">
+                                                    Facebook
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="btn" id="gBtns">
+                                            <div class="row">
+                                                <div class="col-2">
+                                                    <i class="fab fa-google-plus-g"></i>
+                                                </div>
+                                                <div class="col-10" style="border-left: 2px solid white; margin-left: 15px; ">
+                                                    Google
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </center>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Register with your site account</h4>
+                            <div class="dropdown-divider"></div>
+                            <center>
+                                <div class="container">
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-md-6 col-12">
+                                                <div class="input-group mb-3">
+                                                    <input type="text" class="form-control" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-12">
+                                                <div class="input-group mb-3">
+                                                    <input type="text" class="form-control" placeholder="Surname" aria-label="Username" aria-describedby="basic-addon1">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-md-6 col-12">
+                                                <div class="input-group mb-3">
+                                                    <input type="text" class="form-control" placeholder="User Name" aria-label="Username" aria-describedby="basic-addon2">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-12">
+                                                <div class="input-group mb-3">
+                                                    <input type="email" class="form-control" placeholder="E-mail" aria-label="Username" aria-describedby="basic-addon2">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-md-6 col-12">
+                                                <div class="input-group mb-3">
+                                                    <input type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon2">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-12">
+                                                <div class="input-group mb-3">
+                                                    <input type="password" class="form-control" placeholder="Re-password" aria-label="Username" aria-describedby="basic-addon2">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12" id="regiter-to">
+                                        <button type="submit" class="btn btn-secondary">Register</button>
+                                    </div>
+                                </div>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="offset-md-1 d-md-block d-none"></div>
+        </div>
+    </section>
     <!--END-->
     <!--START Navbar-->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:transparent; transition: 0.5s;">
@@ -74,9 +182,131 @@
         </div>
     </nav>
     <!--END Navbar-->
+    <!--logindiv-->
+    <section class="login">
+        <div class="row">
+            <div class="offset-md-1 d-md-block d-none"></div>
+            <div class="col-md-10 col-12">
+                <div class="inner rounded">
+                    <div class="row">
+                        <div class="col-12 d-md-block d-none" style="height: 50px;"></div>
+                        <div class="col-md-6" id="auto-login">
+                            <h4>Login with social networks</h4>
+                            <div class="dropdown-divider"></div>
+                            <div class="Btns">
+                                <center>
+                                    <div class="col-12 d-md-block d-none" style="height: 50px;"></div>
+                                    <div class="col-12">
+                                        <button class="btn" id="fBtn">
+                                            <div class="row">
+                                                <div class="col-2">
+                                                    <i class="fab fa-facebook-f"></i>
+                                                </div>
+                                                <div class="col-10" style="border-left: 2px solid white; margin-left: 15px;">
+                                                    Facebook
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="btn" id="gBtn">
+                                            <div class="row">
+                                                <div class="col-2">
+                                                    <i class="fab fa-google-plus-g"></i>
+                                                </div>
+                                                <div class="col-10" style="border-left: 2px solid white; margin-left: 15px; ">
+                                                    Google
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </center>
+                            </div>
+                        </div>
+                        <div class="col-md-6" id="manual-login">
+                            <h4>Login with your site account</h4>
+                            <div class="dropdown-divider"></div>
+                            <center>
+                                <div class="container">
+                                    <div class="col-12">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">@@</span>
+                                            </div>
+                                            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" id="signUserName">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="input-group mb-3">
+                                            <input type="password" class="form-control" placeholder="Password" aria-label="Recipient's username" aria-describedby="basic-addon2" id="signPassword">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary" type="button"><i class="fa fa-eye"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                                    <label class="custom-control-label" for="customCheck1" style="color: #881125; float: left">Remember me</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <a href="" style="float: right">Lost your password?</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12" id="signin">
+                                        <button type="button" class="btn btn-secondary" onclick="signIn()">Sign in</button>
+                                    </div>
+                                </div>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="offset-md-1 d-md-block d-none"></div>
+        </div>
+    </section>
+    <!--Start Search-bar-->
+    <section class="search-bar">
+        <div class="row">
+            <div class="offset-md-3 d-md-block d-none"></div>
+            <div class="col-12 col-md-6">
+                <div class="search-bar-inner rounded">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Search.." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="offset-md-3 d-md-block d-none"></div>
+        </div>
+    </section>
+    <!--End Search-bar-->
+    <!--Loading screen-->
+    <section class="overlay">
+        <div class="bookshelf_wrapper">
+            <ul class="books_list">
+                <li class="book_item first"></li>
+                <li class="book_item second"></li>
+                <li class="book_item third"></li>
+                <li class="book_item fourth"></li>
+                <li class="book_item fifth"></li>
+                <li class="book_item sixth"></li>
+            </ul>
+            <div class="shelf"></div>
+        </div>
+
+    </section>
+    <!--END-->
     <div class="container-fluid body-content" style="padding:0px; margin-top:-19px">
         @RenderBody()
- <hr />
+        <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - Hbsthalk</p>
         </footer>
@@ -85,6 +315,8 @@
     <script src="~/Scripts/jquery-3.3.1.js"></script>
     <script src="~/Scripts/popper.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/wow.min.js"></script>
+    <script src="~/Scripts/jquery.nicescroll.min.js"></script>
     <script src="~/Scripts/all.js"></script>
     <script type="text/javascript" src="~/Scripts/minejs.js"></script>
     @RenderSection("scripts", required: false)

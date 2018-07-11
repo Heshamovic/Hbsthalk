@@ -3,93 +3,293 @@
     ViewBag.Title = "Home";
 }
 
-<!-- Start cerusol-->
-<!--
-Please note, that you can apply .m--global-blending-active to .fnc-slider
-to enable blend-mode for all background-images or apply .m--blend-bg-active
-to some specific slides (.fnc-slide). It's disabled by default in this demo,
-because it requires specific images, where more than 50% of bg is transparent or monotone
--->
-<!--END-->
-<section class="login">
+<!--Start Questions-->
+<section id="Questions">
+    <!-- Hero Unit -->
+    <section class="container" style="margin-top:60px;">
+        <div class="row">
+            <div class="col-12 columns">
+                <hgroup style="text-align:center;">
+                    <h1>Code. Design. Education.</h1>
+                    <h3>Just keep learning. Make new opportunities.</h3>
+                </hgroup>
+                <ul class="flip-cards list-unstyled">
+                    <li ontouchstart="this.classList.toggle('hover');" class="popper">
+                        <div class="large button card-front">
+                            <a href="#">عربى</a>
+                            <div class="dropdown-divider"></div>
+                            <h5>إن الذي ملأ اللغات محاسن.. جعل الجمال وسره في الضاد</h5>
+                        </div>
+                        <div class="panel card-back">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-4 framee topL">
+                                        نحو
+                                    </div>
+                                    <div class="col-4 framee topR">
+                                        قراءة
+                                    </div>
+                                    <div class="col-4 framee topR">
+                                        نصوص
+                                    </div>
+                                    <div class="col-4 framee downL">
+                                        قصة
+                                    </div>
+                                    <div class="col-4 framee downR">
+                                        بلاغة
+                                    </div>
+                                    <div class="col-4 framee downR">
+                                        أدب
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li ontouchstart="this.classList.toggle('hover');" class="popper">
+                        <div class="large button card-front">
+                            <a href="http://www.aaronsnowberger.com">English</a>
+                            <div class="dropdown-divider"></div>
+                            <h5>They had nothing in common but the English language.</h5>
+                        </div>
+                        <div class="panel card-back">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-4 framee topL">
+                                        Grammar
+                                    </div>
+                                    <div class="col-3 framee topR">
+                                        Novel
+                                    </div>
+                                    <div class="col-5 framee topR">
+                                        Translation
+                                    </div>
+                                    <div class="col-5 framee downL">
+                                        Situations
+                                    </div>
+                                    <div class="col-7 framee downR">
+                                        Comprehension
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li ontouchstart="this.classList.toggle('hover');" class="popper">
+                        <div class="large button card-front">
+                            <a href="">Français</a>
+                            <div class="dropdown-divider"></div>
+                            <h5>Les limites de ma langue sont les limites de mon monde.</h5>
+                        </div>
+                        <div class="panel card-back">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-6 framee topL">
+                                        Grammaire
+                                    </div>
+                                    <div class="col-6 framee topR">
+                                        Situations
+                                    </div>
+                                    <div class="col-12 framee downL">
+                                        Compréhension
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li ontouchstart="this.classList.toggle('hover');" class="popper">
+                        <div class="large button card-front">
+                            <a href="">Deutsch</a>
+                            <div class="dropdown-divider"></div>
+                            <h5>Es ist nicht wichtig wie langsam du gehst, solange du nicht aufhörst.</h5>
+                        </div>
+                        <div class="panel card-back">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-6 framee topL">
+                                        Grammatik
+                                    </div>
+                                    <div class="col-6 framee topR">
+                                        Situationen
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li ontouchstart="this.classList.toggle('hover');" class="popper">
+                        <div class="large button card-front">
+                            <a href="http://www.keytokorean.com">Italiano</a>
+                            <div class="dropdown-divider"></div>
+                            <h5>Il segreto per andare avanti è iniziare.</h5>
+                        </div>
+
+                        <div class="panel card-back">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-6 framee topL">
+                                        grammatica
+                                    </div>
+                                    <div class="col-6 framee topR">
+                                        situazioni
+                                    </div>
+                                    <div class="col-12 framee downL">
+                                        comprensione
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li ontouchstart="this.classList.toggle('hover');" class="popper">
+                        <div class="large button card-front">
+                            <a href="http://www.keytokorean.com">Mathematics</a>
+                            <div class="dropdown-divider"></div>
+                            <h5>Pure mathematics is, in its way, the poetry of logical ideas.</h5>
+                        </div>
+                        <div class="panel card-back">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-6 framee topL">
+                                        Dynamics
+                                    </div>
+                                    <div class="col-6 framee topR">
+                                        Statics
+                                    </div>
+                                    <div class="col-4 framee downL">
+                                        Calculas
+                                    </div>
+                                    <div class="col-8 framee downR">
+                                        Algebra & solid
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li ontouchstart="this.classList.toggle('hover');" class="popper">
+                        <div class="large button card-front">
+                            <a href="http://www.keytokorean.com">Physics</a>
+                            <div class="dropdown-divider"></div>
+                            <h5>Nothing happens until something moves.</h5>
+                        </div>
+
+                        <div class="panel card-back">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-6 framee topL">
+                                        Electricity
+                                    </div>
+                                    <div class="col-6 framee topR">
+                                        Modern Physics
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li ontouchstart="this.classList.toggle('hover');" class="popper">
+                        <div class="large button card-front">
+                            <a href="http://www.keytokorean.com">Chemistry</a>
+                            <div class="dropdown-divider"></div>
+                            <h5>Scientist believe in things, not in person</h5>
+                        </div>
+
+                        <div class="panel card-back">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-6 framee topL">
+                                        Non-Organic
+                                    </div>
+                                    <div class="col-6 framee topR">
+                                        Organic
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li ontouchstart="this.classList.toggle('hover');" class="popper">
+                        <div class="large button card-front">
+                            <a href="http://www.keytokorean.com">Biology</a>
+                            <div class="dropdown-divider"></div>
+                            <h5>
+                                Biology is the most powerful technology ever created.
+                            </h5>
+                        </div>
+
+                        <div class="panel card-back">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-6 framee topL">
+                                        Living organisms
+                                    </div>
+                                    <div class="col-6 framee topR">
+                                        Molecular Biology
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li ontouchstart="this.classList.toggle('hover');" class="popper">
+                        <div class="large button card-front">
+                            <a href="http://www.keytokorean.com">جيلوجيا وعلوم البيئة</a>
+                            <div class="dropdown-divider"></div>
+                            <h5>If you want to understand geology, study earthquakes.</h5>
+                        </div>
+
+                        <div class="panel card-back">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-6 framee topL">
+                                        الجيولوجية
+                                    </div>
+                                    <div class="col-6 framee topR">
+                                        علوم بيئة
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li ontouchstart="this.classList.toggle('hover');" class="popper">
+                        <div class="large button card-front">
+                            <a href="http://www.aicfchurch.org">جغرافيا</a>
+                            <div class="dropdown-divider"></div>
+                            <h5>لا ثقافة بلا جغرافيا .. لا سياسة بلا جغرافيا .. لا تاريخ بلا جغرافيا</h5>
+                        </div>
+                        <div class="panel card-back">
+                            <div class="hub-info">
+                                <a href="http://www.aicfchurch.org">AICFChurch.org</a>
+                                <p>Listen to sermon podcasts or download church graphic design resources.</p>
+                            </div>
+                            <small class="clear">Updated the 4th Sunday.</small>
+                        </div>
+                    </li>
+                    <li ontouchstart="this.classList.toggle('hover');" class="popper">
+                        <div class="large button card-front">
+                            <a href="http://www.aicfchurch.org">تاريخ</a>
+                            <div class="dropdown-divider"></div>
+                            <h5>إن أشجع الشجعان في التاريخ هم ببساطة أناس خافوا أن يبدوا جبناء</h5>
+                        </div>
+
+                        <div class="panel card-back">
+                            <div class="hub-info">
+                                <a href="http://www.aicfchurch.org">AICFChurch.org</a>
+                                <p>Listen to sermon podcasts or download church graphic design resources.</p>
+                            </div>
+                            <small class="clear">Updated the 4th Sunday.</small>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</section>
+<!--End Questions-->
+<!--start popper-->
+<section class="Qpop">
     <div class="row">
         <div class="offset-md-1 d-md-block d-none"></div>
         <div class="col-md-10 col-12">
-            <div class="inner rounded">
+            <div class="Qpop-inner rounded">
                 <div class="row">
                     <div class="col-12 d-md-block d-none" style="height: 50px;"></div>
-                    <div class="col-md-6" id="auto-login">
-                        <h4>Login with social networks</h4>
-                        <div class="dropdown-divider"></div>
-                        <div class="Btns">
-                            <center>
-                                <div class="col-12 d-md-block d-none" style="height: 50px;"></div>
-                                <div class="col-12">
-                                    <button class="btn" id="fBtn">
-                                        <div class="row">
-                                            <div class="col-2">
-                                                <i class="fab fa-facebook-f"></i>
-                                            </div>
-                                            <div class="col-10" style="border-left: 2px solid white; margin-left: 15px;">
-                                                Facebook
-                                            </div>
-                                        </div>
-                                    </button>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn" id="gBtn">
-                                        <div class="row">
-                                            <div class="col-2">
-                                                <i class="fab fa-google-plus-g"></i>
-                                            </div>
-                                            <div class="col-10" style="border-left: 2px solid white; margin-left: 15px; ">
-                                                Google
-                                            </div>
-                                        </div>
-                                    </button>
-                                </div>
-                            </center>
-                        </div>
+                    <div class="col-md-6" id="auto-Qpop">
                     </div>
-                    <div class="col-md-6" id="manual-login">
-                        <h4>Login with your site account</h4>
-                        <div class="dropdown-divider"></div>
-                        <center>
-                            <div class="container">
-                                <div class="col-12">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1">@@</span>
-                                        </div>
-                                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" id="signUserName">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="input-group mb-3">
-                                        <input type="password" class="form-control" placeholder="Password" aria-label="Recipient's username" aria-describedby="basic-addon2" id="signPassword">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-outline-secondary" type="button"><i class="fa fa-eye"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                                <label class="custom-control-label" for="customCheck1" style="color: #881125; float: left">Remember me</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <a href="" style="float: right">Lost your password?</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12" id="signin">
-                                    <button type="button" class="btn btn-secondary" onclick="signIn()">Sign in</button>
-                                </div>
-                            </div>
-                        </center>
+                    <div class="col-md-6" id="manual-Qpop">
                     </div>
                 </div>
             </div>
@@ -97,71 +297,36 @@ because it requires specific images, where more than 50% of bg is transparent or
         <div class="offset-md-1 d-md-block d-none"></div>
     </div>
 </section>
-<!--Start Search-bar-->
-<section class="search-bar">
-    <div class="row">
-        <div class="offset-md-3 d-md-block d-none"></div>
-        <div class="col-12 col-md-6">
-            <div class="search-bar-inner rounded">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search.." aria-label="Recipient's username" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="offset-md-3 d-md-block d-none"></div>
-    </div>
-</section>
-<!--End Search-bar-->
-<!--Loading screen-->
-<section class="overlay">
-    <div class="bookshelf_wrapper">
-        <ul class="books_list">
-            <li class="book_item first"></li>
-            <li class="book_item second"></li>
-            <li class="book_item third"></li>
-            <li class="book_item fourth"></li>
-            <li class="book_item fifth"></li>
-            <li class="book_item sixth"></li>
-        </ul>
-        <div class="shelf"></div>
-    </div>
-
-</section>
-<!--END-->
-<!--Start Tutorial section-->
-@{ 
+<!--Start Tutorial-->
+@{
     int tutorialNum = ViewBag.homeTutorial.Count;
 }
-    @if (tutorialNum == 0)
-    {
-        <div class="row" style="padding:50px 0px 50px 0px; background-color:#f0f0f0">
-            <div class="col-xl-5"></div>
-            <div class="col-xl-4 container">
-                <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.1" id="blinking-eye" class="blinking-eye">
-                    <defs>
-                        <path id="blinking-eye__outline" d="m 126.71955,115.09305 c 26.76653,-0.009 48.46008,-21.263555 48.46008,-47.478982 0,-26.215426 -21.69355,-47.469809 -48.46008,-47.478988 l 0,0 -52.730732,0 0,0.07181 c -26.020012,0.991777 -46.591907,21.939513 -46.591907,47.443086 0,25.50358 20.571895,46.451312 46.591907,47.443082 l 0,0.0718 52.730732,0 0,0 0,0 0,0 z" />
-                        <mask id="blinking-eye__mask">
-                            <rect width="100%" height="100%" fill="white"></rect>
-                            <use xlink:href="#blinking-eye__outline" class="blinking-eye__lid-mask" fill="black" />
-                        </mask>
-                    </defs>
-                    <path class="blinking-eye__rim" d="m136.37062 0.1024404c36.75062 0.01309 66.536 30.3254356 66.536 67.7130816 0 37.387638-29.78538 67.699988 -66.536 67.713078l0 0 -72.39963 0 0 -0.10243C28.245344 134.01174 0 104.13672 0 67.764307 0 31.39189 28.245344 1.5168685 63.97099 0.1024404l0 -0.1024404 72.39963 0 0 0 0 0 0 0zm -10.97574 20.2831936 -49.843977 0 0 0.102441c -26.583453 1.331724 -47.830077 22.02468 -47.830077 47.429891 0 25.405213 21.145929 46.098164 47.830077 47.327444l0 0.10244 49.944667 0c27.38902 -0.5122 49.54189 -21.51247 49.54189 -47.429884 0 -25.917414 -22.05218 -46.91769 -49.44119 -47.429891l0 0z" />
-                    <ellipse class="blinking-eye__pupil" ry="29.786814" rx="30.002792" cy="67.910522" cx="101.96945" />
-                    <use xlink:href="#blinking-eye__outline" mask="url(#blinking-eye__mask)" class="blinking-eye__lid" />
-                </svg>
-                <h1 style="margin-left:20px">Coming soon...</h1>
-            </div>
-            <div class="col-xl-3"></div>
+@if (tutorialNum == 0)
+{
+    <div class="row" style="padding:50px 0px 50px 0px; background-color:#f0f0f0">
+        <div class="col-xl-5"></div>
+        <div class="col-xl-4 container">
+            <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.1" id="blinking-eye" class="blinking-eye">
+                <defs>
+                    <path id="blinking-eye__outline" d="m 126.71955,115.09305 c 26.76653,-0.009 48.46008,-21.263555 48.46008,-47.478982 0,-26.215426 -21.69355,-47.469809 -48.46008,-47.478988 l 0,0 -52.730732,0 0,0.07181 c -26.020012,0.991777 -46.591907,21.939513 -46.591907,47.443086 0,25.50358 20.571895,46.451312 46.591907,47.443082 l 0,0.0718 52.730732,0 0,0 0,0 0,0 z" />
+                    <mask id="blinking-eye__mask">
+                        <rect width="100%" height="100%" fill="white"></rect>
+                        <use xlink:href="#blinking-eye__outline" class="blinking-eye__lid-mask" fill="black" />
+                    </mask>
+                </defs>
+                <path class="blinking-eye__rim" d="m136.37062 0.1024404c36.75062 0.01309 66.536 30.3254356 66.536 67.7130816 0 37.387638-29.78538 67.699988 -66.536 67.713078l0 0 -72.39963 0 0 -0.10243C28.245344 134.01174 0 104.13672 0 67.764307 0 31.39189 28.245344 1.5168685 63.97099 0.1024404l0 -0.1024404 72.39963 0 0 0 0 0 0 0zm -10.97574 20.2831936 -49.843977 0 0 0.102441c -26.583453 1.331724 -47.830077 22.02468 -47.830077 47.429891 0 25.405213 21.145929 46.098164 47.830077 47.327444l0 0.10244 49.944667 0c27.38902 -0.5122 49.54189 -21.51247 49.54189 -47.429884 0 -25.917414 -22.05218 -46.91769 -49.44119 -47.429891l0 0z" />
+                <ellipse class="blinking-eye__pupil" ry="29.786814" rx="30.002792" cy="67.910522" cx="101.96945" />
+                <use xlink:href="#blinking-eye__outline" mask="url(#blinking-eye__mask)" class="blinking-eye__lid" />
+            </svg>
+            <h1 style="margin-left:20px">Coming soon...</h1>
         </div>
-    }
-    else
-    {
-        <section class="myTut">
-           <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <div class="col-xl-3"></div>
+    </div>
+}
+else
+{
+    <section class="myTut">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators ">
                 @for (int i = 0; i < tutorialNum; i++)
                 {
@@ -233,6 +398,342 @@ because it requires specific images, where more than 50% of bg is transparent or
                 }
             </div>
         </div>
-        </section>
-    }
+    </section>
+}
+<!--End Tutorial-->
+<!--Counter down-->
+<section class="counter">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-7">
+                <div class="col-12 text-center reg">
+                    <h1>REGISTER NOW!</h1>
+                </div>
+                <div class="col-12">
+                    <div class=" row allcounters text-center">
+                        <div class="offset-md-2 "></div>
+                        <div class="col-md-2" id="days">
+                            <p id="d" class="test"></p>
+                            <p class="editor">DAYS</p>
+                        </div>
+                        <div class="col-md-2" id="hours">
+                            <p id="h" class="test"></p>
+                            <p class="editor">HOURS</p>
+                        </div>
+                        <div class="col-md-2" id="mins">
+                            <p id="m" class="test"></p>
+                            <p class="editor">MINUTES</p>
+                        </div>
+                        <div class="col-md-2" id="sec">
+                            <p id="s" class="test"></p>
+                            <p class="editor">SECONDS</p>
+                        </div>
+                        <div class="offset-2 "></div>
+
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class=" row  text-center">
+                        <div class="offset-2 "></div>
+                        <div class="col-8 reg-btn">
+                            <button class="btn btn-lg  cust-reg-btn">
+                                Join
+                            </button>
+                        </div>
+                        <div class="offset-2 "></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-5">
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+<!--END-->
+<!--Blogs-->
+<section class="blogs" style="margin-top: 50px;">
+    <section class="container">
+        <div class="page-header">
+
+        </div>
+        <div class="row active-with-click">
+            <div class="col-lg-4 col-md-6">
+                <article class="material-card Blue">
+                    <h2>
+                        <span>Christopher Walken</span>
+                        <strong>
+                            <i class="fa fa-fw fa-star"></i>
+                            The Deer Hunter
+                        </strong>
+                    </h2>
+                    <div class="mc-content">
+                        <div class="img-container">
+                            <img class="img-fluid" src="~/Content/Images/file-20171025-25516-g7rtyl.jpg">
+                        </div>
+                        <div class="mc-description">
+                            He has appeared in more than 100 films and television shows, including The Deer Hunter, Annie Hall, The Prophecy trilogy, The Dogs of War ...
+                        </div>
+                    </div>
+                    <a class="mc-btn-action">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                    <div class="mc-footer">
+                        <h4 class="btn ">
+                            Read More
+                        </h4>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-4">
+                                    <span class="values">26</span>
+                                    <span> <i class="fas fa-eye iconstyle"></i></span>
+                                </div>
+                                <div class="col-4">
+                                    <span class="values">26</span>
+                                    <i class="fas fa-comments iconstyle"></i>
+                                </div>
+                                <div class="col-4">
+                                    <span class="values">26</span>
+                                    <i class="fas fa-heart iconstyle"></i>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <article class="material-card Red">
+                    <h2>
+                        <span>Christopher Walken</span>
+                        <strong>
+                            <i class="fa fa-fw fa-star"></i>
+                            The Deer Hunter
+                        </strong>
+                    </h2>
+                    <div class="mc-content">
+                        <div class="img-container">
+                            <img class="img-fluid" src="~/Content/Images/Chemistry_week.jpg">
+                        </div>
+                        <div class="mc-description">
+                            He has appeared in more than 100 films and television shows, including The Deer Hunter, Annie Hall, The Prophecy trilogy, The Dogs of War ...
+                        </div>
+                    </div>
+                    <a class="mc-btn-action">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                    <div class="mc-footer">
+                        <h4>
+                            Read More
+                        </h4>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-4">
+                                    <span class="values">26</span>
+                                    <span> <i class="fas fa-eye iconstyle"></i></span>
+                                </div>
+                                <div class="col-4">
+                                    <span class="values">26</span>
+                                    <i class="fas fa-comments iconstyle"></i>
+                                </div>
+                                <div class="col-4">
+                                    <span class="values">26</span>
+                                    <i class="fas fa-heart iconstyle"></i>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <article class="material-card Red">
+                    <h2>
+                        <span>Christopher Walken</span>
+                        <strong>
+                            <i class="fa fa-fw fa-star"></i>
+                            The Deer Hunter
+                        </strong>
+                    </h2>
+                    <div class="mc-content">
+                        <div class="img-container">
+                            <img class="img-fluid" src="~/Content/Images/french-language-classes-new-york-city.jpg">
+                        </div>
+                        <div class="mc-description">
+                            He has appeared in more than 100 films and television shows, including The Deer Hunter, Annie Hall, The Prophecy trilogy, The Dogs of War ...
+                        </div>
+                    </div>
+                    <a class="mc-btn-action">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                    <div class="mc-footer">
+                        <h4>
+                            Read More
+                        </h4>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-4">
+                                    <span class="values">26</span>
+                                    <span> <i class="fas fa-eye iconstyle"></i></span>
+                                </div>
+                                <div class="col-4">
+                                    <span class="values">26</span>
+                                    <i class="fas fa-comments iconstyle"></i>
+                                </div>
+                                <div class="col-4">
+                                    <span class="values">26</span>
+                                    <i class="fas fa-heart iconstyle"></i>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <article class="material-card Blue-Grey">
+                    <h2>
+                        <span>Christopher Walken</span>
+                        <strong>
+                            <i class="fa fa-fw fa-star"></i>
+                            The Deer Hunter
+                        </strong>
+                    </h2>
+                    <div class="mc-content">
+                        <div class="img-container">
+                            <img class="img-fluid" src="~/Content/Images/biology_final.png">
+                        </div>
+                        <div class="mc-description">
+                            He has appeared in more than 100 films and television shows, including The Deer Hunter, Annie Hall, The Prophecy trilogy, The Dogs of War ...
+                        </div>
+                    </div>
+                    <a class="mc-btn-action">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                    <div class="mc-footer">
+                        <h4>
+                            Read More
+                        </h4>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-4">
+                                    <span class="values">26</span>
+                                    <span> <i class="fas fa-eye iconstyle"></i></span>
+                                </div>
+                                <div class="col-4">
+                                    <span class="values">26</span>
+                                    <i class="fas fa-comments iconstyle"></i>
+                                </div>
+                                <div class="col-4">
+                                    <span class="values">26</span>
+                                    <i class="fas fa-heart iconstyle"></i>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <article class="material-card Red">
+                    <h2>
+                        <span>Christopher Walken</span>
+                        <strong>
+                            <i class="fa fa-fw fa-star"></i>
+                            The Deer Hunter
+                        </strong>
+                    </h2>
+                    <div class="mc-content">
+                        <div class="img-container">
+                            <img class="img-fluid" src="~/Content/Images/800px_COLOURBOX21829328.jpg">
+                        </div>
+                        <div class="mc-description">
+                            He has appeared in more than 100 films and television shows, including The Deer Hunter, Annie Hall, The Prophecy trilogy, The Dogs of War ...
+                        </div>
+                    </div>
+                    <a class="mc-btn-action">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                    <div class="mc-footer">
+                        <h4>
+                            Read More
+                        </h4>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-4">
+                                    <span class="values">26</span>
+                                    <span> <i class="fas fa-eye iconstyle"></i></span>
+                                </div>
+                                <div class="col-4">
+                                    <span class="values">26</span>
+                                    <i class="fas fa-comments iconstyle"></i>
+                                </div>
+                                <div class="col-4">
+                                    <span class="values">26</span>
+                                    <i class="fas fa-heart iconstyle"></i>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <article class="material-card Red">
+                    <h2>
+                        <span>Christopher Walken</span>
+                        <strong>
+                            <i class="fa fa-fw fa-star"></i>
+                            The Deer Hunter
+                        </strong>
+                    </h2>
+                    <div class="mc-content">
+                        <div class="img-container">
+                            <img class="img-fluid" src="~/Content/Images/grammar.jpg">
+                        </div>
+                        <div class="mc-description">
+                            He has appeared in more than 100 films and television shows, including The Deer Hunter, Annie Hall, The Prophecy trilogy, The Dogs of War ...
+                        </div>
+                    </div>
+                    <a class="mc-btn-action">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                    <div class="mc-footer">
+                        <h4>
+                            Read More
+                        </h4>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-4">
+                                    <span class="values">26</span>
+                                    <span> <i class="fas fa-eye iconstyle"></i></span>
+                                </div>
+                                <div class="col-4">
+                                    <span class="values">26</span>
+                                    <i class="fas fa-comments iconstyle"></i>
+                                </div>
+                                <div class="col-4">
+                                    <span class="values">26</span>
+                                    <i class="fas fa-heart iconstyle"></i>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+        </div>
+    </section>
+</section>
+<!--END-->
 <!---->

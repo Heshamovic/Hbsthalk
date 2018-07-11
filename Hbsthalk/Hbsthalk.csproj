@@ -257,6 +257,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\all.css" />
+    <Content Include="Content\css\animate.css" />
     <Content Include="Content\css\bootstrap-grid.css" />
     <Content Include="Content\css\bootstrap-grid.min.css" />
     <Content Include="Content\css\bootstrap-reboot.css" />
@@ -267,11 +268,25 @@
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\css\font-awesome.min.css" />
+    <Content Include="Content\Images\800px_COLOURBOX21829328.jpg" />
+    <Content Include="Content\Images\bg-footer.jpg" />
+    <Content Include="Content\Images\bg_register_now.jpg" />
+    <Content Include="Content\Images\biology_final.png" />
+    <Content Include="Content\Images\Chemistry_week.jpg" />
+    <Content Include="Content\Images\Education-Wallpapers-HD-Free-Download.jpg" />
+    <Content Include="Content\Images\file-20171025-25516-g7rtyl.jpg" />
+    <Content Include="Content\Images\french-language-classes-new-york-city.jpg" />
+    <Content Include="Content\Images\grammar.jpg" />
+    <Content Include="Content\Images\images %281%29.jpg" />
+    <Content Include="Content\Images\images.jpg" />
     <Content Include="Content\Images\IMG-20170104-WA0023.jpg" />
     <Content Include="Content\Images\IMG-20170220-WA0015.jpg" />
     <Content Include="Content\Images\IMG-20170503-WA0002.jpg" />
     <Content Include="Content\Images\IMG-20171217-WA0013_1.jpg" />
     <Content Include="Content\Images\IMG-20171217-WA0018.jpg" />
+    <Content Include="Content\Images\Kate+Middleton+Prince+William+Kate+Middleton+zCWmVTzKHwZl.jpg" />
+    <Content Include="Content\Images\learning-books-education-jackets-light-1920x1080-59453.jpg" />
+    <Content Include="Content\Images\Math.jpg" />
     <Content Include="Content\Images\New-Tutorial-oat.jpg" />
     <Content Include="Content\Images\noTutorial.jpg" />
     <Content Include="Content\Images\promo_img_1.png" />
@@ -331,6 +346,7 @@
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.nicescroll.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -338,6 +354,7 @@
     <Content Include="Scripts\minejs.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\wow.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
