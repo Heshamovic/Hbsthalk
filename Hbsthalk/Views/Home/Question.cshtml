@@ -1,0 +1,234 @@
+﻿@{
+    ViewBag.Title = "Question";
+}
+
+<link href="~/Content/css/questionsStyle.css" rel="stylesheet" />
+<div class="container-fluid">
+    <div class="row">
+        <div class="offset-1 d-md-block d-none"></div>
+        <div class="col-md-10 row">
+            <div class="col-md-9">
+                <section id="questions-panel">
+                    <div class="card rounded">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-2 user">
+                                    <center>
+                                        <a href=""><img data-toggle="tooltip" data-placement="right" title="Begginer" class="img-thumbnail rounded-circle pp-img" src="~/Content/Images/IMG-20170104-WA0023.jpg" /></a>
+                                        <a href="" data-toggle="tooltip" data-placement="right" title="Begginer"><h5>Mahmoud Ramy</h5></a>
+                                        <div id="rankLabel" style="color:#fff; background-color:#428bca">شاطر</div>
+                                    </center>
+                                </div>
+                                <div class="col-md-10" style="margin-top:5px;">
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                            <a class="Qhead" href=""><h3>How much do web developers earn? What is their salary?</h3></a>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="row">
+                                                <div class="col-6" style=" text-align:center; color:#881125">
+                                                    <small style="font-size:11px;">
+                                                        <i class="far fa-calendar-alt"></i>
+                                                        <br />
+                                                        12 months
+                                                    </small>
+                                                </div>
+                                                <div class="col-6" style="text-align:center; color:#881125; cursor:pointer">
+                                                    <small style="font-size:11px;">
+                                                        <i class="fas fa-flag"></i>
+                                                        <br />
+                                                        Report
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="Qdesc">
+                                        <p>I will be studying full-time for a 1-year MS in Business Analytics. What advise would you give to a person in this situation so that he can make the most out of his time out from work and get the ...</p>
+                                    </div>
+                                    <div class="dropdown-divider"></div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="status-inp"><small><i class="fas fa-spinner fa-spin" style="margin-right:5px;"></i>in progress</small></div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="rec"><small><i class="fas fa-star" style="margin-right:5px;"></i>115</small></div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <i class="fas fa-tags" style="margin-top:5px;"></i>
+                                                <ul class="tags">
+                                                    <li><a href="#">English</a></li>
+                                                    <li><a href="#">Grammar</a></li>
+                                                    <li><a href="#">Past Simple</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <small class="views">
+                                                <i class="far fa-eye"></i>
+                                                1560
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div id="statsDiv">
+                    <div style="border-bottom:1px solid #dedede; color:#881125; margin-bottom:15px">Related Questions</div>
+                    <div><i class="fas fa-arrow-right"></i> <span class="relatedQ">What are your thoughts on Google Analytics vs other analytics platforms?</span></div>
+                    <div><i class="fas fa-arrow-right"></i> <span class="relatedQ">Google Analytics reads like a seismic chart lately</span></div>
+                </div>
+                <div id="statsDiv">
+                    <div style="border-bottom:1px solid #dedede; color:#881125; margin-bottom:15px">Answers(@ViewBag.numQAns)</div>
+                    <section id="questions-panel" style="border:none">
+                        <div class="answerCard rounded">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-2 user">
+                                        <center>
+                                            <a href=""><img data-toggle="tooltip" data-placement="right" title="Begginer" class="img-thumbnail rounded-circle pp-img" src="~/Content/Images/IMG-20170104-WA0023.jpg" /></a>
+                                            <a href="" data-toggle="tooltip" data-placement="right" title="Begginer"><h5>Mahmoud Ramy</h5></a>
+                                            <div id="rankLabel" style="color:#fff; background-color:#428bca; margin-bottom:10px">شاطر</div>
+                                            <div class="row">
+                                                <div class="offset-2 d-md-block d-none"></div>
+                                                <div class="col-3" id="voteUp">
+                                                    <i class="fa fa-thumbs-up"></i>
+                                                </div>
+                                                <div class="col-3" id="voteDown">
+                                                    <i class="fa fa-thumbs-down"></i>
+                                                </div>
+                                                <div class="offset-3 d-md-block d-none"></div>
+                                            </div>
+                                            <div>Vote for this answer</div>
+                                            <div style="color:green">+10</div>
+                                        </center>
+                                    </div>
+                                    <div class="col-md-10" style="margin-top:5px;">
+                                        <div style="color:black">
+                                            <p>
+                                                The biggest piece of advice I could give is to take a course in microeconometrics/labour econometrics as a part of your course. If your course coordinator won’t let you, beg. If they still won’t let you, then go off-line for a week or two and properly digest Mostly Harmless Econometrics (or if your stats isn’t too good yet, Mastering Metrics). If you want to go and work in health analytics, then replace what I just wrote with the equivalent for research design.
+
+                                                Why learn microemet? Basically, many of the big questions in business are of the form “what will happen if we do x”. Predictive models that aren’t informed by causal reasoning do *terribly* at this question–they answer the question “what do we see happening to y when we see x”. Inferring what will happen to y when you fiddle with x is a difficult task when all your data come from a world in which you did not fiddle with x. Too often we come across people with great technical chops who aren’t even aware they’re making mistakes when answering these questions. Don’t be one of these people.
+
+                                                The second biggest piece of advice would be to not become too enamoured by the sexy end of data science (especially predictive algorithms), but *do spend the time learning this stuff in depth*. Often the simple stuff done well is far more useful to real-world decisionmaking.
+
+                                                Third: read very widely.
+                                            </p>
+                                        </div>
+                                        <div class="dropdown-divider"></div>
+                                        <div class="row">
+                                            <div class="col-md-2" style="text-align:center; cursor:pointer">
+                                                <small style="font-size:11px;">
+                                                    <i class="fas fa-flag"></i>
+                                                    <br />
+                                                    Report
+                                                </small>
+                                            </div>
+                                            <div class="col-md-2" style="color:green">
+                                                <div><i class="fas fa-asterisk" style="margin:5px;"></i></div>
+                                                <div>Best Answer</div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="row">
+                                                    <i class="fas fa-tags" style="margin-top:5px;"></i>
+                                                    <ul class="tags">
+                                                        <li><a href="#">English</a></li>
+                                                        <li><a href="#">Grammar</a></li>
+                                                        <li><a href="#">Past Simple</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2" style=" text-align:center; color:#881125">
+                                                <small style="font-size:11px;">
+                                                    <i class="far fa-calendar-alt"></i>
+                                                    <br />
+                                                    12 months
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="answerCard rounded">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-2 user">
+                                        <center>
+                                            <a href=""><img data-toggle="tooltip" data-placement="right" title="Begginer" class="img-thumbnail rounded-circle pp-img" src="~/Content/Images/Yosef Amer 20141103_123040.jpg" /></a>
+                                            <a href="" data-toggle="tooltip" data-placement="right" title="Begginer"><h5>Usef Amer</h5></a>
+                                            <div id="rankLabel" style="color:#fff; background-color:#f0ad4e; margin-bottom:10px">فاهم</div>
+                                            <div class="row">
+                                                <div class="offset-2 d-md-block d-none"></div>
+                                                <div class="col-3" id="voteUp">
+                                                    <i class="fa fa-thumbs-up"></i>
+                                                </div>
+                                                <div class="col-3" id="voteDown">
+                                                    <i class="fa fa-thumbs-down"></i>
+                                                </div>
+                                                <div class="offset-3 d-md-block d-none"></div>
+                                            </div>
+                                            <div>Vote for this answer</div>
+                                            <div style="color:red">-2</div>
+                                        </center>
+                                    </div>
+                                    <div class="col-md-10" style="margin-top:5px;">
+                                        <div style="color:black">
+                                            <p>
+                                                In my opinion, you should be thinking about looking for work. Try to network and see if there are employers were looking for analytics. This is different from analysts. They could be market research companies, companies are looking for pricing decisions, and even productivity.
+
+                                                Look to companies where the culture and business processes are not instinctual. Rather look for companies that require analysis.
+
+                                                Unfortunately, one becomes more Bible as one becomes more familiar with the tools of analysis. This may be SAS, business objects, or any other reporting environment.
+
+                                                In conclusion, a massive degree in analytics should result in a job sooner or later.
+                                            </p>
+                                        </div>
+                                        <div class="dropdown-divider"></div>
+                                        <div class="row">
+                                            <div class="col-md-2" style="text-align:center; cursor:pointer">
+                                                <small style="font-size:11px;">
+                                                    <i class="fas fa-flag"></i>
+                                                    <br />
+                                                    Report
+                                                </small>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div><i class="fas fa-asterisk" style="margin:5px;"></i></div>
+                                                <div>Best Answer</div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="row">
+                                                    <i class="fas fa-tags" style="margin-top:5px;"></i>
+                                                    <ul class="tags">
+                                                        <li><a href="#">English</a></li>
+                                                        <li><a href="#">Grammar</a></li>
+                                                        <li><a href="#">Past Simple</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2" style=" text-align:center; color:#881125">
+                                                <small style="font-size:11px;">
+                                                    <i class="far fa-calendar-alt"></i>
+                                                    <br />
+                                                    12 months
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="col-md-3">
+                @{ Html.RenderPartial("sponserPanel");}
+            </div>
+        </div>
+        <div class="offset-1 d-md-block d-none"></div>
+    </div>
+</div>

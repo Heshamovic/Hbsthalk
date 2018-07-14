@@ -2818,3 +2818,213 @@ a:hover {
     border-left: 1px solid white;
 }
 /*End Glope*/
+
+/*Login and register*/
+.errorMsg
+{
+    color:red;
+}
+#regUName
+{
+    color:red;
+    display:none;
+}
+#regEmail {
+    color: red;
+    display:none;
+}
+#loginError
+{
+    color:red;
+    display:none;
+}
+/*END*/
+
+/*Filter*/
+.open {
+    position: fixed;
+    z-index: 9999;
+    top: 100px;
+    left: 0px;
+    color: white;
+    background-color: #881125;
+    padding: 10px;
+    cursor: pointer;
+}
+
+
+/*filter*/
+.filter {
+    position: fixed;
+    background-color: #881125;
+    height: 100%;
+    z-index: 999;
+    color: white;
+    left: -100%;
+    overflow-y: scroll;
+    border-radius: 10px;
+}
+
+    .filter ul {
+        list-style: none;
+    }
+
+    .filter .con {
+        padding-left: 80%;
+        margin-top: 20px;
+    }
+
+
+    .filter .cust {
+        display: none;
+        cursor: pointer;
+        border-radius: 10px;
+        padding: 5px;
+        transition: 0.2s;
+    }
+
+        .filter .cust:hover {
+            background-color: white;
+            color: #881125;
+            transition: 0.2s;
+            border-radius: 10px;
+        }
+
+    .filter ul li {
+        padding: 20px;
+    }
+
+        .filter ul li span {
+            font-size: 20px;
+            cursor: pointer;
+            padding: 5px;
+            transition: 0.5s;
+        }
+
+            .filter ul li span:hover {
+                color: black;
+                transition: 0.5;
+            }
+
+    .filter .sub1 {
+        height: 0;
+        overflow: hidden;
+    }
+
+    .filter .sub2 {
+        height: 0;
+        overflow: hidden;
+    }
+
+    .filter .sub3 {
+        height: 0;
+        overflow: hidden;
+    }
+
+    .filter .sub4 {
+        height: 0;
+        overflow: hidden;
+    }
+
+    .filter .sub5 {
+        height: 0;
+        overflow: hidden;
+    }
+
+    .filter .sub6 {
+        height: 0;
+        overflow: hidden;
+    }
+
+    .filter .sub7 {
+        height: 0;
+        overflow: hidden;
+    }
+
+    .filter .sub8 {
+        height: 0;
+        overflow: hidden;
+    }
+
+    .filter .sub9 {
+        height: 0;
+        overflow: hidden;
+    }
+
+    .filter li {
+        margin-top: 10px;
+    }
+
+.cust-time {
+    background-color: transparent;
+    color: white;
+}
+
+.cust-time2 {
+    background-color: white;
+    color: #881125;
+}
+
+.filter .sub1 ul li:hover {
+    border-radius: 10px;
+    background-color: white;
+    color: #881125;
+    cursor: pointer;
+}
+
+.filter .sub2 ul li:hover {
+    border-radius: 10px;
+    background-color: white;
+    color: #881125;
+    cursor: pointer;
+}
+
+.filter .sub3 ul li:hover {
+    border-radius: 10px;
+    background-color: white;
+    color: #881125;
+    cursor: pointer;
+}
+
+.filter .sub4 ul li:hover {
+    border-radius: 10px;
+    background-color: white;
+    color: #881125;
+    cursor: pointer;
+}
+
+.filter .sub5 ul li:hover {
+    border-radius: 10px;
+    background-color: white;
+    color: #881125;
+    cursor: pointer;
+}
+
+.filter .sub6 ul li:hover {
+    border-radius: 10px;
+    background-color: white;
+    color: #881125;
+    cursor: pointer;
+}
+
+.filter .sub7 ul li:hover {
+    border-radius: 10px;
+    background-color: white;
+    color: #881125;
+    cursor: pointer;
+}
+
+.filter .sub8 ul li:hover {
+    border-radius: 10px;
+    background-color: white;
+    color: #881125;
+    cursor: pointer;
+}
+
+.filter .sub9 ul li:hover {
+    border-radius: 10px;
+    background-color: white;
+    color: #881125;
+    cursor: pointer;
+}
+/*END*/

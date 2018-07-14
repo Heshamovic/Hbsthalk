@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model Hbsthalk.Models.RegisterAccount
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Courgette|Great+Vibes|Kaushan+Script|Pacifico|Satisfy" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Aref+Ruqaa|Changa|Dancing+Script|El+Messiri" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
     @Styles.Render("~/content/css/all.css")
     @Styles.Render("~/content/css/Site.css")
     @Styles.Render("~/Content/css/style.css")
@@ -39,7 +41,7 @@
                     {
                         <span class="lead "><a href="#">@Session["UserName"]</a></span>
                         <span class="lead vl ">|</span>
-                        <span class="lead vl "><a href="#" class="logoutBtn">Logout</a></span>
+                        <span class="lead vl "><a href="#" class="logoutBtn" onclick="logout(@Session["ID"])">Logout</a></span>
                     }
                 </div>
             </div>
@@ -91,53 +93,65 @@
                             <h4>Register with your site account</h4>
                             <div class="dropdown-divider"></div>
                             <center>
-                                <div class="container">
-                                    <div class="col-12">
-                                        <div class="row">
-                                            <div class="col-md-6 col-12">
-                                                <div class="input-group mb-3">
-                                                    <input type="text" class="form-control" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1">
+                                <form class="container" id="regForm">
+                                    @using (Html.BeginForm("Register", "Home", FormMethod.Post))
+                                    {
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <div class="col-md-6 col-12">
+                                                    <div class="input-group mb-3">
+                                                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control col-12", @placeholder = "Name" })
+                                                        @Html.ValidationMessageFor(x => x.Name, "", new { @class = "errorMsg col-12" })
+
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-6 col-12">
-                                                <div class="input-group mb-3">
-                                                    <input type="text" class="form-control" placeholder="Surname" aria-label="Username" aria-describedby="basic-addon1">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="row">
-                                            <div class="col-md-6 col-12">
-                                                <div class="input-group mb-3">
-                                                    <input type="text" class="form-control" placeholder="User Name" aria-label="Username" aria-describedby="basic-addon2">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-12">
-                                                <div class="input-group mb-3">
-                                                    <input type="email" class="form-control" placeholder="E-mail" aria-label="Username" aria-describedby="basic-addon2">
+                                                <div class="col-md-6 col-12">
+                                                    <div class="input-group mb-3">
+                                                        @Html.TextBoxFor(model => model.SirName, new { @class = "form-control col-12", @placeholder = "Surname" })
+                                                        @Html.ValidationMessageFor(model => model.SirName, "", new { @class = "errorMsg col-12" })
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="row">
-                                            <div class="col-md-6 col-12">
-                                                <div class="input-group mb-3">
-                                                    <input type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon2">
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <div class="col-md-6 col-12">
+                                                    <div class="input-group mb-3">
+                                                        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control col-12", @placeholder = "User Name" })
+                                                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "errorMsg col-12" })
+                                                        <div id="regUName">This User Name is taken</div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-6 col-12">
-                                                <div class="input-group mb-3">
-                                                    <input type="password" class="form-control" placeholder="Re-password" aria-label="Username" aria-describedby="basic-addon2">
+                                                <div class="col-md-6 col-12">
+                                                    <div class="input-group mb-3">
+                                                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control col-12", @placeholder = "E-mail" })
+                                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "errorMsg col-12" })
+                                                        <div id="regEmail">This Email is already registered</div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-12" id="regiter-to">
-                                        <button type="submit" class="btn btn-secondary">Register</button>
-                                    </div>
-                                </div>
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <div class="col-md-6 col-12">
+                                                    <div class="input-group mb-3">
+                                                        @Html.PasswordFor(model => model.Password, new { @class = "form-control col-12", @placeholder = "Password" })
+                                                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "errorMsg col-12" })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="input-group mb-3">
+                                                        @Html.PasswordFor(model => model.rePassword, new { @class = "form-control col-12", @placeholder = "Re-Password" })
+                                                        @Html.ValidationMessageFor(model => model.rePassword, "", new { @class = "errorMsg col-12" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12" id="regiter-to">
+                                            <button type="submit" class="btn btn-secondary" onclick="register(event)">Register</button>
+                                        </div>
+                                    }
+                                </form>
                             </center>
                         </div>
                     </div>
@@ -147,41 +161,6 @@
         </div>
     </section>
     <!--END-->
-    <!--START Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:transparent; transition: 0.5s;">
-        <a class="navbar-brand" href="/Home/index">Hbsthalk</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span><i class="fas fa-ellipsis-v"></i></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/Home/Questions">Questions<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Tutorials</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contests</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Applications</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Syllabus</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Rooms</a>
-                </li>
-                <li class="nav-item" id="search-btn">
-                    <a class="nav-link" href="#"><i class="fas fa-search"></i></a>
-                </li>
-            </ul>
-
-        </div>
-    </nav>
-    <!--END Navbar-->
     <!--logindiv-->
     <section class="login">
         <div class="row">
@@ -243,6 +222,7 @@
                                                 <button class="btn btn-outline-secondary" type="button"><i class="fa fa-eye"></i></button>
                                             </div>
                                         </div>
+                                        <div class="col-12" id="loginError">Wrong user name or password</div>
                                     </div>
                                     <div class="col-12">
                                         <div class="row">
@@ -258,7 +238,7 @@
                                         </div>
                                     </div>
                                     <div class="col-12" id="signin">
-                                        <button type="button" class="btn btn-secondary" onclick="signIn()">Sign in</button>
+                                        <button type="button" class="btn btn-secondary" onclick="signIn(event)">Sign in</button>
                                     </div>
                                 </div>
                             </center>
@@ -269,6 +249,42 @@
             <div class="offset-md-1 d-md-block d-none"></div>
         </div>
     </section>
+    <!--END Login-->
+    <!--START Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:transparent; transition: 0.5s;">
+        <a class="navbar-brand" href="/Home/index">Hbsthalk</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span><i class="fas fa-ellipsis-v"></i></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/Home/Questions">Questions<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Tutorials</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contests</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Applications</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Syllabus</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Rooms</a>
+                </li>
+                <li class="nav-item" id="search-btn">
+                    <a class="nav-link" href="#"><i class="fas fa-search"></i></a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+    <!--END Navbar-->
     <!--Start Search-bar-->
     <section class="search-bar">
         <div class="row">
@@ -304,6 +320,217 @@
 
     </section>
     <!--END-->
+    <!--Filter-->
+    <div class="open"><i class="fas fa-filter fa-2x test"></i></div>
+    <div class="filter nicescroll-box">
+        <div class="con">
+            <i class="fas fa-times fa-2x cust"></i>
+        </div>
+        <ul>
+            <div class="container">
+
+                <div class="subject">
+                    <div class="col-12">
+                        <li>
+                            <span id="arabic" class="each">Arabic</span>
+                            <div class="sub1">
+                                <ul>
+                                    <li class="momo1" style="padding: 10px;">
+
+                                        <span style="font-size: 15px;"><i class="fas fa-arrow-circle-right test1"></i></span>
+                                        <span style="font-size: 15px;">نحو</span>
+
+                                    </li>
+                                    <li class="momo2" style="padding: 10px;">
+                                        <span style="font-size: 15px;"><i class="fas fa-arrow-circle-right test2"></i></span>
+                                        <span style="font-size: 15px;">بلاغة</span>
+                                    </li>
+                                    <li class="momo3" style="padding: 10px;">
+                                        <span style="font-size: 15px;"><i class="fas fa-arrow-circle-right test3"></i></span>
+                                        <span style="font-size: 15px;">ادب</span>
+                                    </li>
+                                    <li class="momo4" style="padding: 10px;">
+                                        <span style="font-size: 15px;"><i class="fas fa-arrow-circle-right test4"></i></span>
+                                        <span style="font-size: 15px;">نصوص</span>
+                                    </li>
+                                    <li class="momo5" style="padding: 10px;">
+                                        <span style="font-size: 15px;"><i class="fas fa-arrow-circle-right test5"></i></span>
+                                        <span style="font-size: 15px;">قصة</span>
+                                    </li>
+                                    <li class="momo6" style="padding: 10px;">
+                                        <span style="font-size: 15px;"><i class="fas fa-arrow-circle-right test6"></i></span>
+                                        <span style="font-size: 15px;">قراءة</span>
+                                    </li>
+
+                                </ul>
+
+                            </div>
+                        </li>
+                    </div>
+                    <div class="col-12">
+                        <li>
+                            <span id="english">English</span>
+                            <div class="sub2">
+                                <ul>
+                                    <li class="momo7" style="padding: 10px;">
+                                        <span style="font-size: 15px;"><i class="fas fa-arrow-circle-right test7"></i></span>
+                                        <span style="font-size: 15px;">Grammer</span>
+                                    </li>
+                                    <li class="momo8" style="padding: 10px;">
+                                        <span style="font-size: 15px;"><i class="fas fa-arrow-circle-right test8"></i></span>
+                                        <span style="font-size: 15px;">Novel</span>
+                                    </li>
+                                    <li class="momo9" style="padding: 10px;">
+                                        <span style="font-size: 15px;"><i class="fas fa-arrow-circle-right test9"></i></span>
+                                        <span style="font-size: 15px;">Translation</span>
+                                    </li>
+                                    <li class="momo10" style="padding: 10px;">
+                                        <span style="font-size: 15px;"><i class="fas fa-arrow-circle-right test10"></i></span>
+                                        <span style="font-size: 15px;">Situations</span>
+                                    </li>
+                                    <li class="momo11" style="padding: 10px;">
+                                        <span style="font-size: 15px;"><i class="fas fa-arrow-circle-right test11"></i></span>
+                                        <span style="font-size: 15px;">Comprehension</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </div>
+                    <div class="col-12">
+                        <li><span id="french">Français</span></li>
+                        <div class="sub3">
+                            <ul>
+                                <li class="momo12" style="padding: 10px;">
+                                    <span style="font-size: 15px;"><i class="fas fa-arrow-circle-right test12"></i></span>
+                                    <span style="font-size: 15px;">Grammaire</span>
+                                </li>
+                                <li class="momo13" style="padding: 10px;">
+                                    <span style="font-size: 15px;"><i class="fas fa-arrow-circle-right test13"></i></span>
+                                    <span style="font-size: 15px;">Situations</span>
+                                </li>
+                                <li class="momo14" style="padding: 10px;">
+                                    <span style="font-size: 15px;"><i class="fas fa-arrow-circle-right test14"></i></span>
+                                    <span style="font-size: 15px;">Compréhension</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <li><span id="deu">Deutsch</span></li>
+                        <div class="sub4">
+                            <ul>
+                                <li class="momo15" style="padding: 10px;">
+                                    <span style="font-size: 15px;"><i class="fas fa-arrow-circle-right test15"></i></span>
+                                    <span style="font-size: 15px;">Grammatik</span>
+                                </li>
+                                <li class="momo16" style="padding: 10px;">
+                                    <span style="font-size: 15px;"><i class="fas fa-arrow-circle-right test16"></i></span>
+                                    <span style="font-size: 15px;">Situationen</span>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <li><span id="italy">Italiano</span></li>
+                        <div class="sub5">
+                            <ul>
+                                <li class="momo17" style="padding: 10px;">
+                                    <span style="font-size: 15px;"><i class="fas fa-arrow-circle-right test17"></i></span>
+                                    <span style="font-size: 15px;">grammatica</span>
+                                </li>
+                                <li class="momo18" style="padding: 10px;">
+                                    <span style="font-size: 15px;"><i class="fas fa-arrow-circle-right test18"></i></span>
+                                    <span style="font-size: 15px;">situazioni</span>
+                                </li>
+                                <li class="momo19" style="padding: 10px;">
+                                    <span style="font-size: 15px;"><i class="fas fa-arrow-circle-right test19"></i></span>
+                                    <span style="font-size: 15px;">comprensione</span>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <li><span id="math">Mathematics</span></li>
+                        <div class="sub6">
+                            <ul>
+                                <li class="momo20" style="padding: 10px;">
+                                    <span style="font-size: 15px;"><i class="fas fa-arrow-circle-right test20"></i></span>
+                                    <span style="font-size: 15px;">Algebra & solid</span>
+                                </li>
+                                <li class="momo21" style="padding: 10px;">
+                                    <span style="font-size: 15px;"><i class="fas fa-arrow-circle-right test21"></i></span>
+                                    <span style="font-size: 15px;">Calclus</span>
+                                </li>
+                                <li class="momo22" style="padding: 10px;">
+                                    <span style="font-size: 15px;"><i class="fas fa-arrow-circle-right test22"></i></span>
+                                    <span style="font-size: 15px;">Dynamics</span>
+                                </li>
+                                <li class="momo23" style="padding: 10px;">
+                                    <span style="font-size: 15px;"><i class="fas fa-arrow-circle-right test24"></i></span>
+                                    <span style="font-size: 15px;">Statics</span>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <li><span id="chem">Chemistry</span></li>
+                        <div class="sub7">
+                            <ul>
+                                <li class="momo24" style="padding: 10px;">
+                                    <span style="font-size: 15px;"><i class="fas fa-arrow-circle-right test24"></i></span>
+                                    <span style="font-size: 15px;">Organic chemistry</span>
+                                </li>
+                                <li class="momo25" style="padding: 10px;">
+                                    <span style="font-size: 15px;"><i class="fas fa-arrow-circle-right test25"></i></span>
+                                    <span style="font-size: 15px;">Non-Organic</span>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <li><span id="bio">Biology</span></li>
+                        <div class="sub8">
+                            <ul>
+                                <li class="momo26" style="padding: 10px;">
+                                    <span style="font-size: 15px;"><i class="fas fa-arrow-circle-right test26"></i></span>
+                                    <span style="font-size: 15px;">Living organisms</span>
+                                </li>
+                                <li class="momo27" style="padding: 10px;">
+                                    <span style="font-size: 15px;"><i class="fas fa-arrow-circle-right test27"></i></span>
+                                    <span style="font-size: 15px;">Molecular Biology</span>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <li><span id="phy">Physics</span></li>
+                        <div class="sub9">
+                            <ul>
+                                <li class="momo28" style="padding: 10px;">
+                                    <span style="font-size: 15px;"><i class="fas fa-arrow-circle-right test28"></i></span>
+                                    <span style="font-size: 15px;">Modern Physics</span>
+                                </li>
+                                <li class="momo29" style="padding: 10px;">
+                                    <span style="font-size: 15px;"><i class="fas fa-arrow-circle-right test29"></i></span>
+                                    <span style="font-size: 15px;">Electricity</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </ul>
+
+    </div>
+    <!---->
     <div class="container-fluid body-content" style="padding:0px; margin-top:-19px">
         @RenderBody()
         <hr />
@@ -314,6 +541,8 @@
     <!--Scripts-->
     <script src="~/Scripts/jquery-3.3.1.js"></script>
     <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/wow.min.js"></script>
     <script src="~/Scripts/jquery.nicescroll.min.js"></script>

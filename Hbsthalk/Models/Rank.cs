@@ -12,13 +12,19 @@ namespace Hbsthalk.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Tag
+    public partial class Rank
     {
-        public int ID { get; set; }
-        public string Text { get; set; }
-        public string Type { get; set; }
-        public int RelatedID { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Rank()
+        {
+            this.Accounts = new HashSet<Account>();
+        }
     
-        public virtual Question Question { get; set; }
+        public int ID { get; set; }
+        public string rank1 { get; set; }
+        public string rankName { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Account> Accounts { get; set; }
     }
 }

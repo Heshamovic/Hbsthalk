@@ -39,7 +39,7 @@ namespace Hbsthalk.Models
         public string Password { get; set; }
         public string UserName { get; set; }
         public string ProfilePicture { get; set; }
-        public int Age { get; set; }
+        public Nullable<int> Age { get; set; }
         public string Email { get; set; }
         public string Gender { get; set; }
         public string Graduation { get; set; }
@@ -49,8 +49,11 @@ namespace Hbsthalk.Models
         public string FacebookEmail { get; set; }
         public int ProficiencyID { get; set; }
         public bool AllowTag { get; set; }
+        public string SirName { get; set; }
+        public int RankID { get; set; }
     
         public virtual Proficiency Proficiency { get; set; }
+        public virtual Rank Rank { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Answer> Answers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -26,12 +26,13 @@ namespace Hbsthalk.Models
         public int ID { get; set; }
         public string VideoPath { get; set; }
         public string Title { get; set; }
-        public Nullable<int> recommendation { get; set; }
+        public int recommendation { get; set; }
         public string Subject { get; set; }
         public double Price { get; set; }
         public int InstructorID { get; set; }
         public System.DateTime DateAndTime { get; set; }
         public string Description { get; set; }
+        public System.TimeSpan Length { get; set; }
     
         public virtual Account Account { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

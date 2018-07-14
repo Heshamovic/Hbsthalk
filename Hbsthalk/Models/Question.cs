@@ -22,6 +22,7 @@ namespace Hbsthalk.Models
             this.Mentions = new HashSet<Mention>();
             this.Images = new HashSet<Image>();
             this.TagRelations = new HashSet<TagRelation>();
+            this.Tags = new HashSet<Tag>();
         }
     
         public int ID { get; set; }
@@ -30,12 +31,11 @@ namespace Hbsthalk.Models
         public int Frequency { get; set; }
         public System.DateTime DateAndTime { get; set; }
         public string FilePath { get; set; }
-        public int Recommendation { get; set; }
-        public Nullable<int> RoomID { get; set; }
+        public int Favourits { get; set; }
+        public bool Solved { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Answer> Answers { get; set; }
-        public virtual DiscussionRoom DiscussionRoom { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Favourite> Favourites { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -44,5 +44,7 @@ namespace Hbsthalk.Models
         public virtual ICollection<Image> Images { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TagRelation> TagRelations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tag> Tags { get; set; }
     }
 }

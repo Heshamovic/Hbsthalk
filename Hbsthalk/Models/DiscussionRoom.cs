@@ -21,7 +21,6 @@ namespace Hbsthalk.Models
             this.Blogs = new HashSet<Blog>();
             this.Mentions = new HashSet<Mention>();
             this.Messages = new HashSet<Message>();
-            this.Questions = new HashSet<Question>();
             this.Accounts = new HashSet<Account>();
         }
     
@@ -38,8 +37,6 @@ namespace Hbsthalk.Models
         public virtual ICollection<Mention> Mentions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Message> Messages { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Question> Questions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Account> Accounts { get; set; }
     }

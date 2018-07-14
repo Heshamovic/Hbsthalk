@@ -21,6 +21,5 @@ namespace Hbsthalk.Models
     
         public virtual Blog Blog { get; set; }
         public virtual Question Question { get; set; }
-        public virtual Tag Tag { get; set; }
     }
 }

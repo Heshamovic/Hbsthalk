@@ -27,6 +27,8 @@ namespace Hbsthalk.Models
         public string FilePath { get; set; }
         public Nullable<int> RoomID { get; set; }
         public int AccountID { get; set; }
+        public bool Accepted { get; set; }
+        public bool BestAnswer { get; set; }
     
         public virtual Account Account { get; set; }
         public virtual DiscussionRoom DiscussionRoom { get; set; }

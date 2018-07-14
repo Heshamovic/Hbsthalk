@@ -1,0 +1,42 @@
+﻿#main {
+    padding: 5px;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+    display: inline-block
+}
+
+#pytab {
+    margin-bottom: 4px
+}
+
+#editor {
+    min-height: 250px;
+    max-height: 500px;
+}
+
+#res {
+    display: none;
+    background-color: red;
+}
+
+#askQPanel button:hover, label:hover {
+    background-color: #AF606D !important;
+    transition: 0.8s;
+}
+
+#askQPanel a:hover {
+    background-color: #464646 !important;
+    transition: 0.8s;
+}
+
+#askQPanel .leftQpanel {
+    float: right;
+    margin-top: 2px;
+    font-weight: bold;
+    font-family: 'Century Gothic';
+    color: #881125;
+    font-size: 28px;
+}

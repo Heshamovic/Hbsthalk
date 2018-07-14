@@ -10,15 +10,13 @@
 namespace Hbsthalk.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Tag
+    public partial class sp_helpdiagrams_Result
     {
+        public string Database { get; set; }
+        public string Name { get; set; }
         public int ID { get; set; }
-        public string Text { get; set; }
-        public string Type { get; set; }
-        public int RelatedID { get; set; }
-    
-        public virtual Question Question { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }

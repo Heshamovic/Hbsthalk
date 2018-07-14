@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="HbsthalkModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="Hbsthalk" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="Account">
     <Key>
       <PropertyRef Name="ID" />
@@ -19,7 +19,10 @@
     <Property Name="FacebookEmail" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
     <Property Name="ProficiencyID" Type="Int32" Nullable="false" />
     <Property Name="AllowTag" Type="Boolean" Nullable="false" />
+    <Property Name="SirName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="RankID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Proficiency" Relationship="Self.FK_Account_Proficiency" FromRole="Account" ToRole="Proficiency" />
+    <NavigationProperty Name="Rank" Relationship="Self.FK_Account_Rank" FromRole="Account" ToRole="Rank" />
     <NavigationProperty Name="Answers" Relationship="Self.FK_Answer_Account" FromRole="Account" ToRole="Answer" />
     <NavigationProperty Name="Blogs" Relationship="Self.FK_Blog_Account" FromRole="Account" ToRole="Blog" />
     <NavigationProperty Name="ContestAnswers" Relationship="Self.FK_ContestAnswer_Account" FromRole="Account" ToRole="ContestAnswer" />
@@ -35,9 +38,6 @@
     <NavigationProperty Name="Tutorials" Relationship="Self.FK_Tutorial_Account" FromRole="Account" ToRole="Tutorial" />
     <NavigationProperty Name="Tutorials1" Relationship="Self.EnrolledTutorial" FromRole="Account" ToRole="Tutorial" />
     <NavigationProperty Name="DiscussionRooms" Relationship="Self.RoomParticipant" FromRole="Account" ToRole="DiscussionRoom" />
-    <Property Name="SirName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="RankID" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Rank" Relationship="HbsthalkModel.FK_Account_Rank" FromRole="Account" ToRole="Rank" />
   </EntityType>
   <EntityType Name="Answer">
     <Key>
@@ -50,12 +50,12 @@
     <Property Name="FilePath" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
     <Property Name="RoomID" Type="Int32" />
     <Property Name="AccountID" Type="Int32" Nullable="false" />
+    <Property Name="Accepted" Type="Boolean" Nullable="false" />
+    <Property Name="BestAnswer" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Account" Relationship="Self.FK_Answer_Account" FromRole="Answer" ToRole="Account" />
     <NavigationProperty Name="DiscussionRoom" Relationship="Self.FK_Answer_DiscussionRoom" FromRole="Answer" ToRole="DiscussionRoom" />
     <NavigationProperty Name="Question" Relationship="Self.FK_Answer_Question" FromRole="Answer" ToRole="Question" />
     <NavigationProperty Name="Images" Relationship="Self.FK_Image_Answer" FromRole="Answer" ToRole="Image" />
-    <Property Name="Accepted" Type="Boolean" Nullable="false" />
-    <Property Name="BestAnswer" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="Application">
     <Key>
@@ -117,7 +117,6 @@
     <NavigationProperty Name="Blogs" Relationship="Self.FK_Blog_DiscussionRoom" FromRole="DiscussionRoom" ToRole="Blog" />
     <NavigationProperty Name="Mentions" Relationship="Self.FK_Mention_DiscussionRoom" FromRole="DiscussionRoom" ToRole="Mention" />
     <NavigationProperty Name="Messages" Relationship="Self.FK_Message_DiscussionRoom" FromRole="DiscussionRoom" ToRole="Message" />
-    <NavigationProperty Name="Questions" Relationship="Self.FK_Question_DiscussionRoom" FromRole="DiscussionRoom" ToRole="Question" />
     <NavigationProperty Name="Accounts" Relationship="Self.RoomParticipant" FromRole="DiscussionRoom" ToRole="Account" />
   </EntityType>
   <EntityType Name="Favourite">
@@ -200,14 +199,23 @@
     <Property Name="Frequency" Type="Int32" Nullable="false" />
     <Property Name="DateAndTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="FilePath" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-    <Property Name="Recommendation" Type="Int32" Nullable="false" />
-    <Property Name="RoomID" Type="Int32" />
+    <Property Name="Favourits" Type="Int32" Nullable="false" />
+    <Property Name="Solved" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Answers" Relationship="Self.FK_Answer_Question" FromRole="Question" ToRole="Answer" />
-    <NavigationProperty Name="DiscussionRoom" Relationship="Self.FK_Question_DiscussionRoom" FromRole="Question" ToRole="DiscussionRoom" />
     <NavigationProperty Name="Favourites" Relationship="Self.FK_Favourite_Question" FromRole="Question" ToRole="Favourite" />
     <NavigationProperty Name="Mentions" Relationship="Self.FK_Mention_Question" FromRole="Question" ToRole="Mention" />
     <NavigationProperty Name="Images" Relationship="Self.FK_Image_Question" FromRole="Question" ToRole="Image" />
     <NavigationProperty Name="TagRelations" Relationship="Self.FK_QuestionTag_Question" FromRole="Question" ToRole="TagRelation" />
+    <NavigationProperty Name="Tags" Relationship="Self.FK_Table_1_Question" FromRole="Question" ToRole="Tag" />
+  </EntityType>
+  <EntityType Name="Rank">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="rank1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="rankName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Accounts" Relationship="Self.FK_Account_Rank" FromRole="Rank" ToRole="Account" />
   </EntityType>
   <EntityType Name="Rating">
     <Key>
@@ -235,7 +243,9 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Text" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="TagRelation" Relationship="Self.FK_QuestionTag_Tag" FromRole="Tag" ToRole="TagRelation" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RelatedID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Question" Relationship="Self.FK_Table_1_Question" FromRole="Tag" ToRole="Question" />
   </EntityType>
   <EntityType Name="TrueFalse">
     <Key>
@@ -260,13 +270,13 @@
     <Property Name="Price" Type="Double" Nullable="false" />
     <Property Name="InstructorID" Type="Int32" Nullable="false" />
     <Property Name="DateAndTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Length" Type="Time" Nullable="false" Precision="7" />
     <NavigationProperty Name="Account" Relationship="Self.FK_Tutorial_Account" FromRole="Tutorial" ToRole="Account" />
     <NavigationProperty Name="Favourites" Relationship="Self.FK_Favourite_Tutorial" FromRole="Tutorial" ToRole="Favourite" />
     <NavigationProperty Name="Images" Relationship="Self.FK_Image_Tutorial" FromRole="Tutorial" ToRole="Image" />
     <NavigationProperty Name="TutorialMaterials" Relationship="Self.FK_TutorialMaterial_Tutorial" FromRole="Tutorial" ToRole="TutorialMaterial" />
     <NavigationProperty Name="Accounts" Relationship="Self.EnrolledTutorial" FromRole="Tutorial" ToRole="Account" />
-    <Property Name="Description" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
-    <Property Name="Length" Type="Time" Nullable="false" Precision="7" />
   </EntityType>
   <EntityType Name="TutorialMaterial">
     <Key>
@@ -364,7 +374,6 @@
     <Property Name="RoomID" Type="Int32" />
     <NavigationProperty Name="Blog" Relationship="Self.FK_QuestionTag_Blog" FromRole="TagRelation" ToRole="Blog" />
     <NavigationProperty Name="Question" Relationship="Self.FK_QuestionTag_Question" FromRole="TagRelation" ToRole="Question" />
-    <NavigationProperty Name="Tag" Relationship="Self.FK_QuestionTag_Tag" FromRole="TagRelation" ToRole="Tag" />
   </EntityType>
   <Association Name="FK_Account_Proficiency">
     <End Role="Proficiency" Type="Self.Proficiency" Multiplicity="1" />
@@ -375,6 +384,18 @@
       </Principal>
       <Dependent Role="Account">
         <PropertyRef Name="ProficiencyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Account_Rank">
+    <End Role="Rank" Type="Self.Rank" Multiplicity="1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rank">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="RankID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -678,18 +699,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Question_DiscussionRoom">
-    <End Role="DiscussionRoom" Type="Self.DiscussionRoom" Multiplicity="0..1" />
-    <End Role="Question" Type="Self.Question" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="DiscussionRoom">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Question">
-        <PropertyRef Name="RoomID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Favourite_Question">
     <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
     <End Role="Favourite" Type="Self.Favourite" Multiplicity="*" />
@@ -786,15 +795,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_QuestionTag_Tag">
-    <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
-    <End Role="TagRelation" Type="Self.TagRelation" Multiplicity="0..1" />
+  <Association Name="FK_Table_1_Question">
+    <End Role="Question" Type="Self.Question" Multiplicity="1" />
+    <End Role="Tag" Type="Self.Tag" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Tag">
+      <Principal Role="Question">
         <PropertyRef Name="ID" />
       </Principal>
-      <Dependent Role="TagRelation">
-        <PropertyRef Name="TagID" />
+      <Dependent Role="Tag">
+        <PropertyRef Name="RelatedID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -869,6 +878,7 @@
     <EntitySet Name="PreferenceLists" EntityType="Self.PreferenceList" />
     <EntitySet Name="Proficiencies" EntityType="Self.Proficiency" />
     <EntitySet Name="Questions" EntityType="Self.Question" />
+    <EntitySet Name="Ranks" EntityType="Self.Rank" />
     <EntitySet Name="Ratings" EntityType="Self.Rating" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="Tags" EntityType="Self.Tag" />
@@ -883,6 +893,10 @@
     <EntitySet Name="TagRelations" EntityType="Self.TagRelation" />
     <AssociationSet Name="FK_Account_Proficiency" Association="Self.FK_Account_Proficiency">
       <End Role="Proficiency" EntitySet="Proficiencies" />
+      <End Role="Account" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Account_Rank" Association="Self.FK_Account_Rank">
+      <End Role="Rank" EntitySet="Ranks" />
       <End Role="Account" EntitySet="Accounts" />
     </AssociationSet>
     <AssociationSet Name="FK_Answer_Account" Association="Self.FK_Answer_Account">
@@ -985,10 +999,6 @@
       <End Role="DiscussionRoom" EntitySet="DiscussionRooms" />
       <End Role="Message" EntitySet="Messages" />
     </AssociationSet>
-    <AssociationSet Name="FK_Question_DiscussionRoom" Association="Self.FK_Question_DiscussionRoom">
-      <End Role="DiscussionRoom" EntitySet="DiscussionRooms" />
-      <End Role="Question" EntitySet="Questions" />
-    </AssociationSet>
     <AssociationSet Name="FK_Favourite_Question" Association="Self.FK_Favourite_Question">
       <End Role="Question" EntitySet="Questions" />
       <End Role="Favourite" EntitySet="Favourites" />
@@ -1021,9 +1031,9 @@
       <End Role="Question" EntitySet="Questions" />
       <End Role="TagRelation" EntitySet="TagRelations" />
     </AssociationSet>
-    <AssociationSet Name="FK_QuestionTag_Tag" Association="Self.FK_QuestionTag_Tag">
+    <AssociationSet Name="FK_Table_1_Question" Association="Self.FK_Table_1_Question">
+      <End Role="Question" EntitySet="Questions" />
       <End Role="Tag" EntitySet="Tags" />
-      <End Role="TagRelation" EntitySet="TagRelations" />
     </AssociationSet>
     <AssociationSet Name="FK_ContestAnswer_TrueFalse" Association="Self.FK_ContestAnswer_TrueFalse">
       <End Role="TrueFalse" EntitySet="TrueFalses" />
@@ -1049,31 +1059,46 @@
       <End Role="Account" EntitySet="Accounts" />
       <End Role="DiscussionRoom" EntitySet="DiscussionRooms" />
     </AssociationSet>
-    <EntitySet Name="Ranks" EntityType="HbsthalkModel.Rank" />
-    <AssociationSet Name="FK_Account_Rank" Association="HbsthalkModel.FK_Account_Rank">
-      <End Role="Rank" EntitySet="Ranks" />
-      <End Role="Account" EntitySet="Accounts" />
-    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Hbsthalk.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Hbsthalk.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
   </EntityContainer>
-  <EntityType Name="Rank">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="rank1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="rankName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Accounts" Relationship="HbsthalkModel.FK_Account_Rank" FromRole="Rank" ToRole="Account" />
-  </EntityType>
-  <Association Name="FK_Account_Rank">
-    <End Type="HbsthalkModel.Rank" Role="Rank" Multiplicity="1" />
-    <End Type="HbsthalkModel.Account" Role="Account" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Rank">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Account">
-        <PropertyRef Name="RankID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
 </Schema>

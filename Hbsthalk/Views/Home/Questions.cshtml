@@ -3,8 +3,167 @@
     ViewBag.Title = "Questions";
 }
 
-<h2>Questions</h2>
-<div style="padding-top:200px">
-
-@{Html.RenderPartial("subFilter");}
+<link href="~/Content/css/questionsStyle.css" rel="stylesheet" />
+<div class="container-fluid">
+    <div class="row">
+        <div class="offset-1 d-md-block d-none"></div>
+        <div class="col-md-10 row">
+            <div class="col-md-9">
+                <section id="cust-tabs">
+                    <ul id="cust-ul" class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Top Questions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Recent Questions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Recently Answered</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">No Answers</a>
+                        </li>
+                    </ul>
+                </section>
+                <section id="questions-panel">
+                    <div class="card rounded">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-2 user">
+                                    <center>
+                                        <a href=""><img data-toggle="tooltip" data-placement="right" title="Begginer" class="img-thumbnail rounded-circle pp-img" src="~/Content/Images/IMG-20171217-WA0018.jpg" /></a>
+                                        <a href="" data-toggle="tooltip" data-placement="right" title="Begginer"><h5>Muhammed Aly</h5></a>
+                                    </center>
+                                </div>
+                                <div class="col-md-10" style="margin-top:5px;">
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                            <a class="Qhead arabic-font"href="/Home/Question?id=1"><h3>ما هو الفرق بين النعت و المضاف ايه؟</h3></a>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="row">
+                                                <div class="col-6" style=" text-align:center; color:#881125">
+                                                    <small style="font-size:11px;">
+                                                        <i class="far fa-calendar-alt"></i>
+                                                        <br />
+                                                        3 months
+                                                    </small>
+                                                </div>
+                                                <div class="col-6" style=" text-align:center; color:#881125">
+                                                    <small style="font-size:11px;">
+                                                        <i class="fas fa-comments"></i>
+                                                        <br />
+                                                        5 Answers
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="Qdesc arabic-font">
+                                        <p>
+                                            انا متوسطة فى النحو واجتهد لآكون افضل ولكنى لاأعرف ان افرق فى الاعراب بين النعت والحال والمضاف اليه ارجو منكم الشرح المبسط او ثوابت اعرابية لها تجعلنى اعرب الكلمات بسهولة ويسر فهذا يسبب لى الاحراج كثيرا
+                                        </p>
+                                    </div>
+                                    <div class="dropdown-divider"></div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="status-sol"><small><i class="fas fa-check" style="margin-right:5px;"></i>solved</small></div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="rec"><small><i class="fas fa-star" style="margin-right:5px;"></i>1520000</small></div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <i class="fas fa-tags" style="margin-top:5px;"></i>
+                                                <ul class="tags">
+                                                    <li><a href="#">عربي</a></li>
+                                                    <li><a href="#">نحو</a></li>
+                                                    <li><a href="#">المضاف اليه</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <small class="views">
+                                                <i class="far fa-eye"></i>
+                                                120000
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card rounded">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-2 user">
+                                    <center>
+                                        <a href=""><img data-toggle="tooltip" data-placement="right" title="Begginer" class="img-thumbnail rounded-circle pp-img" src="~/Content/Images/IMG-20170104-WA0023.jpg" /></a>
+                                        <a href="" data-toggle="tooltip" data-placement="right" title="Begginer"><h5>Mahmoud Ramy</h5></a>
+                                    </center>
+                                </div>
+                                <div class="col-md-10" style="margin-top:5px;">
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                            <a class="Qhead" href=""><h3>How much do web developers earn? What is their salary?</h3></a>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="row">
+                                                <div class="col-6" style=" text-align:center; color:#881125">
+                                                    <small style="font-size:11px;">
+                                                        <i class="far fa-calendar-alt"></i>
+                                                        <br />
+                                                        12 months
+                                                    </small>
+                                                </div>
+                                                <div class="col-6" style=" text-align:center; color:#881125">
+                                                    <small style="font-size:11px;">
+                                                        <i class="fas fa-comments"></i>
+                                                        <br />
+                                                        0 Answers
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="Qdesc">
+                                        <p>I will be studying full-time for a 1-year MS in Business Analytics. What advise would you give to a person in this situation so that he can make the most out of his time out from work and get the ...</p>
+                                    </div>
+                                    <div class="dropdown-divider"></div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="status-inp"><small><i class="fas fa-spinner fa-spin" style="margin-right:5px;"></i>in progress</small></div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="rec"><small><i class="fas fa-star" style="margin-right:5px;"></i>115</small></div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <i class="fas fa-tags" style="margin-top:5px;"></i>
+                                                <ul class="tags">
+                                                    <li><a href="#">English</a></li>
+                                                    <li><a href="#">Grammar</a></li>
+                                                    <li><a href="#">Past Simple</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <small class="views">
+                                                <i class="far fa-eye"></i>
+                                                1560
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-md-3">
+                 @{ Html.RenderPartial("sponserPanel");}
+            </div>
+        </div>
+        <div class="offset-1 d-md-block d-none"></div>
+    </div>
 </div>

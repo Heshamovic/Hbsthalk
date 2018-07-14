@@ -1,0 +1,116 @@
+﻿
+@{
+    ViewBag.Title = "AskQuestions";
+}
+<link href="~/Content/css/askQuestionStyle.css" rel="stylesheet" />
+<div class="container-fluid" style="margin-top:90px;">
+    <div class="row">
+        <div class="offset-2 d-md-block d-none"></div>
+        <div class="col-md-9">
+            <div class="col-md-9">
+                <div>
+                    <form>
+                        <div class="form-group row" style="margin-top:90px;">
+                            <h4 class="col-md-1" style="text-align:center; margin-top:3px;">Title</h4>
+                            <div class="col-md-11">
+                                <input id="example" type="text" class="form-control" placeholder="What is your question? Be specific." specific.data-toggle="popover" data-trigger="focus" data-placement="right" data-content="">
+                            </div>
+                            <div id="popover_content_wrapper" style="display: none">
+                                <h1>How to Ask</h1>
+                                <br />
+                                <p class="lead" style="font-size:15px;">-We prefer questions that can be answered, not just discussed.</p>
+
+                                <p class="lead" style="font-size:15px;">-Provide details. Share your research.</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div>
+                    <section id="askQPanel">
+                        <div id="main" style="margin-top:30px;">
+                            <div class="card">
+                                <div class="card-header">
+                                    <span class="btn-group">
+
+                                        <button class="btn" style="background-color: #881125; color:white;transition:0.8s;" data-toggle="dropdown" onclick="if(document.execCommand('increaseFontSize', false, null) == false) {addHTML('big')}"><strong>A</strong><i class="glyphicon glyphicon-arrow-up"></i></button>
+
+                                        <button class="btn" style="background-color: #881125; color:white;transition:0.8s;" data-toggle="dropdown" onclick="if(document.execCommand('decreaseFontSize', false, null) == false) {addHTML('small')}"><strong style="font-size:12px;">A</strong><i class="glyphicon glyphicon-arrow-down"></i></button>
+                                    </span>
+                                    <span class="btn-group" id="cust-btns">
+
+                                        <button onclick="document.execCommand('bold', false, null)" title="Bold (CTRL+B)" class="btn" style="background-color: #881125; color:white;transition:0.8s;"><strong>B</strong></button>
+
+                                        <button onclick="document.execCommand('italic', false, null)" title="Italic (CTRL+I)" class="btn" style="background-color: #881125; color:white;transition:0.8s;"><em>I</em></button>
+
+                                        <button onclick="document.execCommand('underline', false, null)" title="Underline (CTRL+I)" class="btn" style="background-color: #881125; color:white;"><u>U</u></button>
+                                        <label class="btn" style="margin-bottom:0px;background-color: #881125;transition:0.8s;"><i class="fas fa-image" style="color:white;"></i><input type="file" onchange="validateFileType()" accept="image/*" style="display: none;"></label>
+                                        <label class="btn" style="margin-bottom:0px;background-color: #881125;transition:0.8s;"><i class="fas fa-file-audio" style="color:white;"></i><input type="file" onchange="validateFileType()" accept="audio/*" style="display: none;"></label>
+                                        <a class="btn btn-right" style="background-color: black;color:white;transition:0.8s; " onclick="document.getElementById('editor').innerHTML='<br/>'"><strong>&times;</strong></a>
+                                    </span>
+                                    <a href="/Home/index">
+                                        <span class="leftQpanel">
+                                            Hbsthalk
+                                        </span>
+                                    </a>
+                                </div>
+                                <div contenteditable="true" id="editor" specific.data-toggle="popover" data-trigger="focus" data-placement="right" data-content="" class="card-body" placeholder="Type your question..." onkeyup="$('#res').text($('#editor').html())" onchange="$('#res').text($('#editor').html())"></div>
+                            </div>
+                            <div id="popover_content_wrapper1" style="display: none">
+                                <h1>How to format</h1>
+                                <br />
+                                <p class="lead" style="font-size:15px;"><i class="fas fa-hand-point-right" style="margin-right:7px;"></i> Select text and hit an option.</p>
+                                <p class="lead" style="font-size:15px;"><i class="fas fa-hand-point-right" style="margin-right:7px;"></i> make your text descriptive using <b>Bold</b> and <em>Italic</em>.</p>
+                                <p class="lead" style="font-size:15px;"><i class="fas fa-hand-point-right" style="margin-right:7px;"></i> Descripe your question well to be understood and answered easily.</p>
+                            </div>
+                            <div id="res"></div>
+                            <form style="margin-top:20px; margin-left:10px;">
+                                <div class="form-group">
+                                    <h5 style="margin-bottom:10px;margin-left:-5px;"><i class="fas fa-tags" style="margin-right:10px;"></i>Tags</h5>
+                                    <div class="row">
+                                        <div class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Subject
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                                <button class="dropdown-item" type="button">Action</button>
+                                                <button class="dropdown-item" type="button">Another action</button>
+                                                <button class="dropdown-item" type="button">Something else here</button>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Branch
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                                <button class="dropdown-item" type="button">Action</button>
+                                                <button class="dropdown-item" type="button">Another action</button>
+                                                <button class="dropdown-item" type="button">Something else here</button>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Topic
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                                <button class="dropdown-item" type="button">Action</button>
+                                                <button class="dropdown-item" type="button">Another action</button>
+                                                <button class="dropdown-item" type="button">Something else here</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <center>
+                                <button type="button" class="btn" style="background-color:#881125; color:white;">Submit</button>
+                            </center>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="col-md-3">
+
+            </div>
+        </div>
+        <div class="offset-1 d-md-block d-none"></div>
+    </div>
+</div>
