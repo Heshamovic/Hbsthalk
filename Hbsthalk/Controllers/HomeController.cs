@@ -20,7 +20,7 @@ namespace Hbsthalk.Controllers
             foreach (Tutorial t in tutorials)
             {
                 Account a = db.Accounts.SingleOrDefault(x => x.ID == t.InstructorID);
-                Image i = db.Images.SingleOrDefault(x => x.TutorialID == t.ID);
+                Image i = db.Images.SingleOrDefault(x => x.RelatedID == t.ID && x.RelationType == "tut");
                 tutorialAcc.Add(a);
             }
             ViewBag.homeTutorial = tutorials;
