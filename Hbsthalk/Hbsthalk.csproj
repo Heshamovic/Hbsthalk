@@ -252,9 +252,6 @@
     <Compile Include="Models\Tag.cs">
       <DependentUpon>Hbsthalk.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TagRelation.cs">
-      <DependentUpon>Hbsthalk.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\TrueFalse.cs">
       <DependentUpon>Hbsthalk.tt</DependentUpon>
     </Compile>

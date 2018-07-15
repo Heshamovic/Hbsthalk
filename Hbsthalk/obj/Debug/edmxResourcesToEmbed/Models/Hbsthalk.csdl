@@ -81,7 +81,6 @@
     <NavigationProperty Name="DiscussionRoom" Relationship="Self.FK_Blog_DiscussionRoom" FromRole="Blog" ToRole="DiscussionRoom" />
     <NavigationProperty Name="Images" Relationship="Self.FK_Image_Blog" FromRole="Blog" ToRole="Image" />
     <NavigationProperty Name="Mentions" Relationship="Self.FK_Mention_Blog" FromRole="Blog" ToRole="Mention" />
-    <NavigationProperty Name="TagRelations" Relationship="Self.FK_QuestionTag_Blog" FromRole="Blog" ToRole="TagRelation" />
   </EntityType>
   <EntityType Name="Complete">
     <Key>
@@ -196,17 +195,17 @@
     <Property Name="ID" Type="Int32" Nullable="false" />
     <Property Name="AccountID" Type="Int32" Nullable="false" />
     <Property Name="Text" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" />
-    <Property Name="Frequency" Type="Int32" Nullable="false" />
+    <Property Name="Views" Type="Int32" Nullable="false" />
     <Property Name="DateAndTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="FilePath" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
     <Property Name="Favourits" Type="Int32" Nullable="false" />
     <Property Name="Solved" Type="Boolean" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Report" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Answers" Relationship="Self.FK_Answer_Question" FromRole="Question" ToRole="Answer" />
     <NavigationProperty Name="Favourites" Relationship="Self.FK_Favourite_Question" FromRole="Question" ToRole="Favourite" />
     <NavigationProperty Name="Mentions" Relationship="Self.FK_Mention_Question" FromRole="Question" ToRole="Mention" />
     <NavigationProperty Name="Images" Relationship="Self.FK_Image_Question" FromRole="Question" ToRole="Image" />
-    <NavigationProperty Name="TagRelations" Relationship="Self.FK_QuestionTag_Question" FromRole="Question" ToRole="TagRelation" />
-    <NavigationProperty Name="Tags" Relationship="Self.FK_Table_1_Question" FromRole="Question" ToRole="Tag" />
   </EntityType>
   <EntityType Name="Rank">
     <Key>
@@ -243,9 +242,8 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Text" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RelationType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="RelatedID" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Question" Relationship="Self.FK_Table_1_Question" FromRole="Tag" ToRole="Question" />
   </EntityType>
   <EntityType Name="TrueFalse">
     <Key>
@@ -363,17 +361,6 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Path" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="TagRelation">
-    <Key>
-      <PropertyRef Name="TagID" />
-    </Key>
-    <Property Name="QuestionID" Type="Int32" />
-    <Property Name="TagID" Type="Int32" Nullable="false" />
-    <Property Name="BlogID" Type="Int32" />
-    <Property Name="RoomID" Type="Int32" />
-    <NavigationProperty Name="Blog" Relationship="Self.FK_QuestionTag_Blog" FromRole="TagRelation" ToRole="Blog" />
-    <NavigationProperty Name="Question" Relationship="Self.FK_QuestionTag_Question" FromRole="TagRelation" ToRole="Question" />
   </EntityType>
   <Association Name="FK_Account_Proficiency">
     <End Role="Proficiency" Type="Self.Proficiency" Multiplicity="1" />
@@ -627,18 +614,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_QuestionTag_Blog">
-    <End Role="Blog" Type="Self.Blog" Multiplicity="0..1" />
-    <End Role="TagRelation" Type="Self.TagRelation" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Blog">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="TagRelation">
-        <PropertyRef Name="BlogID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_ContestAnswer_Complete">
     <End Role="Complete" Type="Self.Complete" Multiplicity="0..1" />
     <End Role="ContestAnswer" Type="Self.ContestAnswer" Multiplicity="*" />
@@ -783,30 +758,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_QuestionTag_Question">
-    <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
-    <End Role="TagRelation" Type="Self.TagRelation" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Question">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="TagRelation">
-        <PropertyRef Name="QuestionID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Table_1_Question">
-    <End Role="Question" Type="Self.Question" Multiplicity="1" />
-    <End Role="Tag" Type="Self.Tag" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Question">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Tag">
-        <PropertyRef Name="RelatedID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_ContestAnswer_TrueFalse">
     <End Role="TrueFalse" Type="Self.TrueFalse" Multiplicity="0..1" />
     <End Role="ContestAnswer" Type="Self.ContestAnswer" Multiplicity="*" />
@@ -890,7 +841,6 @@
     <EntitySet Name="FollowZones" EntityType="Self.FollowZone" />
     <EntitySet Name="Images" EntityType="Self.Image" />
     <EntitySet Name="Lessons" EntityType="Self.Lesson" />
-    <EntitySet Name="TagRelations" EntityType="Self.TagRelation" />
     <AssociationSet Name="FK_Account_Proficiency" Association="Self.FK_Account_Proficiency">
       <End Role="Proficiency" EntitySet="Proficiencies" />
       <End Role="Account" EntitySet="Accounts" />
@@ -975,10 +925,6 @@
       <End Role="Blog" EntitySet="Blogs" />
       <End Role="Mention" EntitySet="Mentions" />
     </AssociationSet>
-    <AssociationSet Name="FK_QuestionTag_Blog" Association="Self.FK_QuestionTag_Blog">
-      <End Role="Blog" EntitySet="Blogs" />
-      <End Role="TagRelation" EntitySet="TagRelations" />
-    </AssociationSet>
     <AssociationSet Name="FK_ContestAnswer_Complete" Association="Self.FK_ContestAnswer_Complete">
       <End Role="Complete" EntitySet="Completes" />
       <End Role="ContestAnswer" EntitySet="ContestAnswers" />
@@ -1026,14 +972,6 @@
     <AssociationSet Name="FK_Image_Question" Association="Self.FK_Image_Question">
       <End Role="Question" EntitySet="Questions" />
       <End Role="Image" EntitySet="Images" />
-    </AssociationSet>
-    <AssociationSet Name="FK_QuestionTag_Question" Association="Self.FK_QuestionTag_Question">
-      <End Role="Question" EntitySet="Questions" />
-      <End Role="TagRelation" EntitySet="TagRelations" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Table_1_Question" Association="Self.FK_Table_1_Question">
-      <End Role="Question" EntitySet="Questions" />
-      <End Role="Tag" EntitySet="Tags" />
     </AssociationSet>
     <AssociationSet Name="FK_ContestAnswer_TrueFalse" Association="Self.FK_ContestAnswer_TrueFalse">
       <End Role="TrueFalse" EntitySet="TrueFalses" />

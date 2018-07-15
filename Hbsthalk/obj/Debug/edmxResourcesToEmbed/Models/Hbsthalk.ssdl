@@ -228,11 +228,13 @@ warning 6002: The table/view 'Hbsthalk.dbo.Lesson' does not have a primary key d
     <Property Name="ID" Type="int" Nullable="false" />
     <Property Name="AccountID" Type="int" Nullable="false" />
     <Property Name="Text" Type="varchar" MaxLength="1500" />
-    <Property Name="Frequency" Type="int" Nullable="false" />
+    <Property Name="Views" Type="int" Nullable="false" />
     <Property Name="DateAndTime" Type="datetime" Nullable="false" />
     <Property Name="FilePath" Type="varchar" MaxLength="300" />
     <Property Name="Favourits" Type="int" Nullable="false" />
     <Property Name="Solved" Type="bit" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="250" />
+    <Property Name="Report" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Rank">
     <Key>
@@ -277,19 +279,8 @@ warning 6002: The table/view 'Hbsthalk.dbo.RoomParticipant' does not have a prim
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Text" Type="varchar" MaxLength="30" Nullable="false" />
-    <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="RelationType" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="RelatedID" Type="int" Nullable="false" />
-  </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="TagRelation">
-    <Key>
-      <PropertyRef Name="TagID" />
-    </Key>
-    <Property Name="QuestionID" Type="int" />
-    <Property Name="TagID" Type="int" Nullable="false" />
-    <Property Name="BlogID" Type="int" />
-    <Property Name="RoomID" Type="int" />
   </EntityType>
   <EntityType Name="TrueFalse">
     <Key>
@@ -755,30 +746,6 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_QuestionTag_Blog">
-    <End Role="Blog" Type="Self.Blog" Multiplicity="0..1" />
-    <End Role="TagRelation" Type="Self.TagRelation" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Blog">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="TagRelation">
-        <PropertyRef Name="BlogID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_QuestionTag_Question">
-    <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
-    <End Role="TagRelation" Type="Self.TagRelation" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Question">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="TagRelation">
-        <PropertyRef Name="QuestionID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Ratings_Account">
     <End Role="Account" Type="Self.Account" Multiplicity="1" />
     <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
@@ -812,18 +779,6 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
       </Principal>
       <Dependent Role="RoomParticipant">
         <PropertyRef Name="RoomID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Table_1_Question">
-    <End Role="Question" Type="Self.Question" Multiplicity="1" />
-    <End Role="Tag" Type="Self.Tag" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Question">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Tag">
-        <PropertyRef Name="RelatedID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -965,14 +920,6 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
     [RoomParticipant].[AccountID] AS [AccountID], 
     [RoomParticipant].[RoomID] AS [RoomID]
     FROM [dbo].[RoomParticipant] AS [RoomParticipant]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="TagRelation" EntityType="Self.TagRelation" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [TagRelation].[QuestionID] AS [QuestionID], 
-    [TagRelation].[TagID] AS [TagID], 
-    [TagRelation].[BlogID] AS [BlogID], 
-    [TagRelation].[RoomID] AS [RoomID]
-    FROM [dbo].[TagRelation] AS [TagRelation]</DefiningQuery>
     </EntitySet>
     <AssociationSet Name="FK_Account_Proficiency" Association="Self.FK_Account_Proficiency">
       <End Role="Proficiency" EntitySet="Proficiency" />
@@ -1118,14 +1065,6 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
       <End Role="Account" EntitySet="Account" />
       <End Role="PreferenceList" EntitySet="PreferenceList" />
     </AssociationSet>
-    <AssociationSet Name="FK_QuestionTag_Blog" Association="Self.FK_QuestionTag_Blog">
-      <End Role="Blog" EntitySet="Blog" />
-      <End Role="TagRelation" EntitySet="TagRelation" />
-    </AssociationSet>
-    <AssociationSet Name="FK_QuestionTag_Question" Association="Self.FK_QuestionTag_Question">
-      <End Role="Question" EntitySet="Question" />
-      <End Role="TagRelation" EntitySet="TagRelation" />
-    </AssociationSet>
     <AssociationSet Name="FK_Ratings_Account" Association="Self.FK_Ratings_Account">
       <End Role="Account" EntitySet="Account" />
       <End Role="Rating" EntitySet="Rating" />
@@ -1137,10 +1076,6 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
     <AssociationSet Name="FK_RoomParticipant_DiscussionRoom" Association="Self.FK_RoomParticipant_DiscussionRoom">
       <End Role="DiscussionRoom" EntitySet="DiscussionRoom" />
       <End Role="RoomParticipant" EntitySet="RoomParticipant" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Table_1_Question" Association="Self.FK_Table_1_Question">
-      <End Role="Question" EntitySet="Question" />
-      <End Role="Tag" EntitySet="Tag" />
     </AssociationSet>
     <AssociationSet Name="FK_Tutorial_Account" Association="Self.FK_Tutorial_Account">
       <End Role="Account" EntitySet="Account" />

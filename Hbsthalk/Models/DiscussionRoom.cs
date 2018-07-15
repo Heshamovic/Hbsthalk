@@ -17,26 +17,27 @@ namespace Hbsthalk.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DiscussionRoom()
         {
-            this.Answers = new HashSet<Answer>();
             this.Blogs = new HashSet<Blog>();
-            this.Mentions = new HashSet<Mention>();
+            this.Images = new HashSet<Image>();
             this.Messages = new HashSet<Message>();
+            this.Tags = new HashSet<Tag>();
             this.Accounts = new HashSet<Account>();
         }
     
         public int ID { get; set; }
         public string Title { get; set; }
-        public Nullable<int> Recommendation { get; set; }
-        public Nullable<System.DateTime> DateAndTime { get; set; }
+        public int Recommendation { get; set; }
+        public System.DateTime DateTime { get; set; }
+        public string Description { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Answer> Answers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Blog> Blogs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Mention> Mentions { get; set; }
+        public virtual ICollection<Image> Images { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Message> Messages { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tag> Tags { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Account> Accounts { get; set; }
     }

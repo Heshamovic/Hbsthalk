@@ -18,11 +18,12 @@ namespace Hbsthalk.Models
         public Message()
         {
             this.Images = new HashSet<Image>();
+            this.Mentions = new HashSet<Mention>();
         }
     
         public int ID { get; set; }
         public string Text { get; set; }
-        public System.DateTime DateAndTime { get; set; }
+        public System.DateTime DateTime { get; set; }
         public int SenderID { get; set; }
         public int RoomID { get; set; }
         public string FilePath { get; set; }
@@ -31,5 +32,7 @@ namespace Hbsthalk.Models
         public virtual DiscussionRoom DiscussionRoom { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Image> Images { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Mention> Mentions { get; set; }
     }
 }

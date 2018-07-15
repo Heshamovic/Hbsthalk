@@ -17,23 +17,32 @@ namespace Hbsthalk.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Answer()
         {
+            this.Favourites = new HashSet<Favourite>();
             this.Images = new HashSet<Image>();
+            this.Replies = new HashSet<Reply>();
+            this.Tags = new HashSet<Tag>();
         }
     
         public int ID { get; set; }
+        public int AccountID { get; set; }
         public string Text { get; set; }
         public int QuestionID { get; set; }
         public int Points { get; set; }
         public string FilePath { get; set; }
-        public Nullable<int> RoomID { get; set; }
-        public int AccountID { get; set; }
         public bool Accepted { get; set; }
         public bool BestAnswer { get; set; }
+        public int Report { get; set; }
     
         public virtual Account Account { get; set; }
-        public virtual DiscussionRoom DiscussionRoom { get; set; }
         public virtual Question Question { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Favourite> Favourites { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Image> Images { get; set; }
+        public virtual Mention Mention { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Reply> Replies { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tag> Tags { get; set; }
     }
 }

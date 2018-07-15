@@ -59,7 +59,7 @@ namespace Hbsthalk.Controllers
             List<Tag> ta = new List<Tag>(); 
             if (q != null)
             {
-                ta = db.Tags.Where(x => x.RelatedID == q.ID && x.Type == "q").ToList();
+                ta = db.Tags.Where(x => x.RelatedID == q.ID && x.RelationType == "q").ToList();
                 ViewBag.numQAns = db.Answers.Count(x => x.QuestionID == q.ID);
             }
             return View();

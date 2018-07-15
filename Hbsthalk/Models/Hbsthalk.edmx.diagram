@@ -4,74 +4,80 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="068666b0d08e4f479ea5dd87a0187c08" Name="Diagram1">
-        <EntityTypeShape EntityType="Hbsthalk.Account" Width="1.5" PointX="3" PointY="19.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hbsthalk.Answer" Width="1.5" PointX="7.5" PointY="21.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hbsthalk.Application" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hbsthalk.Blog" Width="1.5" PointX="10.5" PointY="22" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hbsthalk.Complete" Width="1.5" PointX="3" PointY="15.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hbsthalk.Contest" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hbsthalk.DiscussionRoom" Width="1.5" PointX="5.25" PointY="22.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hbsthalk.Favourite" Width="1.5" PointX="7.5" PointY="29.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hbsthalk.MCQ" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hbsthalk.Mention" Width="1.5" PointX="12.75" PointY="22.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hbsthalk.Message" Width="1.5" PointX="7.5" PointY="26.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hbsthalk.PreferenceList" Width="1.5" PointX="5.25" PointY="32.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hbsthalk.Proficiency" Width="1.5" PointX="0.75" PointY="22.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hbsthalk.Question" Width="1.5" PointX="5.25" PointY="26.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hbsthalk.Rank" Width="1.5" PointX="0.75" PointY="19.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hbsthalk.Rating" Width="1.5" PointX="5.25" PointY="35.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hbsthalk.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hbsthalk.Tag" Width="1.5" PointX="7.5" PointY="33.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hbsthalk.TrueFalse" Width="1.5" PointX="3" PointY="28.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hbsthalk.Tutorial" Width="1.5" PointX="5.25" PointY="38.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hbsthalk.TutorialMaterial" Width="1.5" PointX="7.5" PointY="39.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hbsthalk.ContestAnswer" Width="1.5" PointX="5.25" PointY="18" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hbsthalk.ContestRelation" Width="1.5" PointX="5.25" PointY="47" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hbsthalk.FollowZone" Width="1.5" PointX="5.25" PointY="49.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hbsthalk.Image" Width="1.5" PointX="12.75" PointY="28.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hbsthalk.Lesson" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Hbsthalk.TagRelation" Width="1.5" PointX="15.75" PointY="22.5" IsExpanded="true" />
+      <Diagram DiagramId="f8c80dcfdc1a47999887801597127ab4" Name="Diagram1">
+        <EntityTypeShape EntityType="Hbsthalk.Account" Width="1.5" PointX="3" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hbsthalk.Answer" Width="1.5" PointX="5.25" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hbsthalk.Application" Width="1.5" PointX="10.5" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hbsthalk.Blog" Width="1.5" PointX="7.5" PointY="30.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hbsthalk.Complete" Width="1.5" PointX="10.5" PointY="38.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hbsthalk.Contest" Width="1.5" PointX="5.25" PointY="27.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hbsthalk.ContestAnswer" Width="1.5" PointX="9.75" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hbsthalk.DiscussionRoom" Width="1.5" PointX="5.25" PointY="34.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hbsthalk.Favourite" Width="1.5" PointX="9.75" PointY="35" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hbsthalk.Image" Width="1.5" PointX="12.75" PointY="34.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hbsthalk.Lesson" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hbsthalk.MCQ" Width="1.5" PointX="7.5" PointY="27.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hbsthalk.Mention" Width="1.5" PointX="12.75" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hbsthalk.Message" Width="1.5" PointX="10.5" PointY="30.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hbsthalk.PreferenceList" Width="1.5" PointX="5.25" PointY="41.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hbsthalk.Proficiency" Width="1.5" PointX="0.75" PointY="27.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hbsthalk.Question" Width="1.5" PointX="3" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hbsthalk.Rank" Width="1.5" PointX="0.75" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hbsthalk.Rating" Width="1.5" PointX="5.25" PointY="44.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hbsthalk.Reply" Width="1.5" PointX="7.5" PointY="35.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hbsthalk.Request" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hbsthalk.sysdiagram" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hbsthalk.Tag" Width="1.5" PointX="12.75" PointY="30.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hbsthalk.TrueFalse" Width="1.5" PointX="10.5" PointY="41.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hbsthalk.Tutorial" Width="1.5" PointX="5.25" PointY="47" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hbsthalk.TutorialMaterial" Width="1.5" PointX="7.5" PointY="48" IsExpanded="true" />
+        <EntityTypeShape EntityType="Hbsthalk.FollowZone" Width="1.5" PointX="5.25" PointY="51.625" IsExpanded="true" />
         <AssociationConnector Association="Hbsthalk.FK_Account_Proficiency" ManuallyRouted="false" />
         <AssociationConnector Association="Hbsthalk.FK_Account_Rank" ManuallyRouted="false" />
         <AssociationConnector Association="Hbsthalk.FK_Answer_Account" ManuallyRouted="false" />
         <AssociationConnector Association="Hbsthalk.FK_Blog_Account" ManuallyRouted="false" />
         <AssociationConnector Association="Hbsthalk.FK_ContestAnswer_Account" ManuallyRouted="false" />
-        <AssociationConnector Association="Hbsthalk.FK_ContestRelation_Account" ManuallyRouted="false" />
         <AssociationConnector Association="Hbsthalk.FK_Favourite_Account" ManuallyRouted="false" />
         <AssociationConnector Association="Hbsthalk.FK_FollowZone_Account" ManuallyRouted="false" />
         <AssociationConnector Association="Hbsthalk.FK_FollowZone_Account1" ManuallyRouted="false" />
         <AssociationConnector Association="Hbsthalk.FK_Image_Account" ManuallyRouted="false" />
         <AssociationConnector Association="Hbsthalk.FK_Mention_Account" ManuallyRouted="false" />
+        <AssociationConnector Association="Hbsthalk.FK_Mention_Account1" ManuallyRouted="false" />
         <AssociationConnector Association="Hbsthalk.FK_Message_Account" ManuallyRouted="false" />
         <AssociationConnector Association="Hbsthalk.FK_PreferenceList_Account" ManuallyRouted="false" />
         <AssociationConnector Association="Hbsthalk.FK_Ratings_Account" ManuallyRouted="false" />
         <AssociationConnector Association="Hbsthalk.FK_Tutorial_Account" ManuallyRouted="false" />
-        <AssociationConnector Association="Hbsthalk.FK_Answer_DiscussionRoom" ManuallyRouted="false" />
         <AssociationConnector Association="Hbsthalk.FK_Answer_Question" ManuallyRouted="false" />
+        <AssociationConnector Association="Hbsthalk.FK_Favourite_Answer" ManuallyRouted="false" />
         <AssociationConnector Association="Hbsthalk.FK_Image_Answer" ManuallyRouted="false" />
+        <AssociationConnector Association="Hbsthalk.FK_Mention_Answer" ManuallyRouted="false" />
+        <AssociationConnector Association="Hbsthalk.FK_Reply_Answer" ManuallyRouted="false" />
+        <AssociationConnector Association="Hbsthalk.FK_Tag_Answer" ManuallyRouted="false" />
+        <AssociationConnector Association="Hbsthalk.FK_Tag_Application" ManuallyRouted="false" />
         <AssociationConnector Association="Hbsthalk.FK_Blog_DiscussionRoom" ManuallyRouted="false" />
+        <AssociationConnector Association="Hbsthalk.FK_Favourite_Blog" ManuallyRouted="false" />
         <AssociationConnector Association="Hbsthalk.FK_Image_Blog" ManuallyRouted="false" />
-        <AssociationConnector Association="Hbsthalk.FK_Mention_Blog" ManuallyRouted="false" />
-        <AssociationConnector Association="Hbsthalk.FK_QuestionTag_Blog" ManuallyRouted="false" />
-        <AssociationConnector Association="Hbsthalk.FK_ContestAnswer_Complete" ManuallyRouted="false" />
+        <AssociationConnector Association="Hbsthalk.FK_Tag_Blog" ManuallyRouted="false" />
+        <AssociationConnector Association="Hbsthalk.FK_ContestAnswer_Complete1" ManuallyRouted="false" />
         <AssociationConnector Association="Hbsthalk.FK_Image_Complete" ManuallyRouted="false" />
         <AssociationConnector Association="Hbsthalk.FK_ContestMCQ_Contest" ManuallyRouted="false" />
-        <AssociationConnector Association="Hbsthalk.FK_Mention_DiscussionRoom" ManuallyRouted="false" />
+        <AssociationConnector Association="Hbsthalk.FK_Image_Contest" ManuallyRouted="false" />
+        <AssociationConnector Association="Hbsthalk.FK_ContestAnswer_MCQ1" ManuallyRouted="false" />
+        <AssociationConnector Association="Hbsthalk.FK_ContestAnswer_TrueFalse1" ManuallyRouted="false" />
+        <AssociationConnector Association="Hbsthalk.FK_Image_DiscussionRoom" ManuallyRouted="false" />
         <AssociationConnector Association="Hbsthalk.FK_Message_DiscussionRoom" ManuallyRouted="false" />
+        <AssociationConnector Association="Hbsthalk.FK_Tag_DiscussionRoom" ManuallyRouted="false" />
         <AssociationConnector Association="Hbsthalk.FK_Favourite_Question" ManuallyRouted="false" />
         <AssociationConnector Association="Hbsthalk.FK_Favourite_Tutorial" ManuallyRouted="false" />
-        <AssociationConnector Association="Hbsthalk.FK_ContestAnswer_MCQ" ManuallyRouted="false" />
         <AssociationConnector Association="Hbsthalk.FK_Image_MCQ" ManuallyRouted="false" />
-        <AssociationConnector Association="Hbsthalk.FK_Mention_Question" ManuallyRouted="false" />
         <AssociationConnector Association="Hbsthalk.FK_Image_Message" ManuallyRouted="false" />
         <AssociationConnector Association="Hbsthalk.FK_Image_Question" ManuallyRouted="false" />
-        <AssociationConnector Association="Hbsthalk.FK_QuestionTag_Question" ManuallyRouted="false" />
-        <AssociationConnector Association="Hbsthalk.FK_Table_1_Question" ManuallyRouted="false" />
-        <AssociationConnector Association="Hbsthalk.FK_ContestAnswer_TrueFalse" ManuallyRouted="false" />
         <AssociationConnector Association="Hbsthalk.FK_Image_TrueFalse" ManuallyRouted="false" />
         <AssociationConnector Association="Hbsthalk.FK_Image_Tutorial" ManuallyRouted="false" />
+        <AssociationConnector Association="Hbsthalk.FK_Mention_Message" ManuallyRouted="false" />
+        <AssociationConnector Association="Hbsthalk.FK_Tag_Question" ManuallyRouted="false" />
         <AssociationConnector Association="Hbsthalk.FK_TutorialMaterial_Tutorial" ManuallyRouted="false" />
+        <AssociationConnector Association="Hbsthalk.ContestRelation" ManuallyRouted="false" />
         <AssociationConnector Association="Hbsthalk.EnrolledTutorial" ManuallyRouted="false" />
         <AssociationConnector Association="Hbsthalk.RoomParticipant" ManuallyRouted="false" />
       </Diagram>

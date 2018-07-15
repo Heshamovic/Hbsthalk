@@ -18,21 +18,16 @@ namespace Hbsthalk.Models
         public string Name { get; set; }
         public byte[] Photo { get; set; }
         public string Path { get; set; }
-        public Nullable<int> QuestionID { get; set; }
-        public Nullable<int> BlogID { get; set; }
-        public Nullable<int> MessageID { get; set; }
-        public Nullable<int> AnswerID { get; set; }
-        public Nullable<int> AccountID { get; set; }
-        public Nullable<int> TutorialID { get; set; }
         public string Caption { get; set; }
-        public Nullable<int> MCQID { get; set; }
-        public Nullable<int> TrueFalseID { get; set; }
-        public Nullable<int> CompleteID { get; set; }
+        public string RelationType { get; set; }
+        public int RelatedID { get; set; }
     
         public virtual Account Account { get; set; }
         public virtual Answer Answer { get; set; }
         public virtual Blog Blog { get; set; }
         public virtual Complete Complete { get; set; }
+        public virtual Contest Contest { get; set; }
+        public virtual DiscussionRoom DiscussionRoom { get; set; }
         public virtual MCQ MCQ { get; set; }
         public virtual Message Message { get; set; }
         public virtual Question Question { get; set; }

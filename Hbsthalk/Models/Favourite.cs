@@ -15,11 +15,13 @@ namespace Hbsthalk.Models
     public partial class Favourite
     {
         public int ID { get; set; }
-        public Nullable<int> TutorialID { get; set; }
-        public Nullable<int> QuestionID { get; set; }
+        public string TypeID { get; set; }
+        public int RelatedID { get; set; }
         public int AccountID { get; set; }
     
         public virtual Account Account { get; set; }
+        public virtual Answer Answer { get; set; }
+        public virtual Blog Blog { get; set; }
         public virtual Question Question { get; set; }
         public virtual Tutorial Tutorial { get; set; }
     }

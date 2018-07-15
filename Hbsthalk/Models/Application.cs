@@ -14,10 +14,18 @@ namespace Hbsthalk.Models
     
     public partial class Application
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Application()
+        {
+            this.Tags = new HashSet<Tag>();
+        }
+    
         public int ID { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string Thumbnail { get; set; }
-        public string Tag { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tag> Tags { get; set; }
     }
 }

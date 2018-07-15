@@ -18,8 +18,7 @@ namespace Hbsthalk.Models
         public Blog()
         {
             this.Images = new HashSet<Image>();
-            this.Mentions = new HashSet<Mention>();
-            this.TagRelations = new HashSet<TagRelation>();
+            this.Tags = new HashSet<Tag>();
         }
     
         public int ID { get; set; }
@@ -27,15 +26,15 @@ namespace Hbsthalk.Models
         public int AuthorID { get; set; }
         public System.DateTime DateTime { get; set; }
         public Nullable<int> RoomID { get; set; }
-        public int Points { get; set; }
+        public int Favourites { get; set; }
+        public int Report { get; set; }
     
         public virtual Account Account { get; set; }
         public virtual DiscussionRoom DiscussionRoom { get; set; }
+        public virtual Favourite Favourite { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Image> Images { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Mention> Mentions { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TagRelation> TagRelations { get; set; }
+        public virtual ICollection<Tag> Tags { get; set; }
     }
 }

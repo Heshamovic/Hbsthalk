@@ -160,11 +160,13 @@
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="AccountID" ColumnName="AccountID" />
           <ScalarProperty Name="Text" ColumnName="Text" />
-          <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+          <ScalarProperty Name="Views" ColumnName="Views" />
           <ScalarProperty Name="DateAndTime" ColumnName="DateAndTime" />
           <ScalarProperty Name="FilePath" ColumnName="FilePath" />
           <ScalarProperty Name="Favourits" ColumnName="Favourits" />
           <ScalarProperty Name="Solved" ColumnName="Solved" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Report" ColumnName="Report" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -203,7 +205,7 @@
         <MappingFragment StoreEntitySet="Tag">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Text" ColumnName="Text" />
-          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="RelationType" ColumnName="RelationType" />
           <ScalarProperty Name="RelatedID" ColumnName="RelatedID" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -300,16 +302,6 @@
         <MappingFragment StoreEntitySet="Lesson">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Path" ColumnName="Path" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TagRelations">
-      <EntityTypeMapping TypeName="Hbsthalk.TagRelation">
-        <MappingFragment StoreEntitySet="TagRelation">
-          <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
-          <ScalarProperty Name="TagID" ColumnName="TagID" />
-          <ScalarProperty Name="BlogID" ColumnName="BlogID" />
-          <ScalarProperty Name="RoomID" ColumnName="RoomID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

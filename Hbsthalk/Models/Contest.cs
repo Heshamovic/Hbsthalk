@@ -18,15 +18,21 @@ namespace Hbsthalk.Models
         public Contest()
         {
             this.MCQs = new HashSet<MCQ>();
+            this.Images = new HashSet<Image>();
+            this.Accounts = new HashSet<Account>();
         }
     
         public int ID { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public System.DateTime DateAndTime { get; set; }
-        public byte[] Logo { get; set; }
+        public string Subject { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MCQ> MCQs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Image> Images { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Account> Accounts { get; set; }
     }
 }

@@ -12,11 +12,9 @@ namespace Hbsthalk.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ContestRelation
+    public partial class Request
     {
-        public int ContestID { get; set; }
-        public int AccountD { get; set; }
-    
-        public virtual Account Account { get; set; }
+        public int ID { get; set; }
+        public string Text { get; set; }
     }
 }

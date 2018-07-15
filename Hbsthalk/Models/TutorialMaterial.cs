@@ -17,6 +17,7 @@ namespace Hbsthalk.Models
         public int ID { get; set; }
         public string FilePath { get; set; }
         public int TutorialID { get; set; }
+        public string FileType { get; set; }
     
         public virtual Tutorial Tutorial { get; set; }
     }

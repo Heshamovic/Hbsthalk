@@ -16,13 +16,13 @@ namespace Hbsthalk.Models
     {
         public int ID { get; set; }
         public int AccountID { get; set; }
-        public Nullable<int> QuestionID { get; set; }
-        public Nullable<int> RoomID { get; set; }
-        public Nullable<int> BlogID { get; set; }
+        public int MentionedID { get; set; }
+        public int RelatedID { get; set; }
+        public string RelationType { get; set; }
     
         public virtual Account Account { get; set; }
-        public virtual Blog Blog { get; set; }
-        public virtual DiscussionRoom DiscussionRoom { get; set; }
-        public virtual Question Question { get; set; }
+        public virtual Account Account1 { get; set; }
+        public virtual Answer Answer { get; set; }
+        public virtual Message Message { get; set; }
     }
 }

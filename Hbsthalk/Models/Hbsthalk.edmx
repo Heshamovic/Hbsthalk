@@ -32,24 +32,23 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountID" Type="int" Nullable="false" />
           <Property Name="Text" Type="varchar" MaxLength="1000" />
           <Property Name="QuestionID" Type="int" Nullable="false" />
           <Property Name="Points" Type="int" Nullable="false" />
           <Property Name="FilePath" Type="varchar" MaxLength="300" />
-          <Property Name="RoomID" Type="int" />
-          <Property Name="AccountID" Type="int" Nullable="false" />
           <Property Name="Accepted" Type="bit" Nullable="false" />
           <Property Name="BestAnswer" Type="bit" Nullable="false" />
+          <Property Name="Report" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Application">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="varchar" MaxLength="100" />
-          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="Title" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Thumbnail" Type="nchar" MaxLength="10" />
-          <Property Name="Tag" Type="text" Nullable="false" />
         </EntityType>
         <EntityType Name="Blog">
           <Key>
@@ -60,14 +59,15 @@
           <Property Name="AuthorID" Type="int" Nullable="false" />
           <Property Name="DateTime" Type="datetime" Nullable="false" />
           <Property Name="RoomID" Type="int" />
-          <Property Name="Points" Type="int" Nullable="false" />
+          <Property Name="Favourites" Type="int" Nullable="false" />
+          <Property Name="Report" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Complete">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Answer" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Answer" Type="varchar" MaxLength="75" Nullable="false" />
           <Property Name="ContestID" Type="int" Nullable="false" />
           <Property Name="Text" Type="varchar" MaxLength="1250" Nullable="false" />
         </EntityType>
@@ -79,23 +79,18 @@
           <Property Name="Title" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="1500" Nullable="false" />
           <Property Name="DateAndTime" Type="datetime" Nullable="false" />
-          <Property Name="Logo" Type="image" Nullable="false" />
+          <Property Name="Subject" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Hbsthalk.dbo.ContestAnswer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ContestAnswer">
           <Key>
-            <PropertyRef Name="AccountID" />
-            <PropertyRef Name="Correct" />
+            <PropertyRef Name="ID" />
           </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AccountID" Type="int" Nullable="false" />
-          <Property Name="MCQID" Type="int" />
-          <Property Name="TrueFalseID" Type="int" />
-          <Property Name="CompleteID" Type="int" />
-          <Property Name="MCQAnswer" Type="int" />
-          <Property Name="CompleteAnswer" Type="varchar" MaxLength="50" />
-          <Property Name="TrueFalseAnswer" Type="bit" />
+          <Property Name="Answer" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="Correct" Type="bit" Nullable="false" />
+          <Property Name="RelationType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RelatedID" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Hbsthalk.dbo.ContestRelation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -112,9 +107,10 @@ warning 6002: The table/view 'Hbsthalk.dbo.ContestRelation' does not have a prim
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="varchar" MaxLength="100" />
-          <Property Name="Recommendation" Type="int" />
-          <Property Name="DateAndTime" Type="datetime" />
+          <Property Name="Title" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Recommendation" Type="int" Nullable="false" />
+          <Property Name="DateTime" Type="datetime" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="500" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Hbsthalk.dbo.EnrolledTutorial' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -131,8 +127,8 @@ warning 6002: The table/view 'Hbsthalk.dbo.EnrolledTutorial' does not have a pri
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TutorialID" Type="int" />
-          <Property Name="QuestionID" Type="int" />
+          <Property Name="TypeID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RelatedID" Type="int" Nullable="false" />
           <Property Name="AccountID" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
@@ -149,42 +145,30 @@ warning 6002: The table/view 'Hbsthalk.dbo.FollowZone' does not have a primary k
           <Property Name="Type" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FollowLevel" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Hbsthalk.dbo.Image' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Image">
           <Key>
             <PropertyRef Name="ID" />
-            <PropertyRef Name="Name" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="250" Nullable="false" />
-          <Property Name="Photo" Type="image" />
+          <Property Name="Photo" Type="image" Nullable="false" />
           <Property Name="Path" Type="varchar" MaxLength="250" />
-          <Property Name="QuestionID" Type="int" />
-          <Property Name="BlogID" Type="int" />
-          <Property Name="MessageID" Type="int" />
-          <Property Name="AnswerID" Type="int" />
-          <Property Name="AccountID" Type="int" />
-          <Property Name="TutorialID" Type="int" />
           <Property Name="Caption" Type="varchar" MaxLength="300" />
-          <Property Name="MCQID" Type="int" />
-          <Property Name="TrueFalseID" Type="int" />
-          <Property Name="CompleteID" Type="int" />
+          <Property Name="RelationType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RelatedID" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Hbsthalk.dbo.Lesson' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Lesson">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Path" Type="varchar" MaxLength="300" />
+          <Property Name="Path" Type="varchar" MaxLength="300" Nullable="false" />
         </EntityType>
         <EntityType Name="MCQ">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Text" Type="varchar" MaxLength="1250" Nullable="false" />
           <Property Name="Answer" Type="int" Nullable="false" />
           <Property Name="ContestID" Type="int" Nullable="false" />
@@ -195,17 +179,17 @@ warning 6002: The table/view 'Hbsthalk.dbo.Lesson' does not have a primary key d
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AccountID" Type="int" Nullable="false" />
-          <Property Name="QuestionID" Type="int" />
-          <Property Name="RoomID" Type="int" />
-          <Property Name="BlogID" Type="int" />
+          <Property Name="MentionedID" Type="int" Nullable="false" />
+          <Property Name="RelatedID" Type="int" Nullable="false" />
+          <Property Name="RelationType" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Message">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Text" Type="varchar" MaxLength="500" Nullable="false" />
-          <Property Name="DateAndTime" Type="datetime" Nullable="false" />
+          <Property Name="DateTime" Type="datetime" Nullable="false" />
           <Property Name="SenderID" Type="int" Nullable="false" />
           <Property Name="RoomID" Type="int" Nullable="false" />
           <Property Name="FilePath" Type="varchar" MaxLength="300" />
@@ -230,14 +214,15 @@ warning 6002: The table/view 'Hbsthalk.dbo.Lesson' does not have a primary key d
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AccountID" Type="int" Nullable="false" />
-          <Property Name="Text" Type="varchar" MaxLength="1500" />
-          <Property Name="Frequency" Type="int" Nullable="false" />
+          <Property Name="Text" Type="varchar" MaxLength="2500" />
+          <Property Name="Views" Type="int" Nullable="false" />
           <Property Name="DateAndTime" Type="datetime" Nullable="false" />
           <Property Name="FilePath" Type="varchar" MaxLength="300" />
           <Property Name="Favourits" Type="int" Nullable="false" />
           <Property Name="Solved" Type="bit" Nullable="false" />
+          <Property Name="Report" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Rank">
           <Key>
@@ -251,10 +236,26 @@ warning 6002: The table/view 'Hbsthalk.dbo.Lesson' does not have a primary key d
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Rating" Type="int" Nullable="false" />
           <Property Name="AccountID" Type="int" Nullable="false" />
           <Property Name="DateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reply">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AnswerID" Type="int" Nullable="false" />
+          <Property Name="Text" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="FilePath" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="varchar" MaxLength="1000" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Hbsthalk.dbo.RoomParticipant' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -282,19 +283,8 @@ warning 6002: The table/view 'Hbsthalk.dbo.RoomParticipant' does not have a prim
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Text" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RelationType" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="RelatedID" Type="int" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="TagRelation">
-          <Key>
-            <PropertyRef Name="TagID" />
-          </Key>
-          <Property Name="QuestionID" Type="int" />
-          <Property Name="TagID" Type="int" Nullable="false" />
-          <Property Name="BlogID" Type="int" />
-          <Property Name="RoomID" Type="int" />
         </EntityType>
         <EntityType Name="TrueFalse">
           <Key>
@@ -327,6 +317,7 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FilePath" Type="varchar" MaxLength="300" Nullable="false" />
           <Property Name="TutorialID" Type="int" Nullable="false" />
+          <Property Name="FileType" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK_Account_Proficiency">
           <End Role="Proficiency" Type="Self.Proficiency" Multiplicity="1" />
@@ -361,18 +352,6 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             </Principal>
             <Dependent Role="Answer">
               <PropertyRef Name="AccountID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Answer_DiscussionRoom">
-          <End Role="DiscussionRoom" Type="Self.DiscussionRoom" Multiplicity="0..1" />
-          <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DiscussionRoom">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Answer">
-              <PropertyRef Name="RoomID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -424,39 +403,39 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ContestAnswer_Complete">
-          <End Role="Complete" Type="Self.Complete" Multiplicity="0..1" />
+        <Association Name="FK_ContestAnswer_Complete1">
+          <End Role="Complete" Type="Self.Complete" Multiplicity="1" />
           <End Role="ContestAnswer" Type="Self.ContestAnswer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Complete">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="ContestAnswer">
-              <PropertyRef Name="CompleteID" />
+              <PropertyRef Name="RelatedID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ContestAnswer_MCQ">
-          <End Role="MCQ" Type="Self.MCQ" Multiplicity="0..1" />
+        <Association Name="FK_ContestAnswer_MCQ1">
+          <End Role="MCQ" Type="Self.MCQ" Multiplicity="1" />
           <End Role="ContestAnswer" Type="Self.ContestAnswer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MCQ">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="ContestAnswer">
-              <PropertyRef Name="MCQID" />
+              <PropertyRef Name="RelatedID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ContestAnswer_TrueFalse">
-          <End Role="TrueFalse" Type="Self.TrueFalse" Multiplicity="0..1" />
+        <Association Name="FK_ContestAnswer_TrueFalse1">
+          <End Role="TrueFalse" Type="Self.TrueFalse" Multiplicity="1" />
           <End Role="ContestAnswer" Type="Self.ContestAnswer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TrueFalse">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="ContestAnswer">
-              <PropertyRef Name="TrueFalseID" />
+              <PropertyRef Name="RelatedID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -481,6 +460,18 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             </Principal>
             <Dependent Role="ContestRelation">
               <PropertyRef Name="AccountD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContestRelation_Contest">
+          <End Role="Contest" Type="Self.Contest" Multiplicity="1" />
+          <End Role="ContestRelation" Type="Self.ContestRelation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contest">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ContestRelation">
+              <PropertyRef Name="ContestID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -520,27 +511,51 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Favourite_Answer">
+          <End Role="Answer" Type="Self.Answer" Multiplicity="1" />
+          <End Role="Favourite" Type="Self.Favourite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Answer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Favourite">
+              <PropertyRef Name="RelatedID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Favourite_Blog">
+          <End Role="Blog" Type="Self.Blog" Multiplicity="1" />
+          <End Role="Favourite" Type="Self.Favourite" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Blog">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Favourite">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Favourite_Question">
-          <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+          <End Role="Question" Type="Self.Question" Multiplicity="1" />
           <End Role="Favourite" Type="Self.Favourite" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Question">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Favourite">
-              <PropertyRef Name="QuestionID" />
+              <PropertyRef Name="RelatedID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Favourite_Tutorial">
-          <End Role="Tutorial" Type="Self.Tutorial" Multiplicity="0..1" />
+          <End Role="Tutorial" Type="Self.Tutorial" Multiplicity="1" />
           <End Role="Favourite" Type="Self.Favourite" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Tutorial">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Favourite">
-              <PropertyRef Name="TutorialID" />
+              <PropertyRef Name="RelatedID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -569,110 +584,134 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Image_Account">
-          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="Image" Type="Self.Image" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Account">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Image">
-              <PropertyRef Name="AccountID" />
+              <PropertyRef Name="RelatedID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Image_Answer">
-          <End Role="Answer" Type="Self.Answer" Multiplicity="0..1" />
+          <End Role="Answer" Type="Self.Answer" Multiplicity="1" />
           <End Role="Image" Type="Self.Image" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Answer">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Image">
-              <PropertyRef Name="AnswerID" />
+              <PropertyRef Name="RelatedID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Image_Blog">
-          <End Role="Blog" Type="Self.Blog" Multiplicity="0..1" />
+          <End Role="Blog" Type="Self.Blog" Multiplicity="1" />
           <End Role="Image" Type="Self.Image" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Blog">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Image">
-              <PropertyRef Name="BlogID" />
+              <PropertyRef Name="RelatedID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Image_Complete">
-          <End Role="Complete" Type="Self.Complete" Multiplicity="0..1" />
+          <End Role="Complete" Type="Self.Complete" Multiplicity="1" />
           <End Role="Image" Type="Self.Image" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Complete">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Image">
-              <PropertyRef Name="CompleteID" />
+              <PropertyRef Name="RelatedID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Image_Contest">
+          <End Role="Contest" Type="Self.Contest" Multiplicity="1" />
+          <End Role="Image" Type="Self.Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contest">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Image">
+              <PropertyRef Name="RelatedID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Image_DiscussionRoom">
+          <End Role="DiscussionRoom" Type="Self.DiscussionRoom" Multiplicity="1" />
+          <End Role="Image" Type="Self.Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiscussionRoom">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Image">
+              <PropertyRef Name="RelatedID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Image_MCQ">
-          <End Role="MCQ" Type="Self.MCQ" Multiplicity="0..1" />
+          <End Role="MCQ" Type="Self.MCQ" Multiplicity="1" />
           <End Role="Image" Type="Self.Image" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MCQ">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Image">
-              <PropertyRef Name="MCQID" />
+              <PropertyRef Name="RelatedID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Image_Message">
-          <End Role="Message" Type="Self.Message" Multiplicity="0..1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="1" />
           <End Role="Image" Type="Self.Image" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Message">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Image">
-              <PropertyRef Name="MessageID" />
+              <PropertyRef Name="RelatedID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Image_Question">
-          <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+          <End Role="Question" Type="Self.Question" Multiplicity="1" />
           <End Role="Image" Type="Self.Image" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Question">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Image">
-              <PropertyRef Name="QuestionID" />
+              <PropertyRef Name="RelatedID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Image_TrueFalse">
-          <End Role="TrueFalse" Type="Self.TrueFalse" Multiplicity="0..1" />
+          <End Role="TrueFalse" Type="Self.TrueFalse" Multiplicity="1" />
           <End Role="Image" Type="Self.Image" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TrueFalse">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Image">
-              <PropertyRef Name="TrueFalseID" />
+              <PropertyRef Name="RelatedID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Image_Tutorial">
-          <End Role="Tutorial" Type="Self.Tutorial" Multiplicity="0..1" />
+          <End Role="Tutorial" Type="Self.Tutorial" Multiplicity="1" />
           <End Role="Image" Type="Self.Image" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Tutorial">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Image">
-              <PropertyRef Name="TutorialID" />
+              <PropertyRef Name="RelatedID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -688,39 +727,39 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Mention_Blog">
-          <End Role="Blog" Type="Self.Blog" Multiplicity="0..1" />
-          <End Role="Mention" Type="Self.Mention" Multiplicity="*" />
+        <Association Name="FK_Mention_Account1">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Mention" Type="Self.Mention" Multiplicity="0..1" />
           <ReferentialConstraint>
-            <Principal Role="Blog">
+            <Principal Role="Account">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Mention">
-              <PropertyRef Name="BlogID" />
+              <PropertyRef Name="ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Mention_DiscussionRoom">
-          <End Role="DiscussionRoom" Type="Self.DiscussionRoom" Multiplicity="0..1" />
-          <End Role="Mention" Type="Self.Mention" Multiplicity="*" />
+        <Association Name="FK_Mention_Answer">
+          <End Role="Answer" Type="Self.Answer" Multiplicity="1" />
+          <End Role="Mention" Type="Self.Mention" Multiplicity="0..1" />
           <ReferentialConstraint>
-            <Principal Role="DiscussionRoom">
+            <Principal Role="Answer">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Mention">
-              <PropertyRef Name="RoomID" />
+              <PropertyRef Name="ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Mention_Question">
-          <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+        <Association Name="FK_Mention_Message">
+          <End Role="Message" Type="Self.Message" Multiplicity="1" />
           <End Role="Mention" Type="Self.Mention" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Question">
+            <Principal Role="Message">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Mention">
-              <PropertyRef Name="QuestionID" />
+              <PropertyRef Name="RelatedID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -760,30 +799,6 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_QuestionTag_Blog">
-          <End Role="Blog" Type="Self.Blog" Multiplicity="0..1" />
-          <End Role="TagRelation" Type="Self.TagRelation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Blog">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="TagRelation">
-              <PropertyRef Name="BlogID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_QuestionTag_Question">
-          <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
-          <End Role="TagRelation" Type="Self.TagRelation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Question">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="TagRelation">
-              <PropertyRef Name="QuestionID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Ratings_Account">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
@@ -793,6 +808,18 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             </Principal>
             <Dependent Role="Rating">
               <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reply_Answer">
+          <End Role="Answer" Type="Self.Answer" Multiplicity="1" />
+          <End Role="Reply" Type="Self.Reply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Answer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Reply">
+              <PropertyRef Name="AnswerID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -820,7 +847,55 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Table_1_Question">
+        <Association Name="FK_Tag_Answer">
+          <End Role="Answer" Type="Self.Answer" Multiplicity="1" />
+          <End Role="Tag" Type="Self.Tag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Answer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tag">
+              <PropertyRef Name="RelatedID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tag_Application">
+          <End Role="Application" Type="Self.Application" Multiplicity="1" />
+          <End Role="Tag" Type="Self.Tag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Application">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tag">
+              <PropertyRef Name="RelatedID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tag_Blog">
+          <End Role="Blog" Type="Self.Blog" Multiplicity="1" />
+          <End Role="Tag" Type="Self.Tag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Blog">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tag">
+              <PropertyRef Name="RelatedID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tag_DiscussionRoom">
+          <End Role="DiscussionRoom" Type="Self.DiscussionRoom" Multiplicity="1" />
+          <End Role="Tag" Type="Self.Tag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiscussionRoom">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tag">
+              <PropertyRef Name="RelatedID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tag_Question">
           <End Role="Question" Type="Self.Question" Multiplicity="1" />
           <End Role="Tag" Type="Self.Tag" Multiplicity="*" />
           <ReferentialConstraint>
@@ -894,8 +969,11 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
           <EntitySet Name="Blog" EntityType="Self.Blog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Complete" EntityType="Self.Complete" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contest" EntityType="Self.Contest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContestAnswer" EntityType="Self.ContestAnswer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DiscussionRoom" EntityType="Self.DiscussionRoom" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Favourite" EntityType="Self.Favourite" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Image" EntityType="Self.Image" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lesson" EntityType="Self.Lesson" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MCQ" EntityType="Self.MCQ" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Mention" EntityType="Self.Mention" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
@@ -904,23 +982,13 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
           <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rank" EntityType="Self.Rank" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rating" EntityType="Self.Rating" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reply" EntityType="Self.Reply" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tag" EntityType="Self.Tag" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TrueFalse" EntityType="Self.TrueFalse" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tutorial" EntityType="Self.Tutorial" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TutorialMaterial" EntityType="Self.TutorialMaterial" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ContestAnswer" EntityType="Self.ContestAnswer" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [ContestAnswer].[AccountID] AS [AccountID], 
-    [ContestAnswer].[MCQID] AS [MCQID], 
-    [ContestAnswer].[TrueFalseID] AS [TrueFalseID], 
-    [ContestAnswer].[CompleteID] AS [CompleteID], 
-    [ContestAnswer].[MCQAnswer] AS [MCQAnswer], 
-    [ContestAnswer].[CompleteAnswer] AS [CompleteAnswer], 
-    [ContestAnswer].[TrueFalseAnswer] AS [TrueFalseAnswer], 
-    [ContestAnswer].[Correct] AS [Correct]
-    FROM [dbo].[ContestAnswer] AS [ContestAnswer]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="ContestRelation" EntityType="Self.ContestRelation" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [ContestRelation].[ContestID] AS [ContestID], 
@@ -941,43 +1009,11 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
     [FollowZone].[FollowLevel] AS [FollowLevel]
     FROM [dbo].[FollowZone] AS [FollowZone]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="Image" EntityType="Self.Image" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Image].[ID] AS [ID], 
-    [Image].[Name] AS [Name], 
-    [Image].[Photo] AS [Photo], 
-    [Image].[Path] AS [Path], 
-    [Image].[QuestionID] AS [QuestionID], 
-    [Image].[BlogID] AS [BlogID], 
-    [Image].[MessageID] AS [MessageID], 
-    [Image].[AnswerID] AS [AnswerID], 
-    [Image].[AccountID] AS [AccountID], 
-    [Image].[TutorialID] AS [TutorialID], 
-    [Image].[Caption] AS [Caption], 
-    [Image].[MCQID] AS [MCQID], 
-    [Image].[TrueFalseID] AS [TrueFalseID], 
-    [Image].[CompleteID] AS [CompleteID]
-    FROM [dbo].[Image] AS [Image]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Lesson" EntityType="Self.Lesson" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Lesson].[ID] AS [ID], 
-    [Lesson].[Path] AS [Path]
-    FROM [dbo].[Lesson] AS [Lesson]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="RoomParticipant" EntityType="Self.RoomParticipant" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [RoomParticipant].[AccountID] AS [AccountID], 
     [RoomParticipant].[RoomID] AS [RoomID]
     FROM [dbo].[RoomParticipant] AS [RoomParticipant]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="TagRelation" EntityType="Self.TagRelation" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [TagRelation].[QuestionID] AS [QuestionID], 
-    [TagRelation].[TagID] AS [TagID], 
-    [TagRelation].[BlogID] AS [BlogID], 
-    [TagRelation].[RoomID] AS [RoomID]
-    FROM [dbo].[TagRelation] AS [TagRelation]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_Account_Proficiency" Association="Self.FK_Account_Proficiency">
             <End Role="Proficiency" EntitySet="Proficiency" />
@@ -989,10 +1025,6 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
           </AssociationSet>
           <AssociationSet Name="FK_Answer_Account" Association="Self.FK_Answer_Account">
             <End Role="Account" EntitySet="Account" />
-            <End Role="Answer" EntitySet="Answer" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Answer_DiscussionRoom" Association="Self.FK_Answer_DiscussionRoom">
-            <End Role="DiscussionRoom" EntitySet="DiscussionRoom" />
             <End Role="Answer" EntitySet="Answer" />
           </AssociationSet>
           <AssociationSet Name="FK_Answer_Question" Association="Self.FK_Answer_Question">
@@ -1011,15 +1043,15 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             <End Role="Account" EntitySet="Account" />
             <End Role="ContestAnswer" EntitySet="ContestAnswer" />
           </AssociationSet>
-          <AssociationSet Name="FK_ContestAnswer_Complete" Association="Self.FK_ContestAnswer_Complete">
+          <AssociationSet Name="FK_ContestAnswer_Complete1" Association="Self.FK_ContestAnswer_Complete1">
             <End Role="Complete" EntitySet="Complete" />
             <End Role="ContestAnswer" EntitySet="ContestAnswer" />
           </AssociationSet>
-          <AssociationSet Name="FK_ContestAnswer_MCQ" Association="Self.FK_ContestAnswer_MCQ">
+          <AssociationSet Name="FK_ContestAnswer_MCQ1" Association="Self.FK_ContestAnswer_MCQ1">
             <End Role="MCQ" EntitySet="MCQ" />
             <End Role="ContestAnswer" EntitySet="ContestAnswer" />
           </AssociationSet>
-          <AssociationSet Name="FK_ContestAnswer_TrueFalse" Association="Self.FK_ContestAnswer_TrueFalse">
+          <AssociationSet Name="FK_ContestAnswer_TrueFalse1" Association="Self.FK_ContestAnswer_TrueFalse1">
             <End Role="TrueFalse" EntitySet="TrueFalse" />
             <End Role="ContestAnswer" EntitySet="ContestAnswer" />
           </AssociationSet>
@@ -1029,6 +1061,10 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
           </AssociationSet>
           <AssociationSet Name="FK_ContestRelation_Account" Association="Self.FK_ContestRelation_Account">
             <End Role="Account" EntitySet="Account" />
+            <End Role="ContestRelation" EntitySet="ContestRelation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContestRelation_Contest" Association="Self.FK_ContestRelation_Contest">
+            <End Role="Contest" EntitySet="Contest" />
             <End Role="ContestRelation" EntitySet="ContestRelation" />
           </AssociationSet>
           <AssociationSet Name="FK_EnrolledTutorial_Account" Association="Self.FK_EnrolledTutorial_Account">
@@ -1041,6 +1077,14 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
           </AssociationSet>
           <AssociationSet Name="FK_Favourite_Account" Association="Self.FK_Favourite_Account">
             <End Role="Account" EntitySet="Account" />
+            <End Role="Favourite" EntitySet="Favourite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Favourite_Answer" Association="Self.FK_Favourite_Answer">
+            <End Role="Answer" EntitySet="Answer" />
+            <End Role="Favourite" EntitySet="Favourite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Favourite_Blog" Association="Self.FK_Favourite_Blog">
+            <End Role="Blog" EntitySet="Blog" />
             <End Role="Favourite" EntitySet="Favourite" />
           </AssociationSet>
           <AssociationSet Name="FK_Favourite_Question" Association="Self.FK_Favourite_Question">
@@ -1075,6 +1119,14 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             <End Role="Complete" EntitySet="Complete" />
             <End Role="Image" EntitySet="Image" />
           </AssociationSet>
+          <AssociationSet Name="FK_Image_Contest" Association="Self.FK_Image_Contest">
+            <End Role="Contest" EntitySet="Contest" />
+            <End Role="Image" EntitySet="Image" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Image_DiscussionRoom" Association="Self.FK_Image_DiscussionRoom">
+            <End Role="DiscussionRoom" EntitySet="DiscussionRoom" />
+            <End Role="Image" EntitySet="Image" />
+          </AssociationSet>
           <AssociationSet Name="FK_Image_MCQ" Association="Self.FK_Image_MCQ">
             <End Role="MCQ" EntitySet="MCQ" />
             <End Role="Image" EntitySet="Image" />
@@ -1099,16 +1151,16 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             <End Role="Account" EntitySet="Account" />
             <End Role="Mention" EntitySet="Mention" />
           </AssociationSet>
-          <AssociationSet Name="FK_Mention_Blog" Association="Self.FK_Mention_Blog">
-            <End Role="Blog" EntitySet="Blog" />
+          <AssociationSet Name="FK_Mention_Account1" Association="Self.FK_Mention_Account1">
+            <End Role="Account" EntitySet="Account" />
             <End Role="Mention" EntitySet="Mention" />
           </AssociationSet>
-          <AssociationSet Name="FK_Mention_DiscussionRoom" Association="Self.FK_Mention_DiscussionRoom">
-            <End Role="DiscussionRoom" EntitySet="DiscussionRoom" />
+          <AssociationSet Name="FK_Mention_Answer" Association="Self.FK_Mention_Answer">
+            <End Role="Answer" EntitySet="Answer" />
             <End Role="Mention" EntitySet="Mention" />
           </AssociationSet>
-          <AssociationSet Name="FK_Mention_Question" Association="Self.FK_Mention_Question">
-            <End Role="Question" EntitySet="Question" />
+          <AssociationSet Name="FK_Mention_Message" Association="Self.FK_Mention_Message">
+            <End Role="Message" EntitySet="Message" />
             <End Role="Mention" EntitySet="Mention" />
           </AssociationSet>
           <AssociationSet Name="FK_Message_Account" Association="Self.FK_Message_Account">
@@ -1123,17 +1175,13 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             <End Role="Account" EntitySet="Account" />
             <End Role="PreferenceList" EntitySet="PreferenceList" />
           </AssociationSet>
-          <AssociationSet Name="FK_QuestionTag_Blog" Association="Self.FK_QuestionTag_Blog">
-            <End Role="Blog" EntitySet="Blog" />
-            <End Role="TagRelation" EntitySet="TagRelation" />
-          </AssociationSet>
-          <AssociationSet Name="FK_QuestionTag_Question" Association="Self.FK_QuestionTag_Question">
-            <End Role="Question" EntitySet="Question" />
-            <End Role="TagRelation" EntitySet="TagRelation" />
-          </AssociationSet>
           <AssociationSet Name="FK_Ratings_Account" Association="Self.FK_Ratings_Account">
             <End Role="Account" EntitySet="Account" />
             <End Role="Rating" EntitySet="Rating" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reply_Answer" Association="Self.FK_Reply_Answer">
+            <End Role="Answer" EntitySet="Answer" />
+            <End Role="Reply" EntitySet="Reply" />
           </AssociationSet>
           <AssociationSet Name="FK_RoomParticipant_Account" Association="Self.FK_RoomParticipant_Account">
             <End Role="Account" EntitySet="Account" />
@@ -1143,7 +1191,23 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             <End Role="DiscussionRoom" EntitySet="DiscussionRoom" />
             <End Role="RoomParticipant" EntitySet="RoomParticipant" />
           </AssociationSet>
-          <AssociationSet Name="FK_Table_1_Question" Association="Self.FK_Table_1_Question">
+          <AssociationSet Name="FK_Tag_Answer" Association="Self.FK_Tag_Answer">
+            <End Role="Answer" EntitySet="Answer" />
+            <End Role="Tag" EntitySet="Tag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tag_Application" Association="Self.FK_Tag_Application">
+            <End Role="Application" EntitySet="Application" />
+            <End Role="Tag" EntitySet="Tag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tag_Blog" Association="Self.FK_Tag_Blog">
+            <End Role="Blog" EntitySet="Blog" />
+            <End Role="Tag" EntitySet="Tag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tag_DiscussionRoom" Association="Self.FK_Tag_DiscussionRoom">
+            <End Role="DiscussionRoom" EntitySet="DiscussionRoom" />
+            <End Role="Tag" EntitySet="Tag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tag_Question" Association="Self.FK_Tag_Question">
             <End Role="Question" EntitySet="Question" />
             <End Role="Tag" EntitySet="Tag" />
           </AssociationSet>
@@ -1187,16 +1251,17 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
           <NavigationProperty Name="Answers" Relationship="Self.FK_Answer_Account" FromRole="Account" ToRole="Answer" />
           <NavigationProperty Name="Blogs" Relationship="Self.FK_Blog_Account" FromRole="Account" ToRole="Blog" />
           <NavigationProperty Name="ContestAnswers" Relationship="Self.FK_ContestAnswer_Account" FromRole="Account" ToRole="ContestAnswer" />
-          <NavigationProperty Name="ContestRelations" Relationship="Self.FK_ContestRelation_Account" FromRole="Account" ToRole="ContestRelation" />
           <NavigationProperty Name="Favourites" Relationship="Self.FK_Favourite_Account" FromRole="Account" ToRole="Favourite" />
           <NavigationProperty Name="FollowZones" Relationship="Self.FK_FollowZone_Account" FromRole="Account" ToRole="FollowZone" />
           <NavigationProperty Name="FollowZones1" Relationship="Self.FK_FollowZone_Account1" FromRole="Account" ToRole="FollowZone" />
           <NavigationProperty Name="Images" Relationship="Self.FK_Image_Account" FromRole="Account" ToRole="Image" />
           <NavigationProperty Name="Mentions" Relationship="Self.FK_Mention_Account" FromRole="Account" ToRole="Mention" />
+          <NavigationProperty Name="Mention" Relationship="Self.FK_Mention_Account1" FromRole="Account" ToRole="Mention" />
           <NavigationProperty Name="Messages" Relationship="Self.FK_Message_Account" FromRole="Account" ToRole="Message" />
           <NavigationProperty Name="PreferenceLists" Relationship="Self.FK_PreferenceList_Account" FromRole="Account" ToRole="PreferenceList" />
           <NavigationProperty Name="Ratings" Relationship="Self.FK_Ratings_Account" FromRole="Account" ToRole="Rating" />
           <NavigationProperty Name="Tutorials" Relationship="Self.FK_Tutorial_Account" FromRole="Account" ToRole="Tutorial" />
+          <NavigationProperty Name="Contests" Relationship="Self.ContestRelation" FromRole="Account" ToRole="Contest" />
           <NavigationProperty Name="Tutorials1" Relationship="Self.EnrolledTutorial" FromRole="Account" ToRole="Tutorial" />
           <NavigationProperty Name="DiscussionRooms" Relationship="Self.RoomParticipant" FromRole="Account" ToRole="DiscussionRoom" />
         </EntityType>
@@ -1205,28 +1270,31 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountID" Type="Int32" Nullable="false" />
           <Property Name="Text" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
           <Property Name="QuestionID" Type="Int32" Nullable="false" />
           <Property Name="Points" Type="Int32" Nullable="false" />
           <Property Name="FilePath" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-          <Property Name="RoomID" Type="Int32" />
-          <Property Name="AccountID" Type="Int32" Nullable="false" />
           <Property Name="Accepted" Type="Boolean" Nullable="false" />
           <Property Name="BestAnswer" Type="Boolean" Nullable="false" />
+          <Property Name="Report" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Account" Relationship="Self.FK_Answer_Account" FromRole="Answer" ToRole="Account" />
-          <NavigationProperty Name="DiscussionRoom" Relationship="Self.FK_Answer_DiscussionRoom" FromRole="Answer" ToRole="DiscussionRoom" />
           <NavigationProperty Name="Question" Relationship="Self.FK_Answer_Question" FromRole="Answer" ToRole="Question" />
+          <NavigationProperty Name="Favourites" Relationship="Self.FK_Favourite_Answer" FromRole="Answer" ToRole="Favourite" />
           <NavigationProperty Name="Images" Relationship="Self.FK_Image_Answer" FromRole="Answer" ToRole="Image" />
+          <NavigationProperty Name="Mention" Relationship="Self.FK_Mention_Answer" FromRole="Answer" ToRole="Mention" />
+          <NavigationProperty Name="Replies" Relationship="Self.FK_Reply_Answer" FromRole="Answer" ToRole="Reply" />
+          <NavigationProperty Name="Tags" Relationship="Self.FK_Tag_Answer" FromRole="Answer" ToRole="Tag" />
         </EntityType>
         <EntityType Name="Application">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Thumbnail" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Tag" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Tags" Relationship="Self.FK_Tag_Application" FromRole="Application" ToRole="Tag" />
         </EntityType>
         <EntityType Name="Blog">
           <Key>
@@ -1237,22 +1305,23 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
           <Property Name="AuthorID" Type="Int32" Nullable="false" />
           <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="RoomID" Type="Int32" />
-          <Property Name="Points" Type="Int32" Nullable="false" />
+          <Property Name="Favourites" Type="Int32" Nullable="false" />
+          <Property Name="Report" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Account" Relationship="Self.FK_Blog_Account" FromRole="Blog" ToRole="Account" />
           <NavigationProperty Name="DiscussionRoom" Relationship="Self.FK_Blog_DiscussionRoom" FromRole="Blog" ToRole="DiscussionRoom" />
+          <NavigationProperty Name="Favourite" Relationship="Self.FK_Favourite_Blog" FromRole="Blog" ToRole="Favourite" />
           <NavigationProperty Name="Images" Relationship="Self.FK_Image_Blog" FromRole="Blog" ToRole="Image" />
-          <NavigationProperty Name="Mentions" Relationship="Self.FK_Mention_Blog" FromRole="Blog" ToRole="Mention" />
-          <NavigationProperty Name="TagRelations" Relationship="Self.FK_QuestionTag_Blog" FromRole="Blog" ToRole="TagRelation" />
+          <NavigationProperty Name="Tags" Relationship="Self.FK_Tag_Blog" FromRole="Blog" ToRole="Tag" />
         </EntityType>
         <EntityType Name="Complete">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Answer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Answer" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ContestID" Type="Int32" Nullable="false" />
           <Property Name="Text" Type="String" MaxLength="1250" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="ContestAnswers" Relationship="Self.FK_ContestAnswer_Complete" FromRole="Complete" ToRole="ContestAnswer" />
+          <NavigationProperty Name="ContestAnswers" Relationship="Self.FK_ContestAnswer_Complete1" FromRole="Complete" ToRole="ContestAnswer" />
           <NavigationProperty Name="Images" Relationship="Self.FK_Image_Complete" FromRole="Complete" ToRole="Image" />
         </EntityType>
         <EntityType Name="Contest">
@@ -1263,21 +1332,39 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
           <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DateAndTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="MCQs" Relationship="Self.FK_ContestMCQ_Contest" FromRole="Contest" ToRole="MCQ" />
+          <NavigationProperty Name="Images" Relationship="Self.FK_Image_Contest" FromRole="Contest" ToRole="Image" />
+          <NavigationProperty Name="Accounts" Relationship="Self.ContestRelation" FromRole="Contest" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="ContestAnswer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountID" Type="Int32" Nullable="false" />
+          <Property Name="Answer" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Correct" Type="Boolean" Nullable="false" />
+          <Property Name="RelationType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RelatedID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_ContestAnswer_Account" FromRole="ContestAnswer" ToRole="Account" />
+          <NavigationProperty Name="Complete" Relationship="Self.FK_ContestAnswer_Complete1" FromRole="ContestAnswer" ToRole="Complete" />
+          <NavigationProperty Name="MCQ" Relationship="Self.FK_ContestAnswer_MCQ1" FromRole="ContestAnswer" ToRole="MCQ" />
+          <NavigationProperty Name="TrueFalse" Relationship="Self.FK_ContestAnswer_TrueFalse1" FromRole="ContestAnswer" ToRole="TrueFalse" />
         </EntityType>
         <EntityType Name="DiscussionRoom">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Recommendation" Type="Int32" />
-          <Property Name="DateAndTime" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Answers" Relationship="Self.FK_Answer_DiscussionRoom" FromRole="DiscussionRoom" ToRole="Answer" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Recommendation" Type="Int32" Nullable="false" />
+          <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Blogs" Relationship="Self.FK_Blog_DiscussionRoom" FromRole="DiscussionRoom" ToRole="Blog" />
-          <NavigationProperty Name="Mentions" Relationship="Self.FK_Mention_DiscussionRoom" FromRole="DiscussionRoom" ToRole="Mention" />
+          <NavigationProperty Name="Images" Relationship="Self.FK_Image_DiscussionRoom" FromRole="DiscussionRoom" ToRole="Image" />
           <NavigationProperty Name="Messages" Relationship="Self.FK_Message_DiscussionRoom" FromRole="DiscussionRoom" ToRole="Message" />
+          <NavigationProperty Name="Tags" Relationship="Self.FK_Tag_DiscussionRoom" FromRole="DiscussionRoom" ToRole="Tag" />
           <NavigationProperty Name="Accounts" Relationship="Self.RoomParticipant" FromRole="DiscussionRoom" ToRole="Account" />
         </EntityType>
         <EntityType Name="Favourite">
@@ -1285,23 +1372,55 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TutorialID" Type="Int32" />
-          <Property Name="QuestionID" Type="Int32" />
+          <Property Name="TypeID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RelatedID" Type="Int32" Nullable="false" />
           <Property Name="AccountID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Account" Relationship="Self.FK_Favourite_Account" FromRole="Favourite" ToRole="Account" />
+          <NavigationProperty Name="Answer" Relationship="Self.FK_Favourite_Answer" FromRole="Favourite" ToRole="Answer" />
+          <NavigationProperty Name="Blog" Relationship="Self.FK_Favourite_Blog" FromRole="Favourite" ToRole="Blog" />
           <NavigationProperty Name="Question" Relationship="Self.FK_Favourite_Question" FromRole="Favourite" ToRole="Question" />
           <NavigationProperty Name="Tutorial" Relationship="Self.FK_Favourite_Tutorial" FromRole="Favourite" ToRole="Tutorial" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="Path" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Caption" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="RelationType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RelatedID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Image_Account" FromRole="Image" ToRole="Account" />
+          <NavigationProperty Name="Answer" Relationship="Self.FK_Image_Answer" FromRole="Image" ToRole="Answer" />
+          <NavigationProperty Name="Blog" Relationship="Self.FK_Image_Blog" FromRole="Image" ToRole="Blog" />
+          <NavigationProperty Name="Complete" Relationship="Self.FK_Image_Complete" FromRole="Image" ToRole="Complete" />
+          <NavigationProperty Name="Contest" Relationship="Self.FK_Image_Contest" FromRole="Image" ToRole="Contest" />
+          <NavigationProperty Name="DiscussionRoom" Relationship="Self.FK_Image_DiscussionRoom" FromRole="Image" ToRole="DiscussionRoom" />
+          <NavigationProperty Name="MCQ" Relationship="Self.FK_Image_MCQ" FromRole="Image" ToRole="MCQ" />
+          <NavigationProperty Name="Message" Relationship="Self.FK_Image_Message" FromRole="Image" ToRole="Message" />
+          <NavigationProperty Name="Question" Relationship="Self.FK_Image_Question" FromRole="Image" ToRole="Question" />
+          <NavigationProperty Name="TrueFalse" Relationship="Self.FK_Image_TrueFalse" FromRole="Image" ToRole="TrueFalse" />
+          <NavigationProperty Name="Tutorial" Relationship="Self.FK_Image_Tutorial" FromRole="Image" ToRole="Tutorial" />
+        </EntityType>
+        <EntityType Name="Lesson">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Path" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="MCQ">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Text" Type="String" MaxLength="1250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Answer" Type="Int32" Nullable="false" />
           <Property Name="ContestID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Contest" Relationship="Self.FK_ContestMCQ_Contest" FromRole="MCQ" ToRole="Contest" />
-          <NavigationProperty Name="ContestAnswers" Relationship="Self.FK_ContestAnswer_MCQ" FromRole="MCQ" ToRole="ContestAnswer" />
+          <NavigationProperty Name="ContestAnswers" Relationship="Self.FK_ContestAnswer_MCQ1" FromRole="MCQ" ToRole="ContestAnswer" />
           <NavigationProperty Name="Images" Relationship="Self.FK_Image_MCQ" FromRole="MCQ" ToRole="Image" />
         </EntityType>
         <EntityType Name="Mention">
@@ -1310,27 +1429,28 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="AccountID" Type="Int32" Nullable="false" />
-          <Property Name="QuestionID" Type="Int32" />
-          <Property Name="RoomID" Type="Int32" />
-          <Property Name="BlogID" Type="Int32" />
+          <Property Name="MentionedID" Type="Int32" Nullable="false" />
+          <Property Name="RelatedID" Type="Int32" Nullable="false" />
+          <Property Name="RelationType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Account" Relationship="Self.FK_Mention_Account" FromRole="Mention" ToRole="Account" />
-          <NavigationProperty Name="Blog" Relationship="Self.FK_Mention_Blog" FromRole="Mention" ToRole="Blog" />
-          <NavigationProperty Name="DiscussionRoom" Relationship="Self.FK_Mention_DiscussionRoom" FromRole="Mention" ToRole="DiscussionRoom" />
-          <NavigationProperty Name="Question" Relationship="Self.FK_Mention_Question" FromRole="Mention" ToRole="Question" />
+          <NavigationProperty Name="Account1" Relationship="Self.FK_Mention_Account1" FromRole="Mention" ToRole="Account" />
+          <NavigationProperty Name="Answer" Relationship="Self.FK_Mention_Answer" FromRole="Mention" ToRole="Answer" />
+          <NavigationProperty Name="Message" Relationship="Self.FK_Mention_Message" FromRole="Mention" ToRole="Message" />
         </EntityType>
         <EntityType Name="Message">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Text" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DateAndTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="SenderID" Type="Int32" Nullable="false" />
           <Property Name="RoomID" Type="Int32" Nullable="false" />
           <Property Name="FilePath" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Account" Relationship="Self.FK_Message_Account" FromRole="Message" ToRole="Account" />
           <NavigationProperty Name="DiscussionRoom" Relationship="Self.FK_Message_DiscussionRoom" FromRole="Message" ToRole="DiscussionRoom" />
           <NavigationProperty Name="Images" Relationship="Self.FK_Image_Message" FromRole="Message" ToRole="Image" />
+          <NavigationProperty Name="Mentions" Relationship="Self.FK_Mention_Message" FromRole="Message" ToRole="Mention" />
         </EntityType>
         <EntityType Name="PreferenceList">
           <Key>
@@ -1354,20 +1474,19 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="AccountID" Type="Int32" Nullable="false" />
-          <Property Name="Text" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" />
-          <Property Name="Frequency" Type="Int32" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="2500" FixedLength="false" Unicode="false" />
+          <Property Name="Views" Type="Int32" Nullable="false" />
           <Property Name="DateAndTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="FilePath" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="Favourits" Type="Int32" Nullable="false" />
           <Property Name="Solved" Type="Boolean" Nullable="false" />
+          <Property Name="Report" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Answers" Relationship="Self.FK_Answer_Question" FromRole="Question" ToRole="Answer" />
           <NavigationProperty Name="Favourites" Relationship="Self.FK_Favourite_Question" FromRole="Question" ToRole="Favourite" />
-          <NavigationProperty Name="Mentions" Relationship="Self.FK_Mention_Question" FromRole="Question" ToRole="Mention" />
           <NavigationProperty Name="Images" Relationship="Self.FK_Image_Question" FromRole="Question" ToRole="Image" />
-          <NavigationProperty Name="TagRelations" Relationship="Self.FK_QuestionTag_Question" FromRole="Question" ToRole="TagRelation" />
-          <NavigationProperty Name="Tags" Relationship="Self.FK_Table_1_Question" FromRole="Question" ToRole="Tag" />
+          <NavigationProperty Name="Tags" Relationship="Self.FK_Tag_Question" FromRole="Question" ToRole="Tag" />
         </EntityType>
         <EntityType Name="Rank">
           <Key>
@@ -1382,11 +1501,28 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Rating1" Type="Int32" Nullable="false" />
           <Property Name="AccountID" Type="Int32" Nullable="false" />
           <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Account" Relationship="Self.FK_Ratings_Account" FromRole="Rating" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="Reply">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AnswerID" Type="Int32" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FilePath" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Answer" Relationship="Self.FK_Reply_Answer" FromRole="Reply" ToRole="Answer" />
+        </EntityType>
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -1404,9 +1540,13 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Text" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RelationType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="RelatedID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Question" Relationship="Self.FK_Table_1_Question" FromRole="Tag" ToRole="Question" />
+          <NavigationProperty Name="Answer" Relationship="Self.FK_Tag_Answer" FromRole="Tag" ToRole="Answer" />
+          <NavigationProperty Name="Application" Relationship="Self.FK_Tag_Application" FromRole="Tag" ToRole="Application" />
+          <NavigationProperty Name="Blog" Relationship="Self.FK_Tag_Blog" FromRole="Tag" ToRole="Blog" />
+          <NavigationProperty Name="DiscussionRoom" Relationship="Self.FK_Tag_DiscussionRoom" FromRole="Tag" ToRole="DiscussionRoom" />
+          <NavigationProperty Name="Question" Relationship="Self.FK_Tag_Question" FromRole="Tag" ToRole="Question" />
         </EntityType>
         <EntityType Name="TrueFalse">
           <Key>
@@ -1416,7 +1556,7 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
           <Property Name="Answer" Type="Boolean" Nullable="false" />
           <Property Name="ContestID" Type="Int32" Nullable="false" />
           <Property Name="Text" Type="String" MaxLength="1250" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="ContestAnswers" Relationship="Self.FK_ContestAnswer_TrueFalse" FromRole="TrueFalse" ToRole="ContestAnswer" />
+          <NavigationProperty Name="ContestAnswers" Relationship="Self.FK_ContestAnswer_TrueFalse1" FromRole="TrueFalse" ToRole="ContestAnswer" />
           <NavigationProperty Name="Images" Relationship="Self.FK_Image_TrueFalse" FromRole="TrueFalse" ToRole="Image" />
         </EntityType>
         <EntityType Name="Tutorial">
@@ -1446,34 +1586,8 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FilePath" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TutorialID" Type="Int32" Nullable="false" />
+          <Property Name="FileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Tutorial" Relationship="Self.FK_TutorialMaterial_Tutorial" FromRole="TutorialMaterial" ToRole="Tutorial" />
-        </EntityType>
-        <EntityType Name="ContestAnswer">
-          <Key>
-            <PropertyRef Name="AccountID" />
-            <PropertyRef Name="Correct" />
-          </Key>
-          <Property Name="AccountID" Type="Int32" Nullable="false" />
-          <Property Name="MCQID" Type="Int32" />
-          <Property Name="TrueFalseID" Type="Int32" />
-          <Property Name="CompleteID" Type="Int32" />
-          <Property Name="MCQAnswer" Type="Int32" />
-          <Property Name="CompleteAnswer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TrueFalseAnswer" Type="Boolean" />
-          <Property Name="Correct" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Account" Relationship="Self.FK_ContestAnswer_Account" FromRole="ContestAnswer" ToRole="Account" />
-          <NavigationProperty Name="Complete" Relationship="Self.FK_ContestAnswer_Complete" FromRole="ContestAnswer" ToRole="Complete" />
-          <NavigationProperty Name="MCQ" Relationship="Self.FK_ContestAnswer_MCQ" FromRole="ContestAnswer" ToRole="MCQ" />
-          <NavigationProperty Name="TrueFalse" Relationship="Self.FK_ContestAnswer_TrueFalse" FromRole="ContestAnswer" ToRole="TrueFalse" />
-        </EntityType>
-        <EntityType Name="ContestRelation">
-          <Key>
-            <PropertyRef Name="ContestID" />
-            <PropertyRef Name="AccountD" />
-          </Key>
-          <Property Name="ContestID" Type="Int32" Nullable="false" />
-          <Property Name="AccountD" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Account" Relationship="Self.FK_ContestRelation_Account" FromRole="ContestRelation" ToRole="Account" />
         </EntityType>
         <EntityType Name="FollowZone">
           <Key>
@@ -1488,53 +1602,6 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
           <Property Name="FollowLevel" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Account" Relationship="Self.FK_FollowZone_Account" FromRole="FollowZone" ToRole="Account" />
           <NavigationProperty Name="Account1" Relationship="Self.FK_FollowZone_Account1" FromRole="FollowZone" ToRole="Account" />
-        </EntityType>
-        <EntityType Name="Image">
-          <Key>
-            <PropertyRef Name="ID" />
-            <PropertyRef Name="Name" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Path" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="QuestionID" Type="Int32" />
-          <Property Name="BlogID" Type="Int32" />
-          <Property Name="MessageID" Type="Int32" />
-          <Property Name="AnswerID" Type="Int32" />
-          <Property Name="AccountID" Type="Int32" />
-          <Property Name="TutorialID" Type="Int32" />
-          <Property Name="Caption" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-          <Property Name="MCQID" Type="Int32" />
-          <Property Name="TrueFalseID" Type="Int32" />
-          <Property Name="CompleteID" Type="Int32" />
-          <NavigationProperty Name="Account" Relationship="Self.FK_Image_Account" FromRole="Image" ToRole="Account" />
-          <NavigationProperty Name="Answer" Relationship="Self.FK_Image_Answer" FromRole="Image" ToRole="Answer" />
-          <NavigationProperty Name="Blog" Relationship="Self.FK_Image_Blog" FromRole="Image" ToRole="Blog" />
-          <NavigationProperty Name="Complete" Relationship="Self.FK_Image_Complete" FromRole="Image" ToRole="Complete" />
-          <NavigationProperty Name="MCQ" Relationship="Self.FK_Image_MCQ" FromRole="Image" ToRole="MCQ" />
-          <NavigationProperty Name="Message" Relationship="Self.FK_Image_Message" FromRole="Image" ToRole="Message" />
-          <NavigationProperty Name="Question" Relationship="Self.FK_Image_Question" FromRole="Image" ToRole="Question" />
-          <NavigationProperty Name="TrueFalse" Relationship="Self.FK_Image_TrueFalse" FromRole="Image" ToRole="TrueFalse" />
-          <NavigationProperty Name="Tutorial" Relationship="Self.FK_Image_Tutorial" FromRole="Image" ToRole="Tutorial" />
-        </EntityType>
-        <EntityType Name="Lesson">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Path" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="TagRelation">
-          <Key>
-            <PropertyRef Name="TagID" />
-          </Key>
-          <Property Name="QuestionID" Type="Int32" />
-          <Property Name="TagID" Type="Int32" Nullable="false" />
-          <Property Name="BlogID" Type="Int32" />
-          <Property Name="RoomID" Type="Int32" />
-          <NavigationProperty Name="Blog" Relationship="Self.FK_QuestionTag_Blog" FromRole="TagRelation" ToRole="Blog" />
-          <NavigationProperty Name="Question" Relationship="Self.FK_QuestionTag_Question" FromRole="TagRelation" ToRole="Question" />
         </EntityType>
         <Association Name="FK_Account_Proficiency">
           <End Role="Proficiency" Type="Self.Proficiency" Multiplicity="1" />
@@ -1596,18 +1663,6 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ContestRelation_Account">
-          <End Role="Account" Type="Self.Account" Multiplicity="1" />
-          <End Role="ContestRelation" Type="Self.ContestRelation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Account">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ContestRelation">
-              <PropertyRef Name="AccountD" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Favourite_Account">
           <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="Favourite" Type="Self.Favourite" Multiplicity="*" />
@@ -1645,14 +1700,14 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Image_Account">
-          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
           <End Role="Image" Type="Self.Image" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Account">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Image">
-              <PropertyRef Name="AccountID" />
+              <PropertyRef Name="RelatedID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1665,6 +1720,18 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             </Principal>
             <Dependent Role="Mention">
               <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mention_Account1">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Mention" Type="Self.Mention" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Mention">
+              <PropertyRef Name="ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1716,18 +1783,6 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Answer_DiscussionRoom">
-          <End Role="DiscussionRoom" Type="Self.DiscussionRoom" Multiplicity="0..1" />
-          <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DiscussionRoom">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Answer">
-              <PropertyRef Name="RoomID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Answer_Question">
           <End Role="Question" Type="Self.Question" Multiplicity="1" />
           <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
@@ -1740,15 +1795,75 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Favourite_Answer">
+          <End Role="Answer" Type="Self.Answer" Multiplicity="1" />
+          <End Role="Favourite" Type="Self.Favourite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Answer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Favourite">
+              <PropertyRef Name="RelatedID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Image_Answer">
-          <End Role="Answer" Type="Self.Answer" Multiplicity="0..1" />
+          <End Role="Answer" Type="Self.Answer" Multiplicity="1" />
           <End Role="Image" Type="Self.Image" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Answer">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Image">
+              <PropertyRef Name="RelatedID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mention_Answer">
+          <End Role="Answer" Type="Self.Answer" Multiplicity="1" />
+          <End Role="Mention" Type="Self.Mention" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Answer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Mention">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reply_Answer">
+          <End Role="Answer" Type="Self.Answer" Multiplicity="1" />
+          <End Role="Reply" Type="Self.Reply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Answer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Reply">
               <PropertyRef Name="AnswerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tag_Answer">
+          <End Role="Answer" Type="Self.Answer" Multiplicity="1" />
+          <End Role="Tag" Type="Self.Tag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Answer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tag">
+              <PropertyRef Name="RelatedID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tag_Application">
+          <End Role="Application" Type="Self.Application" Multiplicity="1" />
+          <End Role="Tag" Type="Self.Tag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Application">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tag">
+              <PropertyRef Name="RelatedID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1764,63 +1879,63 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Favourite_Blog">
+          <End Role="Blog" Type="Self.Blog" Multiplicity="1" />
+          <End Role="Favourite" Type="Self.Favourite" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Blog">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Favourite">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Image_Blog">
-          <End Role="Blog" Type="Self.Blog" Multiplicity="0..1" />
+          <End Role="Blog" Type="Self.Blog" Multiplicity="1" />
           <End Role="Image" Type="Self.Image" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Blog">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Image">
-              <PropertyRef Name="BlogID" />
+              <PropertyRef Name="RelatedID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Mention_Blog">
-          <End Role="Blog" Type="Self.Blog" Multiplicity="0..1" />
-          <End Role="Mention" Type="Self.Mention" Multiplicity="*" />
+        <Association Name="FK_Tag_Blog">
+          <End Role="Blog" Type="Self.Blog" Multiplicity="1" />
+          <End Role="Tag" Type="Self.Tag" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Blog">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Mention">
-              <PropertyRef Name="BlogID" />
+            <Dependent Role="Tag">
+              <PropertyRef Name="RelatedID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_QuestionTag_Blog">
-          <End Role="Blog" Type="Self.Blog" Multiplicity="0..1" />
-          <End Role="TagRelation" Type="Self.TagRelation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Blog">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="TagRelation">
-              <PropertyRef Name="BlogID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ContestAnswer_Complete">
-          <End Role="Complete" Type="Self.Complete" Multiplicity="0..1" />
+        <Association Name="FK_ContestAnswer_Complete1">
+          <End Role="Complete" Type="Self.Complete" Multiplicity="1" />
           <End Role="ContestAnswer" Type="Self.ContestAnswer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Complete">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="ContestAnswer">
-              <PropertyRef Name="CompleteID" />
+              <PropertyRef Name="RelatedID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Image_Complete">
-          <End Role="Complete" Type="Self.Complete" Multiplicity="0..1" />
+          <End Role="Complete" Type="Self.Complete" Multiplicity="1" />
           <End Role="Image" Type="Self.Image" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Complete">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Image">
-              <PropertyRef Name="CompleteID" />
+              <PropertyRef Name="RelatedID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1836,15 +1951,51 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Mention_DiscussionRoom">
-          <End Role="DiscussionRoom" Type="Self.DiscussionRoom" Multiplicity="0..1" />
-          <End Role="Mention" Type="Self.Mention" Multiplicity="*" />
+        <Association Name="FK_Image_Contest">
+          <End Role="Contest" Type="Self.Contest" Multiplicity="1" />
+          <End Role="Image" Type="Self.Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contest">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Image">
+              <PropertyRef Name="RelatedID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContestAnswer_MCQ1">
+          <End Role="MCQ" Type="Self.MCQ" Multiplicity="1" />
+          <End Role="ContestAnswer" Type="Self.ContestAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MCQ">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ContestAnswer">
+              <PropertyRef Name="RelatedID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContestAnswer_TrueFalse1">
+          <End Role="TrueFalse" Type="Self.TrueFalse" Multiplicity="1" />
+          <End Role="ContestAnswer" Type="Self.ContestAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrueFalse">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ContestAnswer">
+              <PropertyRef Name="RelatedID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Image_DiscussionRoom">
+          <End Role="DiscussionRoom" Type="Self.DiscussionRoom" Multiplicity="1" />
+          <End Role="Image" Type="Self.Image" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DiscussionRoom">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Mention">
-              <PropertyRef Name="RoomID" />
+            <Dependent Role="Image">
+              <PropertyRef Name="RelatedID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1860,103 +2011,115 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Tag_DiscussionRoom">
+          <End Role="DiscussionRoom" Type="Self.DiscussionRoom" Multiplicity="1" />
+          <End Role="Tag" Type="Self.Tag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiscussionRoom">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tag">
+              <PropertyRef Name="RelatedID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Favourite_Question">
-          <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+          <End Role="Question" Type="Self.Question" Multiplicity="1" />
           <End Role="Favourite" Type="Self.Favourite" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Question">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Favourite">
-              <PropertyRef Name="QuestionID" />
+              <PropertyRef Name="RelatedID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Favourite_Tutorial">
-          <End Role="Tutorial" Type="Self.Tutorial" Multiplicity="0..1" />
+          <End Role="Tutorial" Type="Self.Tutorial" Multiplicity="1" />
           <End Role="Favourite" Type="Self.Favourite" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Tutorial">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Favourite">
-              <PropertyRef Name="TutorialID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ContestAnswer_MCQ">
-          <End Role="MCQ" Type="Self.MCQ" Multiplicity="0..1" />
-          <End Role="ContestAnswer" Type="Self.ContestAnswer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MCQ">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ContestAnswer">
-              <PropertyRef Name="MCQID" />
+              <PropertyRef Name="RelatedID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Image_MCQ">
-          <End Role="MCQ" Type="Self.MCQ" Multiplicity="0..1" />
+          <End Role="MCQ" Type="Self.MCQ" Multiplicity="1" />
           <End Role="Image" Type="Self.Image" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MCQ">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Image">
-              <PropertyRef Name="MCQID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Mention_Question">
-          <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
-          <End Role="Mention" Type="Self.Mention" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Question">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Mention">
-              <PropertyRef Name="QuestionID" />
+              <PropertyRef Name="RelatedID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Image_Message">
-          <End Role="Message" Type="Self.Message" Multiplicity="0..1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="1" />
           <End Role="Image" Type="Self.Image" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Message">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Image">
-              <PropertyRef Name="MessageID" />
+              <PropertyRef Name="RelatedID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Image_Question">
-          <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+          <End Role="Question" Type="Self.Question" Multiplicity="1" />
           <End Role="Image" Type="Self.Image" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Question">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Image">
-              <PropertyRef Name="QuestionID" />
+              <PropertyRef Name="RelatedID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_QuestionTag_Question">
-          <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
-          <End Role="TagRelation" Type="Self.TagRelation" Multiplicity="*" />
+        <Association Name="FK_Image_TrueFalse">
+          <End Role="TrueFalse" Type="Self.TrueFalse" Multiplicity="1" />
+          <End Role="Image" Type="Self.Image" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Question">
+            <Principal Role="TrueFalse">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="TagRelation">
-              <PropertyRef Name="QuestionID" />
+            <Dependent Role="Image">
+              <PropertyRef Name="RelatedID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Table_1_Question">
+        <Association Name="FK_Image_Tutorial">
+          <End Role="Tutorial" Type="Self.Tutorial" Multiplicity="1" />
+          <End Role="Image" Type="Self.Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tutorial">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Image">
+              <PropertyRef Name="RelatedID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mention_Message">
+          <End Role="Message" Type="Self.Message" Multiplicity="1" />
+          <End Role="Mention" Type="Self.Mention" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Message">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Mention">
+              <PropertyRef Name="RelatedID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tag_Question">
           <End Role="Question" Type="Self.Question" Multiplicity="1" />
           <End Role="Tag" Type="Self.Tag" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1965,42 +2128,6 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             </Principal>
             <Dependent Role="Tag">
               <PropertyRef Name="RelatedID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ContestAnswer_TrueFalse">
-          <End Role="TrueFalse" Type="Self.TrueFalse" Multiplicity="0..1" />
-          <End Role="ContestAnswer" Type="Self.ContestAnswer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TrueFalse">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ContestAnswer">
-              <PropertyRef Name="TrueFalseID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Image_TrueFalse">
-          <End Role="TrueFalse" Type="Self.TrueFalse" Multiplicity="0..1" />
-          <End Role="Image" Type="Self.Image" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TrueFalse">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Image">
-              <PropertyRef Name="TrueFalseID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Image_Tutorial">
-          <End Role="Tutorial" Type="Self.Tutorial" Multiplicity="0..1" />
-          <End Role="Image" Type="Self.Image" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tutorial">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Image">
-              <PropertyRef Name="TutorialID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2015,6 +2142,10 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
               <PropertyRef Name="TutorialID" />
             </Dependent>
           </ReferentialConstraint>
+        </Association>
+        <Association Name="ContestRelation">
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <End Role="Contest" Type="Self.Contest" Multiplicity="*" />
         </Association>
         <Association Name="EnrolledTutorial">
           <End Role="Account" Type="Self.Account" Multiplicity="*" />
@@ -2031,8 +2162,11 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
           <EntitySet Name="Blogs" EntityType="Self.Blog" />
           <EntitySet Name="Completes" EntityType="Self.Complete" />
           <EntitySet Name="Contests" EntityType="Self.Contest" />
+          <EntitySet Name="ContestAnswers" EntityType="Self.ContestAnswer" />
           <EntitySet Name="DiscussionRooms" EntityType="Self.DiscussionRoom" />
           <EntitySet Name="Favourites" EntityType="Self.Favourite" />
+          <EntitySet Name="Images" EntityType="Self.Image" />
+          <EntitySet Name="Lessons" EntityType="Self.Lesson" />
           <EntitySet Name="MCQs" EntityType="Self.MCQ" />
           <EntitySet Name="Mentions" EntityType="Self.Mention" />
           <EntitySet Name="Messages" EntityType="Self.Message" />
@@ -2041,17 +2175,14 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
           <EntitySet Name="Questions" EntityType="Self.Question" />
           <EntitySet Name="Ranks" EntityType="Self.Rank" />
           <EntitySet Name="Ratings" EntityType="Self.Rating" />
+          <EntitySet Name="Replies" EntityType="Self.Reply" />
+          <EntitySet Name="Requests" EntityType="Self.Request" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Tags" EntityType="Self.Tag" />
           <EntitySet Name="TrueFalses" EntityType="Self.TrueFalse" />
           <EntitySet Name="Tutorials" EntityType="Self.Tutorial" />
           <EntitySet Name="TutorialMaterials" EntityType="Self.TutorialMaterial" />
-          <EntitySet Name="ContestAnswers" EntityType="Self.ContestAnswer" />
-          <EntitySet Name="ContestRelations" EntityType="Self.ContestRelation" />
           <EntitySet Name="FollowZones" EntityType="Self.FollowZone" />
-          <EntitySet Name="Images" EntityType="Self.Image" />
-          <EntitySet Name="Lessons" EntityType="Self.Lesson" />
-          <EntitySet Name="TagRelations" EntityType="Self.TagRelation" />
           <AssociationSet Name="FK_Account_Proficiency" Association="Self.FK_Account_Proficiency">
             <End Role="Proficiency" EntitySet="Proficiencies" />
             <End Role="Account" EntitySet="Accounts" />
@@ -2071,10 +2202,6 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
           <AssociationSet Name="FK_ContestAnswer_Account" Association="Self.FK_ContestAnswer_Account">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="ContestAnswer" EntitySet="ContestAnswers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ContestRelation_Account" Association="Self.FK_ContestRelation_Account">
-            <End Role="Account" EntitySet="Accounts" />
-            <End Role="ContestRelation" EntitySet="ContestRelations" />
           </AssociationSet>
           <AssociationSet Name="FK_Favourite_Account" Association="Self.FK_Favourite_Account">
             <End Role="Account" EntitySet="Accounts" />
@@ -2096,6 +2223,10 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             <End Role="Account" EntitySet="Accounts" />
             <End Role="Mention" EntitySet="Mentions" />
           </AssociationSet>
+          <AssociationSet Name="FK_Mention_Account1" Association="Self.FK_Mention_Account1">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="Mention" EntitySet="Mentions" />
+          </AssociationSet>
           <AssociationSet Name="FK_Message_Account" Association="Self.FK_Message_Account">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="Message" EntitySet="Messages" />
@@ -2112,35 +2243,51 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             <End Role="Account" EntitySet="Accounts" />
             <End Role="Tutorial" EntitySet="Tutorials" />
           </AssociationSet>
-          <AssociationSet Name="FK_Answer_DiscussionRoom" Association="Self.FK_Answer_DiscussionRoom">
-            <End Role="DiscussionRoom" EntitySet="DiscussionRooms" />
-            <End Role="Answer" EntitySet="Answers" />
-          </AssociationSet>
           <AssociationSet Name="FK_Answer_Question" Association="Self.FK_Answer_Question">
             <End Role="Question" EntitySet="Questions" />
             <End Role="Answer" EntitySet="Answers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Favourite_Answer" Association="Self.FK_Favourite_Answer">
+            <End Role="Answer" EntitySet="Answers" />
+            <End Role="Favourite" EntitySet="Favourites" />
           </AssociationSet>
           <AssociationSet Name="FK_Image_Answer" Association="Self.FK_Image_Answer">
             <End Role="Answer" EntitySet="Answers" />
             <End Role="Image" EntitySet="Images" />
           </AssociationSet>
+          <AssociationSet Name="FK_Mention_Answer" Association="Self.FK_Mention_Answer">
+            <End Role="Answer" EntitySet="Answers" />
+            <End Role="Mention" EntitySet="Mentions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reply_Answer" Association="Self.FK_Reply_Answer">
+            <End Role="Answer" EntitySet="Answers" />
+            <End Role="Reply" EntitySet="Replies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tag_Answer" Association="Self.FK_Tag_Answer">
+            <End Role="Answer" EntitySet="Answers" />
+            <End Role="Tag" EntitySet="Tags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tag_Application" Association="Self.FK_Tag_Application">
+            <End Role="Application" EntitySet="Applications" />
+            <End Role="Tag" EntitySet="Tags" />
+          </AssociationSet>
           <AssociationSet Name="FK_Blog_DiscussionRoom" Association="Self.FK_Blog_DiscussionRoom">
             <End Role="DiscussionRoom" EntitySet="DiscussionRooms" />
             <End Role="Blog" EntitySet="Blogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Favourite_Blog" Association="Self.FK_Favourite_Blog">
+            <End Role="Blog" EntitySet="Blogs" />
+            <End Role="Favourite" EntitySet="Favourites" />
           </AssociationSet>
           <AssociationSet Name="FK_Image_Blog" Association="Self.FK_Image_Blog">
             <End Role="Blog" EntitySet="Blogs" />
             <End Role="Image" EntitySet="Images" />
           </AssociationSet>
-          <AssociationSet Name="FK_Mention_Blog" Association="Self.FK_Mention_Blog">
+          <AssociationSet Name="FK_Tag_Blog" Association="Self.FK_Tag_Blog">
             <End Role="Blog" EntitySet="Blogs" />
-            <End Role="Mention" EntitySet="Mentions" />
+            <End Role="Tag" EntitySet="Tags" />
           </AssociationSet>
-          <AssociationSet Name="FK_QuestionTag_Blog" Association="Self.FK_QuestionTag_Blog">
-            <End Role="Blog" EntitySet="Blogs" />
-            <End Role="TagRelation" EntitySet="TagRelations" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ContestAnswer_Complete" Association="Self.FK_ContestAnswer_Complete">
+          <AssociationSet Name="FK_ContestAnswer_Complete1" Association="Self.FK_ContestAnswer_Complete1">
             <End Role="Complete" EntitySet="Completes" />
             <End Role="ContestAnswer" EntitySet="ContestAnswers" />
           </AssociationSet>
@@ -2152,13 +2299,29 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             <End Role="Contest" EntitySet="Contests" />
             <End Role="MCQ" EntitySet="MCQs" />
           </AssociationSet>
-          <AssociationSet Name="FK_Mention_DiscussionRoom" Association="Self.FK_Mention_DiscussionRoom">
+          <AssociationSet Name="FK_Image_Contest" Association="Self.FK_Image_Contest">
+            <End Role="Contest" EntitySet="Contests" />
+            <End Role="Image" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContestAnswer_MCQ1" Association="Self.FK_ContestAnswer_MCQ1">
+            <End Role="MCQ" EntitySet="MCQs" />
+            <End Role="ContestAnswer" EntitySet="ContestAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContestAnswer_TrueFalse1" Association="Self.FK_ContestAnswer_TrueFalse1">
+            <End Role="TrueFalse" EntitySet="TrueFalses" />
+            <End Role="ContestAnswer" EntitySet="ContestAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Image_DiscussionRoom" Association="Self.FK_Image_DiscussionRoom">
             <End Role="DiscussionRoom" EntitySet="DiscussionRooms" />
-            <End Role="Mention" EntitySet="Mentions" />
+            <End Role="Image" EntitySet="Images" />
           </AssociationSet>
           <AssociationSet Name="FK_Message_DiscussionRoom" Association="Self.FK_Message_DiscussionRoom">
             <End Role="DiscussionRoom" EntitySet="DiscussionRooms" />
             <End Role="Message" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tag_DiscussionRoom" Association="Self.FK_Tag_DiscussionRoom">
+            <End Role="DiscussionRoom" EntitySet="DiscussionRooms" />
+            <End Role="Tag" EntitySet="Tags" />
           </AssociationSet>
           <AssociationSet Name="FK_Favourite_Question" Association="Self.FK_Favourite_Question">
             <End Role="Question" EntitySet="Questions" />
@@ -2168,17 +2331,9 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             <End Role="Tutorial" EntitySet="Tutorials" />
             <End Role="Favourite" EntitySet="Favourites" />
           </AssociationSet>
-          <AssociationSet Name="FK_ContestAnswer_MCQ" Association="Self.FK_ContestAnswer_MCQ">
-            <End Role="MCQ" EntitySet="MCQs" />
-            <End Role="ContestAnswer" EntitySet="ContestAnswers" />
-          </AssociationSet>
           <AssociationSet Name="FK_Image_MCQ" Association="Self.FK_Image_MCQ">
             <End Role="MCQ" EntitySet="MCQs" />
             <End Role="Image" EntitySet="Images" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Mention_Question" Association="Self.FK_Mention_Question">
-            <End Role="Question" EntitySet="Questions" />
-            <End Role="Mention" EntitySet="Mentions" />
           </AssociationSet>
           <AssociationSet Name="FK_Image_Message" Association="Self.FK_Image_Message">
             <End Role="Message" EntitySet="Messages" />
@@ -2188,18 +2343,6 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             <End Role="Question" EntitySet="Questions" />
             <End Role="Image" EntitySet="Images" />
           </AssociationSet>
-          <AssociationSet Name="FK_QuestionTag_Question" Association="Self.FK_QuestionTag_Question">
-            <End Role="Question" EntitySet="Questions" />
-            <End Role="TagRelation" EntitySet="TagRelations" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Table_1_Question" Association="Self.FK_Table_1_Question">
-            <End Role="Question" EntitySet="Questions" />
-            <End Role="Tag" EntitySet="Tags" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ContestAnswer_TrueFalse" Association="Self.FK_ContestAnswer_TrueFalse">
-            <End Role="TrueFalse" EntitySet="TrueFalses" />
-            <End Role="ContestAnswer" EntitySet="ContestAnswers" />
-          </AssociationSet>
           <AssociationSet Name="FK_Image_TrueFalse" Association="Self.FK_Image_TrueFalse">
             <End Role="TrueFalse" EntitySet="TrueFalses" />
             <End Role="Image" EntitySet="Images" />
@@ -2208,9 +2351,21 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             <End Role="Tutorial" EntitySet="Tutorials" />
             <End Role="Image" EntitySet="Images" />
           </AssociationSet>
+          <AssociationSet Name="FK_Mention_Message" Association="Self.FK_Mention_Message">
+            <End Role="Message" EntitySet="Messages" />
+            <End Role="Mention" EntitySet="Mentions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tag_Question" Association="Self.FK_Tag_Question">
+            <End Role="Question" EntitySet="Questions" />
+            <End Role="Tag" EntitySet="Tags" />
+          </AssociationSet>
           <AssociationSet Name="FK_TutorialMaterial_Tutorial" Association="Self.FK_TutorialMaterial_Tutorial">
             <End Role="Tutorial" EntitySet="Tutorials" />
             <End Role="TutorialMaterial" EntitySet="TutorialMaterials" />
+          </AssociationSet>
+          <AssociationSet Name="ContestRelation" Association="Self.ContestRelation">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="Contest" EntitySet="Contests" />
           </AssociationSet>
           <AssociationSet Name="EnrolledTutorial" Association="Self.EnrolledTutorial">
             <End Role="Account" EntitySet="Accounts" />
@@ -2295,14 +2450,14 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             <EntityTypeMapping TypeName="Hbsthalk.Answer">
               <MappingFragment StoreEntitySet="Answer">
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
                 <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
                 <ScalarProperty Name="Points" ColumnName="Points" />
                 <ScalarProperty Name="FilePath" ColumnName="FilePath" />
-                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
-                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
                 <ScalarProperty Name="Accepted" ColumnName="Accepted" />
                 <ScalarProperty Name="BestAnswer" ColumnName="BestAnswer" />
+                <ScalarProperty Name="Report" ColumnName="Report" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2313,7 +2468,6 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Thumbnail" ColumnName="Thumbnail" />
-                <ScalarProperty Name="Tag" ColumnName="Tag" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2325,7 +2479,8 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
                 <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
                 <ScalarProperty Name="DateTime" ColumnName="DateTime" />
                 <ScalarProperty Name="RoomID" ColumnName="RoomID" />
-                <ScalarProperty Name="Points" ColumnName="Points" />
+                <ScalarProperty Name="Favourites" ColumnName="Favourites" />
+                <ScalarProperty Name="Report" ColumnName="Report" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2346,7 +2501,19 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="DateAndTime" ColumnName="DateAndTime" />
-                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContestAnswers">
+            <EntityTypeMapping TypeName="Hbsthalk.ContestAnswer">
+              <MappingFragment StoreEntitySet="ContestAnswer">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="Correct" ColumnName="Correct" />
+                <ScalarProperty Name="RelationType" ColumnName="RelationType" />
+                <ScalarProperty Name="RelatedID" ColumnName="RelatedID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2356,7 +2523,8 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Recommendation" ColumnName="Recommendation" />
-                <ScalarProperty Name="DateAndTime" ColumnName="DateAndTime" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2364,9 +2532,30 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
             <EntityTypeMapping TypeName="Hbsthalk.Favourite">
               <MappingFragment StoreEntitySet="Favourite">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="TutorialID" ColumnName="TutorialID" />
-                <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="RelatedID" ColumnName="RelatedID" />
                 <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="Hbsthalk.Image">
+              <MappingFragment StoreEntitySet="Image">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="Caption" ColumnName="Caption" />
+                <ScalarProperty Name="RelationType" ColumnName="RelationType" />
+                <ScalarProperty Name="RelatedID" ColumnName="RelatedID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lessons">
+            <EntityTypeMapping TypeName="Hbsthalk.Lesson">
+              <MappingFragment StoreEntitySet="Lesson">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2385,9 +2574,9 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
               <MappingFragment StoreEntitySet="Mention">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="AccountID" ColumnName="AccountID" />
-                <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
-                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
-                <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+                <ScalarProperty Name="MentionedID" ColumnName="MentionedID" />
+                <ScalarProperty Name="RelatedID" ColumnName="RelatedID" />
+                <ScalarProperty Name="RelationType" ColumnName="RelationType" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2396,7 +2585,7 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
               <MappingFragment StoreEntitySet="Message">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Text" ColumnName="Text" />
-                <ScalarProperty Name="DateAndTime" ColumnName="DateAndTime" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
                 <ScalarProperty Name="SenderID" ColumnName="SenderID" />
                 <ScalarProperty Name="RoomID" ColumnName="RoomID" />
                 <ScalarProperty Name="FilePath" ColumnName="FilePath" />
@@ -2427,11 +2616,12 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="AccountID" ColumnName="AccountID" />
                 <ScalarProperty Name="Text" ColumnName="Text" />
-                <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+                <ScalarProperty Name="Views" ColumnName="Views" />
                 <ScalarProperty Name="DateAndTime" ColumnName="DateAndTime" />
                 <ScalarProperty Name="FilePath" ColumnName="FilePath" />
                 <ScalarProperty Name="Favourits" ColumnName="Favourits" />
                 <ScalarProperty Name="Solved" ColumnName="Solved" />
+                <ScalarProperty Name="Report" ColumnName="Report" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2454,6 +2644,24 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Replies">
+            <EntityTypeMapping TypeName="Hbsthalk.Reply">
+              <MappingFragment StoreEntitySet="Reply">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AnswerID" ColumnName="AnswerID" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Requests">
+            <EntityTypeMapping TypeName="Hbsthalk.Request">
+              <MappingFragment StoreEntitySet="Request">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="Hbsthalk.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -2470,7 +2678,7 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
               <MappingFragment StoreEntitySet="Tag">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Text" ColumnName="Text" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="RelationType" ColumnName="RelationType" />
                 <ScalarProperty Name="RelatedID" ColumnName="RelatedID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -2507,28 +2715,7 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="FilePath" ColumnName="FilePath" />
                 <ScalarProperty Name="TutorialID" ColumnName="TutorialID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ContestAnswers">
-            <EntityTypeMapping TypeName="Hbsthalk.ContestAnswer">
-              <MappingFragment StoreEntitySet="ContestAnswer">
-                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
-                <ScalarProperty Name="MCQID" ColumnName="MCQID" />
-                <ScalarProperty Name="TrueFalseID" ColumnName="TrueFalseID" />
-                <ScalarProperty Name="CompleteID" ColumnName="CompleteID" />
-                <ScalarProperty Name="MCQAnswer" ColumnName="MCQAnswer" />
-                <ScalarProperty Name="CompleteAnswer" ColumnName="CompleteAnswer" />
-                <ScalarProperty Name="TrueFalseAnswer" ColumnName="TrueFalseAnswer" />
-                <ScalarProperty Name="Correct" ColumnName="Correct" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ContestRelations">
-            <EntityTypeMapping TypeName="Hbsthalk.ContestRelation">
-              <MappingFragment StoreEntitySet="ContestRelation">
-                <ScalarProperty Name="ContestID" ColumnName="ContestID" />
-                <ScalarProperty Name="AccountD" ColumnName="AccountD" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2542,44 +2729,14 @@ warning 6002: The table/view 'Hbsthalk.dbo.TagRelation' does not have a primary 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Images">
-            <EntityTypeMapping TypeName="Hbsthalk.Image">
-              <MappingFragment StoreEntitySet="Image">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
-                <ScalarProperty Name="Path" ColumnName="Path" />
-                <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
-                <ScalarProperty Name="BlogID" ColumnName="BlogID" />
-                <ScalarProperty Name="MessageID" ColumnName="MessageID" />
-                <ScalarProperty Name="AnswerID" ColumnName="AnswerID" />
-                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
-                <ScalarProperty Name="TutorialID" ColumnName="TutorialID" />
-                <ScalarProperty Name="Caption" ColumnName="Caption" />
-                <ScalarProperty Name="MCQID" ColumnName="MCQID" />
-                <ScalarProperty Name="TrueFalseID" ColumnName="TrueFalseID" />
-                <ScalarProperty Name="CompleteID" ColumnName="CompleteID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Lessons">
-            <EntityTypeMapping TypeName="Hbsthalk.Lesson">
-              <MappingFragment StoreEntitySet="Lesson">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Path" ColumnName="Path" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TagRelations">
-            <EntityTypeMapping TypeName="Hbsthalk.TagRelation">
-              <MappingFragment StoreEntitySet="TagRelation">
-                <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
-                <ScalarProperty Name="TagID" ColumnName="TagID" />
-                <ScalarProperty Name="BlogID" ColumnName="BlogID" />
-                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+          <AssociationSetMapping Name="ContestRelation" TypeName="Hbsthalk.ContestRelation" StoreEntitySet="ContestRelation">
+            <EndProperty Name="Account">
+              <ScalarProperty Name="ID" ColumnName="AccountD" />
+            </EndProperty>
+            <EndProperty Name="Contest">
+              <ScalarProperty Name="ID" ColumnName="ContestID" />
+            </EndProperty>
+          </AssociationSetMapping>
           <AssociationSetMapping Name="EnrolledTutorial" TypeName="Hbsthalk.EnrolledTutorial" StoreEntitySet="EnrolledTutorial">
             <EndProperty Name="Account">
               <ScalarProperty Name="ID" ColumnName="AccountID" />

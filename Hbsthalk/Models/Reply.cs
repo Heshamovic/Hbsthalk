@@ -12,14 +12,13 @@ namespace Hbsthalk.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TagRelation
+    public partial class Reply
     {
-        public Nullable<int> QuestionID { get; set; }
-        public int TagID { get; set; }
-        public Nullable<int> BlogID { get; set; }
-        public Nullable<int> RoomID { get; set; }
+        public int ID { get; set; }
+        public int AnswerID { get; set; }
+        public string Text { get; set; }
+        public string FilePath { get; set; }
     
-        public virtual Blog Blog { get; set; }
-        public virtual Question Question { get; set; }
+        public virtual Answer Answer { get; set; }
     }
 }

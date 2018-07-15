@@ -33,8 +33,11 @@ namespace Hbsthalk.Models
         public virtual DbSet<Blog> Blogs { get; set; }
         public virtual DbSet<Complete> Completes { get; set; }
         public virtual DbSet<Contest> Contests { get; set; }
+        public virtual DbSet<ContestAnswer> ContestAnswers { get; set; }
         public virtual DbSet<DiscussionRoom> DiscussionRooms { get; set; }
         public virtual DbSet<Favourite> Favourites { get; set; }
+        public virtual DbSet<Image> Images { get; set; }
+        public virtual DbSet<Lesson> Lessons { get; set; }
         public virtual DbSet<MCQ> MCQs { get; set; }
         public virtual DbSet<Mention> Mentions { get; set; }
         public virtual DbSet<Message> Messages { get; set; }
@@ -43,17 +46,14 @@ namespace Hbsthalk.Models
         public virtual DbSet<Question> Questions { get; set; }
         public virtual DbSet<Rank> Ranks { get; set; }
         public virtual DbSet<Rating> Ratings { get; set; }
+        public virtual DbSet<Reply> Replies { get; set; }
+        public virtual DbSet<Request> Requests { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
         public virtual DbSet<TrueFalse> TrueFalses { get; set; }
         public virtual DbSet<Tutorial> Tutorials { get; set; }
         public virtual DbSet<TutorialMaterial> TutorialMaterials { get; set; }
-        public virtual DbSet<ContestAnswer> ContestAnswers { get; set; }
-        public virtual DbSet<ContestRelation> ContestRelations { get; set; }
         public virtual DbSet<FollowZone> FollowZones { get; set; }
-        public virtual DbSet<Image> Images { get; set; }
-        public virtual DbSet<Lesson> Lessons { get; set; }
-        public virtual DbSet<TagRelation> TagRelations { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

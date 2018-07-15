@@ -1076,21 +1076,10 @@ $(".open").click(function () {
             }
         }
         $(this).addClass('active');
+        $(this).css("color", "black");
     });
 /*End tabs*/
   
-/*open Question tab*/
-var viewQuestion = function (id) {
-    $.ajax({
-        type: "POST",
-        url: "/Home/Question",
-        data: {id: id},
-        success: function () {
-            
-        }
-    })
-}
-    /*END*/
 /*Ask Questions*/
 /*Start Ask Question*/
 function addHTML(tag) {

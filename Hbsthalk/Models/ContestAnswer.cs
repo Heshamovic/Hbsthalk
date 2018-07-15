@@ -14,14 +14,12 @@ namespace Hbsthalk.Models
     
     public partial class ContestAnswer
     {
+        public int ID { get; set; }
         public int AccountID { get; set; }
-        public Nullable<int> MCQID { get; set; }
-        public Nullable<int> TrueFalseID { get; set; }
-        public Nullable<int> CompleteID { get; set; }
-        public Nullable<int> MCQAnswer { get; set; }
-        public string CompleteAnswer { get; set; }
-        public Nullable<bool> TrueFalseAnswer { get; set; }
+        public string Answer { get; set; }
         public bool Correct { get; set; }
+        public string RelationType { get; set; }
+        public int RelatedID { get; set; }
     
         public virtual Account Account { get; set; }
         public virtual Complete Complete { get; set; }

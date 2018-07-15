@@ -20,7 +20,6 @@ namespace Hbsthalk.Models
             this.Answers = new HashSet<Answer>();
             this.Blogs = new HashSet<Blog>();
             this.ContestAnswers = new HashSet<ContestAnswer>();
-            this.ContestRelations = new HashSet<ContestRelation>();
             this.Favourites = new HashSet<Favourite>();
             this.FollowZones = new HashSet<FollowZone>();
             this.FollowZones1 = new HashSet<FollowZone>();
@@ -30,6 +29,7 @@ namespace Hbsthalk.Models
             this.PreferenceLists = new HashSet<PreferenceList>();
             this.Ratings = new HashSet<Rating>();
             this.Tutorials = new HashSet<Tutorial>();
+            this.Contests = new HashSet<Contest>();
             this.Tutorials1 = new HashSet<Tutorial>();
             this.DiscussionRooms = new HashSet<DiscussionRoom>();
         }
@@ -61,8 +61,6 @@ namespace Hbsthalk.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ContestAnswer> ContestAnswers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ContestRelation> ContestRelations { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Favourite> Favourites { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FollowZone> FollowZones { get; set; }
@@ -72,6 +70,7 @@ namespace Hbsthalk.Models
         public virtual ICollection<Image> Images { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Mention> Mentions { get; set; }
+        public virtual Mention Mention { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Message> Messages { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -80,6 +79,8 @@ namespace Hbsthalk.Models
         public virtual ICollection<Rating> Ratings { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tutorial> Tutorials { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Contest> Contests { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tutorial> Tutorials1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
